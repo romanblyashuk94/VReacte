@@ -1,0 +1,24 @@
+.app__wrapper .header {
+    -ms-grid-row: 1;
+    -ms-grid-column: 1;
+    -ms-grid-column-span: 3;
+    grid-area: header;
+    padding: 15px 20px;
+    background: #f1e767;
+    background: -webkit-gradient(linear, left top, left bottom, from(#f1e767), to(#feb645));
+    background: linear-gradient(to bottom, #f1e767 0%, #feb645 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr="#f1e767", endColorstr="#feb645",GradientType=0 );
+  }
+  .app__wrapper .header .logo {
+    height: 30px;
+    position: relative;
+    top: 4px;
+    left: 2px;
+  }
+  .app__wrapper .header span {
+    color: #6bb92b;
+    font-size: 30px;
+    font-weight: bold;
+    letter-spacing: 0.2em;
+    font-style: italic;
+  }
