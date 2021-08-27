@@ -74,6 +74,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /*--------------------*/
+
 a {
   text-decoration: none;
 }
@@ -91,115 +92,4 @@ a {
 .app__wrapper .grid_element {
   border: 1px solid black;
   border-radius: 5px;
-}
-
-.app__wrapper .navbar {
-  -ms-grid-row: 3;
-  -ms-grid-column: 1;
-  grid-area: navbar;
-  padding: 15px 25px;
-  background: #ffd65e;
-  background: -webkit-gradient(linear, left top, left bottom, from(#ffd65e), to(#febf04));
-  background: linear-gradient(to bottom, #ffd65e 0%, #febf04 100%);
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr="#ffd65e", endColorstr="#febf04",GradientType=0 );
-}
-.app__wrapper .navbar ul li {
-  list-style: none;
-  font-size: 24px;
-  line-height: 1.5em;
-  font-weight: bold;
-}
-.app__wrapper .navbar ul li:last-child {
-  margin-top: 20px;
-}
-.app__wrapper .navbar ul li a {
-  color: black;
-}
-.app__wrapper .navbar ul li a:hover {
-  color: #6bb92b;
-}
-.app__wrapper .maincontent {
-  -ms-grid-row: 3;
-  -ms-grid-column: 3;
-  grid-area: maincontent;
-}
-.app__wrapper .maincontent .wall {
-  width: 100%;
-  max-height: 250px;
-}
-.app__wrapper .maincontent .profile {
-  padding: 20px 40px;
-}
-.app__wrapper .maincontent .profile .profile__wrap {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-}
-.app__wrapper .maincontent .profile .profile__wrap .profile__ava {
-  max-width: 170px;
-  margin: 0 30px 0 0;
-}
-.app__wrapper .maincontent .profile .profile__wrap .profile__body .profile__name {
-  font-size: 36px;
-  margin: 0 0 15px 0;
-}
-.app__wrapper .maincontent .profile .profile__wrap .profile__body .profile__info {
-  font-size: 20px;
-}
-.app__wrapper .maincontent .profile .profile__wrap .profile__body .profile__info li {
-  margin: 0 0 10px 0;
-}
-.app__wrapper .maincontent .new-posts {
-  padding: 20px 40px;
-}
-.app__wrapper .maincontent .new-posts .new-posts__title {
-  font-size: 30px;
-  margin: 0 0 20px 0;
-}
-.app__wrapper .maincontent .new-posts .new-post__area {
-  background-color: #dfdfdf;
-  border: 1px black solid;
-  font-size: 18px;
-  padding: 10px;
-  width: 100%;
-  height: 100px;
-}
-.app__wrapper .maincontent .new-posts .new-post_button {
-  width: 150px;
-  margin: 10px 0 0 0;
-  float: right;
-  font-size: 20px;
-  background-color: chartreuse;
-  border: 1px solid black;
-  border-radius: 5px;
-}
-.app__wrapper .maincontent .new-posts .new-post_button:hover {
-  background-color: #f8cc48;
-}
-.app__wrapper .maincontent .posts {
-  padding: 20px 40px;
-}
-.app__wrapper .maincontent .posts .post {
-  margin: 70px 10px;
-}
-.app__wrapper .maincontent .posts .post .post__wrap {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-}
-.app__wrapper .maincontent .posts .post .post__wrap .poster-ava {
-  width: 80px;
-  margin: 0 20px 0 0;
-}
-.app__wrapper .maincontent .posts .post .post__wrap .post__body {
-  border: solid gray 1px;
-  border-radius: 15px;
-  padding: 10px;
-}
-.app__wrapper .maincontent .posts .post .post__wrap .post__body .post__date {
-  color: gray;
-}
-.app__wrapper .maincontent .posts .post .post__wrap .post__body .post__text {
-  font-size: 18px;
-  padding: 5px 0 0 0;
 }

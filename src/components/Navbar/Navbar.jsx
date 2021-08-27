@@ -1,6 +1,8 @@
+import s from './Navbar.module.scss'
+
 const Navbar = () => {
     return (
-    <nav className="navbar grid_element">
+    <nav className={`${s.navbar} grid_element`}>
         <ul>
             <li><a href="S#">Profile</a></li>
             <li><a href="S#">Messages</a></li>
