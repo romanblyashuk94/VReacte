@@ -88,8 +88,12 @@ a {
   -ms-grid-columns: 2.5fr 10px 10fr;
       grid-template: [start] "header header" auto [row2] [row2] "navbar maincontent" auto [row-end]/2.5fr 10fr;
   gap: 10px;
+  .maincontent {
+    grid-area: maincontent; 
+  }
   .grid_element {
     border: 1px solid black;
     border-radius: 5px;
   }
 }
+

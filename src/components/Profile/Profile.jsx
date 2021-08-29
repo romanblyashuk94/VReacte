@@ -8,7 +8,7 @@ import Wallpapper from './Wallpapper/Wallpapper'
 
 const Profile = () => {
     return (
-        <div className={`${s.maincontent} grid_element`}>
+        <div>
           <Wallpapper />
           <Profileinfo />
           <MyPosts />

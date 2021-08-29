@@ -10,7 +10,9 @@ const App = () => {
         <div className="app__wrapper"> 
           <Header />
           <Navbar />
-          <Profile />
+          <div className="maincontent grid_element">
+            <Profile />
+          </div>
         </div>
 
   );
