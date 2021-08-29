@@ -3,8 +3,10 @@
     .post__wrap {
         display: flex;
         .poster_ava {
-            width: 80px;
+            max-width: 90px;
+            max-height: 90px;
             margin: 0 20px 0 0;
+            border: 1px solid black;
         }
         .post__body {
             border: solid gray 1px;
@@ -16,6 +18,19 @@
             .post__text {
                 font-size: 18px;
                 padding: 5px 0 0 0;
+            }
+            .likes {
+                padding: 20px 0 0 0;
+                .like_icon {
+                    width: 20px;
+                }
+                .likes_count {
+                    position: relative;
+                    left: 10px;
+                    top:5px
+
+                }
+
             }
         }
 
