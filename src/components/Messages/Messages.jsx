@@ -1,4 +1,4 @@
-import s from './Dialogs.module.scss'
+import s from './Messages.module.scss'
 
 const Dialogs = () => {
     return (

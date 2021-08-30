@@ -4,11 +4,11 @@ const Navbar = () => {
     return (
     <nav className={`${s.navbar} grid_element`}>
         <ul>
-            <li><a href="S#">Profile</a></li>
-            <li><a href="S#">Messages</a></li>
-            <li><a href="S#">News</a></li>
-            <li><a href="S#">Music</a></li>
-            <li><a href="S#">Setings</a></li>
+            <li><a href="/profile">Profile</a></li>
+            <li><a href="/messages">Messages</a></li>
+            <li><a href="/news">News</a></li>
+            <li><a href="/music">Music</a></li>
+            <li><a href="/settings">Settings</a></li>
         </ul>
     </nav>)
 }
