@@ -80,16 +80,15 @@ a {
 }
 
 .app__wrapper {
-  display: -ms-grid;
   display: grid;
   max-width: 1200px;
+  min-height: 100vh;
   margin: 0 auto;
-  -ms-grid-rows: auto 10px auto;
-  -ms-grid-columns: 2.5fr 10px 10fr;
-      grid-template: [start] "header header" auto [row2] [row2] "navbar maincontent" auto [row-end]/2.5fr 10fr;
+      grid-template: [start] "header header" auto [row2] [row2] "navbar maincontent" 1fr [row-end]/2.5fr 10fr;
   gap: 10px;
   .maincontent {
-    grid-area: maincontent; 
+    grid-area: maincontent;
+    position: relative; 
   }
   .grid_element {
     border: 1px solid black;

@@ -1,14 +1,15 @@
+import { NavLink } from 'react-router-dom'
 import s from './Navbar.module.scss'
 
 const Navbar = () => {
     return (
     <nav className={`${s.navbar} grid_element`}>
         <ul>
-            <li><a href="/profile">Profile</a></li>
-            <li><a href="/messages">Messages</a></li>
-            <li><a href="/news">News</a></li>
-            <li><a href="/music">Music</a></li>
-            <li><a href="/settings">Settings</a></li>
+            <li><NavLink to="/profile" activeClassName={s.active}>Profile</NavLink></li>
+            <li><NavLink to="/messages" activeClassName={s.active}>Messages</NavLink></li>
+            <li><NavLink to="/news" activeClassName={s.active}>News</NavLink></li>
+            <li><NavLink to="/music" activeClassName={s.active}>Music</NavLink></li>
+            <li><NavLink to="/settings" activeClassName={s.active}>Settings</NavLink></li>
         </ul>
     </nav>)
 }
