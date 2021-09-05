@@ -1,57 +1,34 @@
-import s from './Messages.module.scss'
+import s from "./Messages.module.scss";
+import DialogsItem from "./DialogsItem/DialogsItem";
+import NewMessage from "./NewMessage/NewMessage";
+import MessagesArea from "./MessagesArea/MessagesArea";
 
 const Dialogs = () => {
-    return (
-        <div className={s.dialogs}>
-            <div className={s.dialogs__wrap}>
-                <form action="#">
-                    <input type="text" placeholder='Search' className={s.search} />
-                </form>
-                <div className={s.dialogs__item}>
-                    <div className={s.userInfo}>
-                        <img className={s.userAva} src="https://russkaja-skazka.ru/wp-content/uploads/2016/08/russkaya-skazka-kolobok-s-kartinkami-chitat-min.jpg" alt="UserAva" />
-                        <p className={s.userName}>Kolobok Ivanovich</p>
-                    </div>
-                    <div className={s.onlineInfo}>
-                        Online
-                    </div>
-                </div>
-                <div className={s.dialogs__item}>
-                    <div className={s.userInfo}>
-                        <img className={s.userAva} src="https://russkaja-skazka.ru/wp-content/uploads/2016/08/russkaya-skazka-kolobok-s-kartinkami-chitat-min.jpg" alt="UserAva" />
-                        <p className={s.userName}>Kolobok Ivanovich</p>
-                    </div>
-                    <div className={s.onlineInfo}>
-                        Online
-                    </div>
-                </div>
-            </div>
-            <div className={s.messages__wrap}>
-                <div className={s.messages}>
-                    <div className={s.messageItem + ' ' + s.myMessage}>
-                        <div className={s.space}></div>
-                        <div className={s.message}>
-                            <div className={s.messageText}>Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum minima assumenda aliquid tempora velit ratione, iste porro eveniet quibusdam, quia recusandae repellendus? Sequi, necessitatibus aperiam assumenda inventore tempora unde culpa.</div>
-                            <div className={s.messageTime}>3:00 pm</div>
-                        </div>
-                    </div>
-                    <div className={s.messageItem}>
-                    <div className={s.space}></div>
-                        <div className={s.message}>
-                            <div className={s.messageText}>Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum minima assumenda aliquid tempora velit ratione, iste porro eveniet quibusdam, quia recusandae repellendus? Sequi, necessitatibus aperiam assumenda inventore tempora unde culpa.!</div>
-                            <div className={s.messageTime}>3:03 pm</div>
-                        </div>
-                    </div>
-                </div>
-                <div className={s.newMessage}>
-                    <form action="#">
-                        <textarea placeholder='Write message' className={s.messageArea} name="message"></textarea>
-                        <button className={s.sendButton}>Send</button>
-                    </form>
-                </div>                
-            </div>
-        </div>
-    )
-}
+  return (
+    <div className={s.dialogs}>
+      <div className={s.dialogs__wrap}>
+        <form action="#">
+          <input type="text" placeholder="Search" className={s.search} />
+        </form>
+        <DialogsItem
+          userName="Kolobok Ivanovich"
+          status="Online"
+          avatar="https://russkaja-skazka.ru/wp-content/uploads/2016/08/russkaya-skazka-kolobok-s-kartinkami-chitat-min.jpg"
+          id="1"
+        />
+        <DialogsItem
+          userName="Nyan Cat"
+          status="Offline"
+          avatar="https://upload.wikimedia.org/wikipedia/ru/6/6b/NyanCat.gif"
+          id="2"
+        />
+      </div>
+      <div className={s.messages__wrap}>
+        <MessagesArea />
+        <NewMessage />
+      </div>
+    </div>
+  );
+};
 
-export default Dialogs
+export default Dialogs;

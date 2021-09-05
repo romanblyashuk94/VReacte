@@ -19,94 +19,17 @@
             padding: 5px 10px;
             margin-bottom: 10px;
         }
-        .dialogs__item {
-            padding: 10px 0;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin: 2px 0;
-            &:hover {
-                border: 1px solid gray ;
-            }
-            .userInfo{
-                .userAva {
-                    max-width: 50px;
-                    height: 50px;
-                    border: 1px solid black;
-                    border-radius: 50px;
-                }
-                .userName {
-                    display: inline-block;
-                    font-size: 16px;
-                    line-height: 50px;
-                    padding: 0 10px;
-                }
-            }
-            .onlineInfo {
-                padding: 0 5px 0 0;
-                color: rgb(9, 0, 128);
-            }            
+        a {
+            color: black;
         }
+        a.active {
+            color: gold;
+            font-weight: bold;
+        }
+        
     }
     .messages__wrap {
         display: flex;
         flex-direction: column;
-        .messages {
-            flex: 1 1 auto;
-            padding: 15px;
-            position: relative;
-            .messageItem {
-                display: flex;
-                .message {
-                    max-width: 80%;
-                    .messageText {
-                        color: gold;
-                        word-break: break-all;
-                        padding: 10px;
-                        font-size: 16px;
-                        border-radius: 10px;
-                        background: rgb(102, 102, 102);
-                    }
-                    .messageTime {
-                        padding: 5px;
-                    }
-                }
-            }
-            .myMessage {
-                .space {
-                    flex: 1 1 auto;
-                }
-                .message {
-                    .messageTime {
-                        float: right;
-                    }
-                }
-            }
-
-        }
-        .newMessage {
-            padding: 10px 5px;
-            background: rgb(102, 102, 102);
-            
-            .messageArea {
-                width: 83%;
-                height: 40px;
-                background: rgb(214, 214, 214);
-                padding: 5px 10px;    
-            }
-            .sendButton {
-                width: 100px;
-                margin:  10px 0 0 0;
-                float: right;
-                font-size: 16px;
-                background-color: chartreuse;
-                border: 1px solid black;
-                border-radius: 5px;
-                &:hover {
-                    background-color: rgb(248, 204, 72);
-                }            
-            }
-        }
-
     }
 }

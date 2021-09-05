@@ -8,7 +8,7 @@ import Wallpapper from './Wallpapper/Wallpapper'
 
 const Profile = () => {
     return (
-        <div>
+        <div className={s.profile}>
           <Wallpapper />
           <Profileinfo />
           <MyPosts />

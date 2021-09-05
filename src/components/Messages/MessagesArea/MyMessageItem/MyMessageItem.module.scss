@@ -1,0 +1,21 @@
+.myMessageItem {
+    display: flex;
+    .space {
+        flex: 1 1 auto;
+    }
+    .message {
+        max-width: 80%;
+        }
+        .messageText {
+            color: gold;
+            word-break: break-all;
+            padding: 10px;
+            font-size: 16px;
+            border-radius: 10px;
+            background: rgb(102, 102, 102);
+        }
+        .messageTime {
+            padding: 5px;
+            float: right;
+        }
+}
