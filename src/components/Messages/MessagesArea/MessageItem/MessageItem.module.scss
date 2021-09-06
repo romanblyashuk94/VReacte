@@ -1,7 +1,8 @@
-.FriendsMessageItem {
+.MessageItem {
     display: flex;
     .message {
         max-width: 80%;
+        }
         .messageText {
             color: gold;
             word-break: break-all;
@@ -12,6 +13,16 @@
         }
         .messageTime {
             padding: 5px;
+        }
+}
+
+.myMessage {
+    .space {
+        flex: 1 1 auto;
+    }
+    .message {
+        .messageTime {
+            float: right;
         }
     }
 }
