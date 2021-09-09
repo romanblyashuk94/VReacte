@@ -1,0 +1,31 @@
+.friendsItem {
+    color: rgb(0, 0, 0);
+    width: 30%;
+    margin-right: 5%;
+    &:nth-child(3n) {
+        margin-right: 0;
+    }
+    &:hover {
+        font-weight: bold;
+        color: #2b9cb9;
+    }
+    li {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin: 10px 0;
+        .avatar {
+            max-width: 45px;
+            height: 45px;
+            border: 1px solid black;
+            border-radius: 50%;
+        }
+        .firendName {
+            display: inline-block;
+            text-align: center;
+            line-height: 16px;
+            margin: 5px 0 0 0;   
+        }                    
+    }
+    
+}

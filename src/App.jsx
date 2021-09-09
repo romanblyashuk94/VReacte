@@ -7,13 +7,14 @@ import Profile from "./components/Profile/Profile";
 import News from "./components/News/News";
 import Music from "./components/Music/Music";
 import Settings from "./components/Settings/Settings";
+import Users from "./components/Users/Users";
 
 const App = (props) => {
   return (
     <BrowserRouter>
       <div className="app__wrapper">
         <Header />
-        <Navbar />
+        <Navbar friendsOnlineData={props.state.friendsOnlineData} />
         <div className="maincontent grid_element">
           <Route
             path="/profile"
@@ -34,6 +35,7 @@ const App = (props) => {
           <Route path="/news" component={News} />
           <Route path="/music" component={Music} />
           <Route path="/settings" component={Settings} />
+          <Route path="/users" component={Users} />
         </div>
       </div>
     </BrowserRouter>

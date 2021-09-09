@@ -1,0 +1,15 @@
+.friendsOnline{
+    margin: 50px 0 0 0;
+    .title {
+        font-size: 36px;
+        font-weight: bold;
+        color: #2b9cb9;
+        text-transform: uppercase
+    }
+    .friendsList {
+        padding: 15px 0 0 0;
+        display: flex;       
+        flex-wrap: wrap;
+    }
+    
+}
