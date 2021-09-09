@@ -19,7 +19,7 @@ const App = (props) => {
             path="/profile"
             render={() => (
               <Profile
-                postsData={props.postsData}
+                postsData={props.state.profilePage.postsData}
               />
             )}
           />
@@ -27,8 +27,7 @@ const App = (props) => {
             path="/messages"
             render={() => (
               <Messages
-                messagesData={props.messagesData}
-                dialogsData={props.dialogsData}
+                state={props.state.messagesPage}
               />
             )}
           />

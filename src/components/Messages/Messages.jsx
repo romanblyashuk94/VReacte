@@ -10,12 +10,12 @@ const Dialogs = (props) => {
       <div className={s.dialogs__wrap}>
         <SearchDialogForm />
         <DialogsArea
-          dialogsData={props.dialogsData}
+          dialogsData={props.state.dialogsData}
         />
       </div>
       <div className={s.messages__wrap}>
         <MessagesArea
-          messagesData={props.messagesData}
+          messagesData={props.state.messagesData}
         />
         <NewMessage />
       </div>
