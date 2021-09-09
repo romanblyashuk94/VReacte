@@ -4,17 +4,19 @@ import MessagesArea from "./MessagesArea/MessagesArea";
 import DialogsArea from "./DialogsArea/DialogsArea";
 import SearchDialogForm from "./SearchDialogForm/SearchDialogForm";
 
-const Dialogs = () => {
-
-  
+const Dialogs = (props) => {
   return (
     <div className={s.dialogs}>
       <div className={s.dialogs__wrap}>
         <SearchDialogForm />
-        <DialogsArea />
+        <DialogsArea
+          dialogsData={props.dialogsData}
+        />
       </div>
       <div className={s.messages__wrap}>
-        <MessagesArea />
+        <MessagesArea
+          messagesData={props.messagesData}
+        />
         <NewMessage />
       </div>
     </div>
