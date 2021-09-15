@@ -1,16 +1,24 @@
+import React from "react";
 import s from "./NewPost.module.scss";
 
 const NewPost = () => {
+  let postArea = React.createRef();
+
+  let addPost = () => {
+    let postText = postArea.current.value;
+    alert(postText);
+  };
   return (
     <div className={s.new_posts}>
       <h2 className={s.new_posts__title}>My Posts</h2>
-      <form action="S#">
+      <form>
         <textarea
+          ref={postArea}
           className={s.new_post__area}
           placeholder="Your news..."
           name="Post"
         ></textarea>
-        <button className={s.new_post_button} type="submit">
+        <button onClick={addPost} className={s.new_post_button} type="submit">
           Post
         </button>
       </form>
