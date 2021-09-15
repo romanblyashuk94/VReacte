@@ -2,7 +2,6 @@ import s from "./DialogsArea.module.scss";
 import DialogsItem from "./DialogsItem/DialogsItem";
 
 const DialogsArea = (props) => {
-
   let DialogsItemElements = props.dialogsData.map((d) => (
     <DialogsItem
       userName={d.userName}

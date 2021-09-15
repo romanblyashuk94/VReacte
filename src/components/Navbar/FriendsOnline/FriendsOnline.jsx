@@ -1,16 +1,17 @@
-import s from './FriendsOnline.module.scss'
-import FriendItem from './FriendItem/FriendItem'
+import s from "./FriendsOnline.module.scss";
+import FriendItem from "./FriendItem/FriendItem";
 
 const FriendsOnline = (props) => {
-    
-    return (
-        <div className={s.friendsOnline}>
-            <div className={s.title}>Friends Online:</div>
-            <ul className={s.friendsList}>
-            {props.friendsOnlineData.map (f => <FriendItem id={f.id} avatar={f.avatar} name={f.name}/>)}  
-            </ul>
-        </div>
-    )
-}
+  return (
+    <div className={s.friendsOnline}>
+      <div className={s.title}>Friends Online:</div>
+      <ul className={s.friendsList}>
+        {props.friendsOnlineData.map((f) => (
+          <FriendItem id={f.id} avatar={f.avatar} name={f.name} />
+        ))}
+      </ul>
+    </div>
+  );
+};
 
-export default FriendsOnline
+export default FriendsOnline;

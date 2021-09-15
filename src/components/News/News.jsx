@@ -1,11 +1,7 @@
-import s from './News.module.scss'
+import s from "./News.module.scss";
 
 const News = () => {
-    return (
-        <div className={s.news}>
-            News
-        </div>
-    )
-}
+  return <div className={s.news}>News</div>;
+};
 
-export default News
+export default News;

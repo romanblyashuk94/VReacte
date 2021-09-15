@@ -1,11 +1,7 @@
-import s from './Settings.module.scss'
+import s from "./Settings.module.scss";
 
 const Settings = () => {
-    return (
-        <div className={s.settings}>
-            Settings
-        </div>
-    )
-}
+  return <div className={s.settings}>Settings</div>;
+};
 
-export default Settings
+export default Settings;

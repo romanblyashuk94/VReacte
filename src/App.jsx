@@ -1,4 +1,4 @@
-import { BrowserRouter, Route } from "react-router-dom";
+import { Route } from "react-router-dom";
 import "./App.scss";
 import Messages from "./components/Messages/Messages";
 import Header from "./components/Header/Header";
@@ -11,34 +11,26 @@ import Users from "./components/Users/Users";
 
 const App = (props) => {
   return (
-    <BrowserRouter>
-      <div className="app__wrapper">
-        <Header />
-        <Navbar friendsOnlineData={props.state.friendsOnlineData} />
-        <div className="maincontent grid_element">
-          <Route
-            path="/profile"
-            render={() => (
-              <Profile
-                postsData={props.state.profilePage.postsData}
-              />
-            )}
-          />
-          <Route
-            path="/messages"
-            render={() => (
-              <Messages
-                state={props.state.messagesPage}
-              />
-            )}
-          />
-          <Route path="/news" component={News} />
-          <Route path="/music" component={Music} />
-          <Route path="/settings" component={Settings} />
-          <Route path="/users" component={Users} />
-        </div>
+    <div className="app__wrapper">
+      <Header />
+      <Navbar friendsOnlineData={props.state.friendsOnlineData} />
+      <div className="maincontent grid_element">
+        <Route
+          path="/profile"
+          render={() => (
+            <Profile postsData={props.state.profilePage.postsData} />
+          )}
+        />
+        <Route
+          path="/messages"
+          render={() => <Messages state={props.state.messagesPage} />}
+        />
+        <Route path="/news" component={News} />
+        <Route path="/music" component={Music} />
+        <Route path="/settings" component={Settings} />
+        <Route path="/users" component={Users} />
       </div>
-    </BrowserRouter>
+    </div>
   );
 };
 

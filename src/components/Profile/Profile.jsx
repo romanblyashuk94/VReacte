@@ -8,9 +8,7 @@ const Profile = (props) => {
     <div className={s.profile}>
       <Wallpapper />
       <Profileinfo />
-      <MyPosts
-        postsData={props.postsData}
-      />
+      <MyPosts postsData={props.postsData} />
     </div>
   );
 };

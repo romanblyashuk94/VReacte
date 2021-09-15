@@ -1,4 +1,4 @@
-import s from './NewMessage.module.scss'
+import s from "./NewMessage.module.scss";
 
 const NewMessage = () => {
   return (
@@ -15,4 +15,4 @@ const NewMessage = () => {
   );
 };
 
-export default NewMessage 
+export default NewMessage;

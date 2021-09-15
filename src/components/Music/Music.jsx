@@ -1,11 +1,7 @@
-import s from './Music.module.scss'
+import s from "./Music.module.scss";
 
 const Music = () => {
-    return (
-        <div className={s.music}>
-            Music
-        </div>
-    )
-}
+  return <div className={s.music}>Music</div>;
+};
 
-export default Music
+export default Music;
