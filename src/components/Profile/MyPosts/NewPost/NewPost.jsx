@@ -5,8 +5,8 @@ const NewPost = (props) => {
   let postArea = React.createRef();
 
   let addPost = () => {
-    let postText = postArea.current.value;
-    props.addPost(postText);
+    props.addPost(postArea.current.value);
+    postArea.current.value = '';
   };
   return (
     <div className={s.new_posts}>

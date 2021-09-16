@@ -1,3 +1,5 @@
+import { rerenderEntireTree } from "../render";
+
 let state = {
   messagesPage: {
     messagesData: [
@@ -106,6 +108,7 @@ export let addPost = (postText) => {
   };
 
   state.profilePage.postsData.unshift(newPost);
+  rerenderEntireTree(state);
 };
 
 export let sendMessage = (messageText) => {
@@ -116,6 +119,7 @@ export let sendMessage = (messageText) => {
     isMyMessage: true,
   };
   state.messagesPage.messagesData.push(newMessage);
+  rerenderEntireTree(state);
 };
 
 export default state;

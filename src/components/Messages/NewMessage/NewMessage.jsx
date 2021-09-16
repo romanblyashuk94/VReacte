@@ -5,6 +5,7 @@ const NewMessage = (props) => {
   let messageArea = React.createRef();
   let sendMessage = () => {
     props.sendMessage(messageArea.current.value);
+    messageArea.current.value = ''
   };
   return (
     <div className={s.newMessage}>
