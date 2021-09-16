@@ -41,22 +41,21 @@ let state = {
   profilePage: {
     postsData: [
       {
-        id: 1,
+        id: 3,
         ava: "https://avatars.githubusercontent.com/u/83500664?v=4",
-        message: "Sasuke said, that he don't want return to vilage! :((",
+        message: "Hey,yo!",
         date: "8/29/2021 8:36 PM",
         likesCount: 10,
       },
       {
         id: 2,
         ava: "https://avatars.githubusercontent.com/u/83500664?v=4",
-        message:
-          "Studied the Rasengan technique today. It turned out to be more difficult than I thought. I hope I succeed",
+        message: "I am learning ReactJs",
         date: "8/28/2021 6:24 PM",
         likesCount: 8,
       },
       {
-        id: 3,
+        id: 1,
         ava: "https://avatars.githubusercontent.com/u/83500664?v=4",
         message: "Bla-bla-Bla",
         date: "8/28/2021 6:24 PM",
@@ -95,6 +94,28 @@ let state = {
       name: "Jack Sparrow",
     },
   ],
+};
+
+export let addPost = (postText) => {
+  let newPost = {
+    id: state.profilePage.postsData.length + 1,
+    ava: "https://avatars.githubusercontent.com/u/83500664?v=4",
+    message: postText,
+    date: "8/29/2021 8:36 PM",
+    likesCount: 0,
+  };
+
+  state.profilePage.postsData.unshift(newPost);
+};
+
+export let sendMessage = (messageText) => {
+  let newMessage = {
+    id: state.messagesPage.messagesData.length + 1,
+    text: messageText,
+    time: "3:00 pm",
+    isMyMessage: true,
+  };
+  state.messagesPage.messagesData.push(newMessage);
 };
 
 export default state;

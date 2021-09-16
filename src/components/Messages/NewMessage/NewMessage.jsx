@@ -1,14 +1,13 @@
 import s from "./NewMessage.module.scss";
 import React from "react";
 
-const NewMessage = () => {
+const NewMessage = (props) => {
   let messageArea = React.createRef();
   let sendMessage = () => {
-    alert(messageArea.current.value);
+    props.sendMessage(messageArea.current.value);
   };
   return (
     <div className={s.newMessage}>
-      <form action="#">
         <textarea
           ref={messageArea}
           placeholder="Write message"
@@ -18,7 +17,6 @@ const NewMessage = () => {
         <button onClick={sendMessage} className={s.sendButton}>
           Send
         </button>
-      </form>
     </div>
   );
 };
