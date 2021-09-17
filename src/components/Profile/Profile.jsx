@@ -8,7 +8,12 @@ const Profile = (props) => {
     <div className={s.profile}>
       <Wallpapper />
       <Profileinfo />
-      <MyPosts postsData={props.postsData} addPost={props.addPost} />
+      <MyPosts
+        postsData={props.postsData}
+        postAreaValue={props.postAreaValue}
+        addPost={props.addPost}
+        changePostArea={props.changePostArea}
+      />
     </div>
   );
 };

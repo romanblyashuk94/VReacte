@@ -13,7 +13,11 @@ const Dialogs = (props) => {
       </div>
       <div className={s.messages__wrap}>
         <MessagesArea messagesData={props.state.messagesData} />
-        <NewMessage sendMessage={props.sendMessage} />
+        <NewMessage
+          sendMessage={props.sendMessage}
+          newMessageValue={props.state.newMessageValue}
+          changeNewMessage={props.changeNewMessage}
+        />
       </div>
     </div>
   );

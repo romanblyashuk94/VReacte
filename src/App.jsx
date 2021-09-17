@@ -20,7 +20,9 @@ const App = (props) => {
           render={() => (
             <Profile
               postsData={props.state.profilePage.postsData}
+              postAreaValue={props.state.profilePage.postAreaValue}
               addPost={props.addPost}
+              changePostArea={props.changePostArea}
             />
           )}
         />
@@ -29,6 +31,7 @@ const App = (props) => {
           render={() => (
             <Messages
               state={props.state.messagesPage}
+              changeNewMessage={props.changeNewMessage}
               sendMessage={props.sendMessage}
             />
           )}

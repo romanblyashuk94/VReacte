@@ -5,7 +5,11 @@ import Posts from "./Posts/Posts";
 const MyPosts = (props) => {
   return (
     <div className={s.my_posts}>
-      <NewPost addPost={props.addPost} />
+      <NewPost
+        addPost={props.addPost}
+        changePostArea={props.changePostArea}
+        postAreaValue={props.postAreaValue}
+      />
       <Posts postsData={props.postsData} />
     </div>
   );

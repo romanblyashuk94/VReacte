@@ -39,6 +39,7 @@ let state = {
         status: "Online",
       },
     ],
+    newMessageValue: "",
   },
   profilePage: {
     postsData: [
@@ -64,6 +65,7 @@ let state = {
         likesCount: 2,
       },
     ],
+    postAreaValue: "",
   },
   friendsOnlineData: [
     {
@@ -98,27 +100,39 @@ let state = {
   ],
 };
 
-export let addPost = (postText) => {
+export let changePostArea = (curent) => {
+  state.profilePage.postAreaValue = curent;
+  rerenderEntireTree(state);
+};
+
+export let changeNewMessage = (curent) => {
+  state.messagesPage.newMessageValue = curent;
+  rerenderEntireTree(state);
+};
+
+export let addPost = () => {
   let newPost = {
     id: state.profilePage.postsData.length + 1,
     ava: "https://avatars.githubusercontent.com/u/83500664?v=4",
-    message: postText,
+    message: state.profilePage.postAreaValue,
     date: "8/29/2021 8:36 PM",
     likesCount: 0,
   };
 
   state.profilePage.postsData.unshift(newPost);
+  state.profilePage.postAreaValue = "";
   rerenderEntireTree(state);
 };
 
-export let sendMessage = (messageText) => {
+export let sendMessage = () => {
   let newMessage = {
     id: state.messagesPage.messagesData.length + 1,
-    text: messageText,
+    text: state.messagesPage.newMessageValue,
     time: "3:00 pm",
     isMyMessage: true,
   };
   state.messagesPage.messagesData.push(newMessage);
+  state.messagesPage.newMessageValue = "";
   rerenderEntireTree(state);
 };
 
