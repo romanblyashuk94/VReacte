@@ -1,4 +1,4 @@
-import { rerenderEntireTree } from "../render";
+
 
 let state = {
   messagesPage: {
@@ -100,17 +100,25 @@ let state = {
   ],
 };
 
-export let changePostArea = (curent) => {
+let rerenderEntireTree = () =>{
+  
+}
+
+export const subscribe = (observer) => {
+  rerenderEntireTree = observer;
+}
+
+export const changePostArea = (curent) => {
   state.profilePage.postAreaValue = curent;
   rerenderEntireTree(state);
 };
 
-export let changeNewMessage = (curent) => {
+export const changeNewMessage = (curent) => {
   state.messagesPage.newMessageValue = curent;
   rerenderEntireTree(state);
 };
 
-export let addPost = () => {
+export const addPost = () => {
   let newPost = {
     id: state.profilePage.postsData.length + 1,
     ava: "https://avatars.githubusercontent.com/u/83500664?v=4",
