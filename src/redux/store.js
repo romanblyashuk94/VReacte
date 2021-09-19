@@ -101,42 +101,43 @@ let store = {
   _rerender() {
     console.log("No Observer! =(");
   },
+
   subscribe(observer) {
     this._rerender = observer;
   },
   getState() {
     return this._state;
   },
-  setPost() {
-    let newPost = {
-      id: this._state.profilePage.postsData.length + 1,
-      ava: "https://avatars.githubusercontent.com/u/83500664?v=4",
-      message: this._state.profilePage.postAreaValue,
-      date: "8/29/2021 8:36 PM",
-      likesCount: 0,
-    };
-    this._state.profilePage.postsData.unshift(newPost);
-    this._state.profilePage.postAreaValue = "";
-    this._rerender();
-  },
-  setMessage() {
-    let newMessage = {
-      id: this._state.messagesPage.messagesData.length + 1,
-      text: this._state.messagesPage.newMessageValue,
-      time: "3:00 pm",
-      isMyMessage: true,
-    };
-    this._state.messagesPage.messagesData.push(newMessage);
-    this._state.messagesPage.newMessageValue = "";
-    this._rerender();
-  },
-  changePostArea(curent) {
-    this._state.profilePage.postAreaValue = curent;
-    this._rerender();
-  },
-  changeNewMessage(curent) {
-    this._state.messagesPage.newMessageValue = curent;
-    this._rerender();
+  
+  dispatch(action) {
+    if (action.type === "SET-POST") {
+      let newPost = {
+        id: this._state.profilePage.postsData.length + 1,
+        ava: "https://avatars.githubusercontent.com/u/83500664?v=4",
+        message: this._state.profilePage.postAreaValue,
+        date: "8/29/2021 8:36 PM",
+        likesCount: 0,
+      };
+      this._state.profilePage.postsData.unshift(newPost);
+      this._state.profilePage.postAreaValue = "";
+      this._rerender();
+    } else if (action.type === "SET-MESSAGE") {
+      let newMessage = {
+        id: this._state.messagesPage.messagesData.length + 1,
+        text: this._state.messagesPage.newMessageValue,
+        time: "3:00 pm",
+        isMyMessage: true,
+      };
+      this._state.messagesPage.messagesData.push(newMessage);
+      this._state.messagesPage.newMessageValue = "";
+      this._rerender();
+    } else if (action.type === "CHANGE-POST-AREA") {
+      this._state.profilePage.postAreaValue = action.curent;
+      this._rerender();
+    } else if (action.type === "CHANGE-MESSAGE-AREA") {
+      this._state.messagesPage.newMessageValue = action.curent;
+      this._rerender();
+    }
   },
 };
 

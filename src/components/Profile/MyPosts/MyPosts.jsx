@@ -6,11 +6,10 @@ const MyPosts = (props) => {
   return (
     <div className={s.my_posts}>
       <NewPost
-        addPost={props.addPost}
-        changePostArea={props.changePostArea}
-        postAreaValue={props.postAreaValue}
+        dispatch={props.dispatch}
+        postAreaValue={props.state.postAreaValue}
       />
-      <Posts postsData={props.postsData} />
+      <Posts postsData={props.state.postsData} />
     </div>
   );
 };

@@ -5,11 +5,14 @@ const NewMessage = (props) => {
   let messageArea = React.createRef();
 
   let sendMessage = () => {
-    props.sendMessage();
+    props.dispatch({ type: "SET-MESSAGE" });
   };
 
   let changeNewMessage = () => {
-    props.changeNewMessage(messageArea.current.value);
+    props.dispatch({
+      type: "CHANGE-MESSAGE-AREA",
+      curent: messageArea.current.value,
+    });
   };
 
   return (

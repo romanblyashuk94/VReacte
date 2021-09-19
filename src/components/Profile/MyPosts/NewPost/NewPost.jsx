@@ -5,11 +5,14 @@ const NewPost = (props) => {
   let postArea = React.createRef();
 
   let addPost = () => {
-    props.addPost();
+    props.dispatch({ type: "SET-POST" });
   };
 
   let changePostArea = () => {
-    props.changePostArea(postArea.current.value);
+    props.dispatch({
+      type: "CHANGE-POST-AREA",
+      curent: postArea.current.value,
+    });
   };
 
   return (

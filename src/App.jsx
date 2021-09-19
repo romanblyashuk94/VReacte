@@ -13,16 +13,14 @@ const App = (props) => {
   return (
     <div className="app__wrapper">
       <Header />
-      <Navbar friendsOnlineData={props.store.getState().friendsOnlineData} />
+      <Navbar friendsOnlineData={props.state.friendsOnlineData} />
       <div className="maincontent grid_element">
         <Route
           path="/profile"
           render={() => (
             <Profile
-              postsData={props.store.getState().profilePage.postsData}
-              postAreaValue={props.store.getState().profilePage.postAreaValue}
-              addPost={props.store.setPost.bind(props.store)}
-              changePostArea={props.store.changePostArea.bind(props.store)}
+              state={props.state.profilePage}
+              dispatch={props.dispatch}
             />
           )}
         />
@@ -30,9 +28,8 @@ const App = (props) => {
           path="/messages"
           render={() => (
             <Messages
-              state={props.store.getState().messagesPage}
-              changeNewMessage={props.store.changeNewMessage.bind(props.store)}
-              sendMessage={props.store.setMessage.bind(props.store)}
+              state={props.state.messagesPage}
+              dispatch={props.dispatch}
             />
           )}
         />
