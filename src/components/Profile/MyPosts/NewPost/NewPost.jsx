@@ -1,18 +1,19 @@
 import React from "react";
+import {
+  changePostAreaActionCreator,
+  setPostActionCreator,
+} from "../../../../redux/store";
 import s from "./NewPost.module.scss";
 
 const NewPost = (props) => {
   let postArea = React.createRef();
 
   let addPost = () => {
-    props.dispatch({ type: "SET-POST" });
+    props.dispatch(setPostActionCreator());
   };
 
   let changePostArea = () => {
-    props.dispatch({
-      type: "CHANGE-POST-AREA",
-      curent: postArea.current.value,
-    });
+    props.dispatch(changePostAreaActionCreator(postArea.current.value));
   };
 
   return (

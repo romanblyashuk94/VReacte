@@ -1,18 +1,17 @@
 import s from "./NewMessage.module.scss";
 import React from "react";
+import { changeMessageAreaActionCreator, setMessageActionCreator } from "../../../redux/store";
 
 const NewMessage = (props) => {
+
   let messageArea = React.createRef();
 
   let sendMessage = () => {
-    props.dispatch({ type: "SET-MESSAGE" });
+    props.dispatch( setMessageActionCreator() );
   };
 
   let changeNewMessage = () => {
-    props.dispatch({
-      type: "CHANGE-MESSAGE-AREA",
-      curent: messageArea.current.value,
-    });
+    props.dispatch( changeMessageAreaActionCreator(messageArea.current.value) );
   };
 
   return (

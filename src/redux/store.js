@@ -1,3 +1,8 @@
+const SET_POST = "SET-POST";
+const CHANGE_POST_AREA = "CHANGE-POST-AREA";
+const SET_MESSAGE = "SET-MESSAGE";
+const CHANGE_MESSAGE_AREA = "CHANGE-MESSAGE-AREA";
+
 let store = {
   _state: {
     messagesPage: {
@@ -108,7 +113,7 @@ let store = {
   getState() {
     return this._state;
   },
-  
+
   dispatch(action) {
     if (action.type === "SET-POST") {
       let newPost = {
@@ -140,5 +145,16 @@ let store = {
     }
   },
 };
+
+export const setPostActionCreator = () => ({ type: SET_POST });
+export const changePostAreaActionCreator = (curentValue) => ({
+  type: CHANGE_POST_AREA,
+  curent: curentValue,
+});
+export const setMessageActionCreator = () => ({ type: SET_MESSAGE });
+export const changeMessageAreaActionCreator = (curentValue) => ({
+  type: CHANGE_MESSAGE_AREA,
+  curent: curentValue,
+});
 
 export default store;
