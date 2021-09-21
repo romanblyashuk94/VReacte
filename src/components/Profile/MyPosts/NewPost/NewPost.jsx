@@ -2,18 +2,16 @@ import React from "react";
 import {
   changePostAreaActionCreator,
   setPostActionCreator,
-} from "../../../../redux/store";
+} from "../../../../redux/profilePageReducer";
 import s from "./NewPost.module.scss";
 
 const NewPost = (props) => {
-  let postArea = React.createRef();
-
   let addPost = () => {
     props.dispatch(setPostActionCreator());
   };
 
-  let changePostArea = () => {
-    props.dispatch(changePostAreaActionCreator(postArea.current.value));
+  let changePostArea = (e) => {
+    props.dispatch(changePostAreaActionCreator(e.target.value));
   };
 
   return (
@@ -21,12 +19,10 @@ const NewPost = (props) => {
       <h2 className={s.new_posts__title}>My Posts</h2>
       <div>
         <textarea
-          ref={postArea}
           onChange={changePostArea}
           value={props.postAreaValue}
           className={s.new_post__area}
           placeholder="Your news..."
-          name="Post"
         />
         <button onClick={addPost} className={s.new_post_button}>
           Post

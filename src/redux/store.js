@@ -1,7 +1,5 @@
-const SET_POST = "SET-POST";
-const CHANGE_POST_AREA = "CHANGE-POST-AREA";
-const SET_MESSAGE = "SET-MESSAGE";
-const CHANGE_MESSAGE_AREA = "CHANGE-MESSAGE-AREA";
+import messagesPageReducer from "./messagesPageReducer";
+import profilePageReducer from "./profilePageReducer";
 
 let store = {
   _state: {
@@ -44,6 +42,7 @@ let store = {
         },
       ],
       newMessageValue: "",
+      searchDialogValue: "",
     },
     profilePage: {
       postsData: [
@@ -115,46 +114,16 @@ let store = {
   },
 
   dispatch(action) {
-    if (action.type === "SET-POST") {
-      let newPost = {
-        id: this._state.profilePage.postsData.length + 1,
-        ava: "https://avatars.githubusercontent.com/u/83500664?v=4",
-        message: this._state.profilePage.postAreaValue,
-        date: "8/29/2021 8:36 PM",
-        likesCount: 0,
-      };
-      this._state.profilePage.postsData.unshift(newPost);
-      this._state.profilePage.postAreaValue = "";
-      this._rerender();
-    } else if (action.type === "SET-MESSAGE") {
-      let newMessage = {
-        id: this._state.messagesPage.messagesData.length + 1,
-        text: this._state.messagesPage.newMessageValue,
-        time: "3:00 pm",
-        isMyMessage: true,
-      };
-      this._state.messagesPage.messagesData.push(newMessage);
-      this._state.messagesPage.newMessageValue = "";
-      this._rerender();
-    } else if (action.type === "CHANGE-POST-AREA") {
-      this._state.profilePage.postAreaValue = action.curent;
-      this._rerender();
-    } else if (action.type === "CHANGE-MESSAGE-AREA") {
-      this._state.messagesPage.newMessageValue = action.curent;
-      this._rerender();
-    }
+    this._state.profilePage = profilePageReducer(
+      this._state.profilePage,
+      action
+    );
+    this._state.messagesPage = messagesPageReducer(
+      this._state.messagesPage,
+      action
+    );
+    this._rerender();
   },
 };
-
-export const setPostActionCreator = () => ({ type: SET_POST });
-export const changePostAreaActionCreator = (curentValue) => ({
-  type: CHANGE_POST_AREA,
-  curent: curentValue,
-});
-export const setMessageActionCreator = () => ({ type: SET_MESSAGE });
-export const changeMessageAreaActionCreator = (curentValue) => ({
-  type: CHANGE_MESSAGE_AREA,
-  curent: curentValue,
-});
 
 export default store;

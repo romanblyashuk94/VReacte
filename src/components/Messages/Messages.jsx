@@ -8,14 +8,15 @@ const Dialogs = (props) => {
   return (
     <div className={s.dialogs}>
       <div className={s.dialogs__wrap}>
-        <SearchDialogForm />
+        <SearchDialogForm
+          searchDialogValue={props.state.searchDialogValue}
+          dispatch={props.dispatch}
+        />
         <DialogsArea dialogsData={props.state.dialogsData} />
       </div>
       <div className={s.messages__wrap}>
         <MessagesArea messagesData={props.state.messagesData} />
         <NewMessage
-          // sendMessage={props.sendMessage}
-          // changeNewMessage={props.changeNewMessage}
           dispatch={props.dispatch}
           newMessageValue={props.state.newMessageValue}
         />
