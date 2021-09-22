@@ -1,3 +1,4 @@
+import friendsOnlineDataReducer from "./friendsOnlineDataReducer";
 import messagesPageReducer from "./messagesPageReducer";
 import profilePageReducer from "./profilePageReducer";
 
@@ -102,12 +103,12 @@ let store = {
       },
     ],
   },
-  _rerender() {
+  _callSubscriber() {
     console.log("No Observer! =(");
   },
 
   subscribe(observer) {
-    this._rerender = observer;
+    this._callSubscriber = observer;
   },
   getState() {
     return this._state;
@@ -122,7 +123,11 @@ let store = {
       this._state.messagesPage,
       action
     );
-    this._rerender();
+    this._state.friendsOnlineData = friendsOnlineDataReducer(
+      this._state.friendsOnlineData,
+      action
+    );
+    this._callSubscriber();
   },
 };
 
