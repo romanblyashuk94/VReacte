@@ -6,7 +6,7 @@ const Navbar = (props) => {
   return (
     <nav className={`${s.navbar} grid_element`}>
       <Menu />
-      <FriendsOnline friendsOnlineData={props.friendsOnlineData} />
+      <FriendsOnline state={props.store.getState().friendsOnlineData} />
     </nav>
   );
 };

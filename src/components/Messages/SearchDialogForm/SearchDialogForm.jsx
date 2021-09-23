@@ -1,10 +1,10 @@
-import { changeSearchDialogActionCreator } from "../../../redux/messagesPageReducer";
 import s from "./SearchDialogForm.module.scss";
 
 const SearchDialogForm = (props) => {
   let changeSearchDialogArea = (e) => {
-    props.dispatch(changeSearchDialogActionCreator(e.target.value));
+    props.changeSearchDialogArea(e.target.value);
   };
+
   return (
     <div className={s.searchForm}>
       <input

@@ -6,7 +6,7 @@ const FriendsOnline = (props) => {
     <div className={s.friendsOnline}>
       <div className={s.title}>Friends Online:</div>
       <ul className={s.friendsList}>
-        {props.friendsOnlineData.map((f) => (
+        {props.state.map((f) => (
           <FriendItem id={f.id} avatar={f.avatar} name={f.name} />
         ))}
       </ul>

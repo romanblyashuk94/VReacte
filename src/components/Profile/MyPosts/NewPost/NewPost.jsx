@@ -1,17 +1,13 @@
 import React from "react";
-import {
-  changePostAreaActionCreator,
-  setPostActionCreator,
-} from "../../../../redux/profilePageReducer";
 import s from "./NewPost.module.scss";
 
 const NewPost = (props) => {
   let addPost = () => {
-    props.dispatch(setPostActionCreator());
+    props.addPost();
   };
 
   let changePostArea = (e) => {
-    props.dispatch(changePostAreaActionCreator(e.target.value));
+    props.changePostArea(e.target.value);
   };
 
   return (

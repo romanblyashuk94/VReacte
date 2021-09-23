@@ -2,7 +2,7 @@ import Post from "./Post/Post";
 import s from "./Posts.module.scss";
 
 const Posts = (props) => {
-  let postElements = props.postsData.map((p) => (
+  let postElements = props.state.map((p) => (
     <Post
       ava={p.ava}
       message={p.message}

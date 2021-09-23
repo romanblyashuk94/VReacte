@@ -29,7 +29,6 @@ const initialState = {
 }
 
 const profilePageReducer = (state=initialState, action) => {
-  debugger;
   switch (action.type) {
     case SET_POST:
       let newPost = {

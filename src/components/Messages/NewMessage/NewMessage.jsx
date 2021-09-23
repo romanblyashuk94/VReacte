@@ -1,17 +1,14 @@
 import s from "./NewMessage.module.scss";
 import React from "react";
-import {
-  changeMessageAreaActionCreator,
-  setMessageActionCreator,
-} from "../../../redux/messagesPageReducer";
 
 const NewMessage = (props) => {
+  debugger;
   let sendMessage = () => {
-    props.dispatch(setMessageActionCreator());
+    props.sendMessage();
   };
 
   let changeNewMessage = (e) => {
-    props.dispatch(changeMessageAreaActionCreator(e.target.value));
+    props.changeNewMessage(e.target.value);
   };
 
   return (
