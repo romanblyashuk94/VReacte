@@ -3,23 +3,30 @@ import {
   changePostAreaActionCreator,
   setPostActionCreator,
 } from "../../../../redux/profilePageReducer";
+import StoreContext from "../../../../StoreContext";
 import NewPost from "./NewPost";
 
 const NewPostContainer = (props) => {
-  let addPost = () => {
-    props.store.dispatch(setPostActionCreator());
-  };
-
-  let changePostArea = (curentValue) => {
-    props.store.dispatch(changePostAreaActionCreator(curentValue));
-  };
-
   return (
-    <NewPost
-      postAreaValue={props.store.getState().postAreaValue}
-      addPost={addPost}
-      changePostArea={changePostArea}
-    />
+    <StoreContext.Consumer>
+      {(store) => {
+        let addPost = () => {
+          store.dispatch(setPostActionCreator());
+        };
+
+        let changePostArea = (curentValue) => {
+          store.dispatch(changePostAreaActionCreator(curentValue));
+        };
+
+        return (
+          <NewPost
+            postAreaValue={store.getState().postAreaValue}
+            addPost={addPost}
+            changePostArea={changePostArea}
+          />
+        );
+      }}
+    </StoreContext.Consumer>
   );
 };
 
