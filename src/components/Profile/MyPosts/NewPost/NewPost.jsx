@@ -9,7 +9,7 @@ const NewPost = (props) => {
   let changePostArea = (e) => {
     props.changePostArea(e.target.value);
   };
-
+  
   return (
     <div className={s.new_posts}>
       <h2 className={s.new_posts__title}>My Posts</h2>

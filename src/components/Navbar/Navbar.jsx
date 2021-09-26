@@ -1,4 +1,4 @@
-import FriendsOnline from "./FriendsOnline/FriendsOnline";
+import FriendsOnlineContainer from "./FriendsOnline/FriendsOnlineContainer";
 import Menu from "./Menu/Menu";
 import s from "./Navbar.module.scss";
 
@@ -6,7 +6,7 @@ const Navbar = (props) => {
   return (
     <nav className={`${s.navbar} grid_element`}>
       <Menu />
-      <FriendsOnline state={props.store.getState().friendsOnlineData} />
+      <FriendsOnlineContainer />
     </nav>
   );
 };

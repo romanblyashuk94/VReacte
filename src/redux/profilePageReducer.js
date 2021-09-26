@@ -25,7 +25,7 @@ const initialState = {
       likesCount: 2,
     },
   ],
-  postAreaValue: "",
+  postAreaValue: "тест",
 }
 
 const profilePageReducer = (state=initialState, action) => {

@@ -40,8 +40,8 @@ const initialState = {
       status: "Online",
     },
   ],
-  newMessageValue: "",
-  searchDialogValue: "",
+  newMessageValue: "тест",
+  searchDialogValue: "тест",
 };
 const messagesPageReducer = (state=initialState, action) => {
   switch (action.type) {
