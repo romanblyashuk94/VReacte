@@ -2,6 +2,7 @@ import Post from "./Post/Post";
 import s from "./Posts.module.scss";
 
 const Posts = (props) => {
+  debugger;
   let postElements = props.state.map((p) => (
     <Post
       ava={p.ava}

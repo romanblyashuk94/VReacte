@@ -1,17 +1,21 @@
+import { connect } from "react-redux";
 import { changeSearchDialogActionCreator } from "../../../redux/messagesPageReducer";
 import SearchDialogForm from "./SearchDialogForm";
 
-const SearchDialogContainer = (props) => {
-  let changeSearchDialogArea = (curentValue) => {
-    props.store.dispatch(changeSearchDialogActionCreator(curentValue));
-  };
+const mapStateToProps = (state) => {
+  return {
+    searchDialogValue: state.messagesPage.searchDialogValue,
+  }
+}
 
-  return (
-    <SearchDialogForm
-      searchDialogValue={props.store.getState().messagesPage.searchDialogValue}
-      changeSearchDialogArea={changeSearchDialogArea}
-    />
-  );
-};
+const mapDispatchToProps = (dispatch) => {
+  return {
+    changeSearchDialogArea: (curentValue) => {
+      dispatch(changeSearchDialogActionCreator(curentValue))
+    }
+  }
+}
+
+const SearchDialogContainer = connect(mapStateToProps, mapDispatchToProps )(SearchDialogForm)
 
 export default SearchDialogContainer;

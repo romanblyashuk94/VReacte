@@ -1,26 +1,27 @@
-import React from "react";
+import { connect } from "react-redux";
 import {
   changePostAreaActionCreator,
   setPostActionCreator,
 } from "../../../../redux/profilePageReducer";
 import NewPost from "./NewPost";
 
-const NewPostContainer = (props) => {
-  let addPost = () => {
-    props.store.dispatch(setPostActionCreator());
+const mapStateToProps = (state) => {
+  return {
+    postAreaValue: state.profilePage.postAreaValue,
   };
-
-  let changePostArea = (curentValue) => {
-    props.store.dispatch(changePostAreaActionCreator(curentValue));
-  };
-
-  return (
-    <NewPost
-      postAreaValue={props.store.getState().postAreaValue}
-      addPost={addPost}
-      changePostArea={changePostArea}
-    />
-  );
 };
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    changePostArea: (curentValue) => {
+      dispatch(changePostAreaActionCreator(curentValue));
+    },
+    addPost: () => {
+      dispatch(setPostActionCreator());
+    },
+  };
+};
+
+const NewPostContainer = connect(mapStateToProps, mapDispatchToProps)(NewPost);
 
 export default NewPostContainer;
