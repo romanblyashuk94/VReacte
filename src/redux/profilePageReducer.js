@@ -25,12 +25,12 @@ const initialState = {
       likesCount: 2,
     },
   ],
-  postAreaValue: "тест",
-}
+  postAreaValue: "",
+};
 
-const profilePageReducer = (state=initialState, action) => {
+const profilePageReducer = (state = initialState, action) => {
   switch (action.type) {
-    case SET_POST:
+    case SET_POST: {
       let newPost = {
         id: state.postsData.length + 1,
         ava: "https://avatars.githubusercontent.com/u/83500664?v=4",
@@ -38,12 +38,17 @@ const profilePageReducer = (state=initialState, action) => {
         date: "8/29/2021 8:36 PM",
         likesCount: 0,
       };
-      state.postsData.unshift(newPost);
-      state.postAreaValue = "";
-      return state;
-    case CHANGE_POST_AREA:
+      let stateCopy = { ...state };
+      stateCopy.postsData = [...state.postsData]
+      stateCopy.postsData.unshift(newPost);
+      stateCopy.postAreaValue = "";
+      return stateCopy;
+    }
+    case CHANGE_POST_AREA: {
       state.postAreaValue = action.curent;
-      return state;
+      let stateCopy = { ...state };
+      return stateCopy;
+    }
     default:
       return state;
   }
