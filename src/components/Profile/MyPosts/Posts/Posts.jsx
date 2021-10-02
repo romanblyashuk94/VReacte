@@ -2,9 +2,9 @@ import Post from "./Post/Post";
 import s from "./Posts.module.scss";
 
 const Posts = (props) => {
-  debugger;
   let postElements = props.state.map((p) => (
     <Post
+      key={p.id}
       ava={p.ava}
       message={p.message}
       date={p.date}

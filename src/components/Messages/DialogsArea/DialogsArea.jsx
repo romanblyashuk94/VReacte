@@ -7,7 +7,7 @@ const DialogsArea = (props) => {
       userName={d.userName}
       status={d.status}
       avatar={d.avatar}
-      id={d.id}
+      key={d.id}
     />
   ));
 

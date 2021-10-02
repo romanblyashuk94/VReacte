@@ -5,7 +5,7 @@ import DialogsAreaContainer from "./DialogsArea/DialogsAreaContainer";
 import MessagesAreaContainer from "./MessagesArea/MessagesAreaContainer";
 
 
-const Dialogs = (props) => {
+const Messages = (props) => {
   return (
     <div className={s.dialogs}>
       <div className={s.dialogs__wrap}>
@@ -20,4 +20,4 @@ const Dialogs = (props) => {
   );
 };
 
-export default Dialogs;
+export default Messages;

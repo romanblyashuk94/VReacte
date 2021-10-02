@@ -2,7 +2,6 @@ import s from "./NewMessage.module.scss";
 import React from "react";
 
 const NewMessage = (props) => {
-  debugger;
   let sendMessage = () => {
     props.sendMessage();
   };

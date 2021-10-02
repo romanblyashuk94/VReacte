@@ -3,7 +3,7 @@ import MessageItem from "./MessageItem/MessageItem";
 
 const MessagesArea = (props) => {
   let messagesItemElements = props.state.map((m) => (
-    <MessageItem text={m.text} time={m.time} isMyMessage={m.isMyMessage} />
+    <MessageItem key={m.id} text={m.text} time={m.time} isMyMessage={m.isMyMessage} />
   ));
 
   return <div className={s.messagesArea}>{messagesItemElements}</div>;

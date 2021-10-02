@@ -40,27 +40,29 @@ const initialState = {
       status: "Online",
     },
   ],
-  newMessageValue: "тест",
-  searchDialogValue: "тест",
+  newMessageValue: "",
+  searchDialogValue: "",
 };
-const messagesPageReducer = (state=initialState, action) => {
+const messagesPageReducer = (state = initialState, action) => {
   switch (action.type) {
-    case SET_MESSAGE:
+    case SET_MESSAGE: {
       let newMessage = {
         id: state.messagesData.length + 1,
         text: state.newMessageValue,
         time: "3:00 pm",
         isMyMessage: true,
       };
-      state.messagesData.push(newMessage);
-      state.newMessageValue = "";
-      return state;
-    case CHANGE_MESSAGE_AREA:
-      state.newMessageValue = action.curent;
-      return state;
+      return {
+        ...state,
+        messagesData: [...state.messagesData, newMessage],
+        newMessageValue: "",
+      };
+    }
+    case CHANGE_MESSAGE_AREA: {
+      return { ...state, newMessageValue: action.curent };
+    }
     case CHANGE_SEARCH_FORM_AREA:
-      state.searchDialogValue = action.curent;
-      return state;
+      return { ...state, searchDialogValue: action.curent };
     default:
       return state;
   }
@@ -76,4 +78,5 @@ export const changeSearchDialogActionCreator = (curentValue) => ({
   curent: curentValue,
 });
 
+window.state = initialState;
 export default messagesPageReducer;

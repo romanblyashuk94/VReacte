@@ -38,16 +38,14 @@ const profilePageReducer = (state = initialState, action) => {
         date: "8/29/2021 8:36 PM",
         likesCount: 0,
       };
-      let stateCopy = { ...state };
-      stateCopy.postsData = [...state.postsData]
-      stateCopy.postsData.unshift(newPost);
-      stateCopy.postAreaValue = "";
-      return stateCopy;
+      return {
+        ...state,
+        postsData: [newPost, ...state.postsData],
+        postAreaValue: "",
+      };
     }
     case CHANGE_POST_AREA: {
-      state.postAreaValue = action.curent;
-      let stateCopy = { ...state };
-      return stateCopy;
+      return { ...state, postAreaValue: action.curent };
     }
     default:
       return state;
