@@ -1,4 +1,11 @@
-.music {
-    color: rgb(200, 255, 0);
-    font-size: 36px;
+.users {
+    padding: 15px;
+    display: grid;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    top: 0;
+    right: 0;
+    grid-template: [start] "search search" auto [row2] [row2] "users filter" 1fr [row-end]/9fr 3fr;
+    
 }

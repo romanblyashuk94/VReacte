@@ -85,7 +85,7 @@ a {
   max-width: 1200px;
   min-height: 100vh;
   margin: 0 auto;
-      grid-template: [start] "header header" auto [row2] [row2] "navbar maincontent" 1fr [row-end]/2.5fr 10fr;
+  grid-template: [start] "header header" auto [row2] [row2] "navbar maincontent" 1fr [row-end]/2.5fr 10fr;
   gap:10px;
   .maincontent {
     grid-area: maincontent;

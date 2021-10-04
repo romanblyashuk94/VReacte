@@ -1,0 +1,57 @@
+.userItem {
+    display: flex;
+    margin-bottom: 20px;
+    .subscribeArea {
+        margin-right: 10px;
+        .userAva {
+            max-width: 100px;
+            height: 100px;
+            border-radius: 50%;
+        }
+        .followButton {
+            display: block;
+            margin-top: 5px;
+            width: 100%;
+            font-size: 18px;
+            background-color: rgb(87, 151, 87);
+            border-radius: 10px;
+            &:hover {
+                font-weight: bold;
+            }
+        }
+        .unfollowButton {
+            display: block;
+            margin-top: 5px;
+            width: 100%;
+            font-size: 18px;
+            background-color: rgb(216, 102, 102);
+            border-radius: 10px;
+            &:hover {
+                font-weight: bold;
+            }
+        }
+    }
+    .userInfo {
+        flex: 1 1 auto;
+        .userInfoHead {
+            display: flex;
+            align-items: center;
+            .userName {
+                margin-bottom: 5px;
+                flex: 1 1 auto;
+            }
+            .userLocation {
+                font-size: 20px;               
+            }
+        }
+        .userStatus {
+            padding: 10px;
+            font-size: 18px;
+            background-color: rgb(173, 173, 173);
+            min-height: 4.9em;
+            border-radius: 15px;
+            border: 1px solid black;
+        }
+    }
+
+}

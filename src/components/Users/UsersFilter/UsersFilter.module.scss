@@ -1,0 +1,31 @@
+.usersFilter {
+    grid-area: filter;
+    border: 2px solid black;
+    border-top: none;
+    background: rgb(214, 214, 214);
+    padding: 15px;
+    height: 100%;
+    .title {
+        text-align: center;
+        font-weight: bold;
+        font-size: 36px;
+    }
+    .filterOptions {
+        margin-top: 10px;
+        font-size: 16px;
+        .optionsGroup {
+            margin-bottom: 8px;
+            .subtitle {
+                margin-bottom: 5px;
+                font-weight: bold;   
+            }
+            .option {
+                padding: 5px;
+                p {
+                    margin-bottom: 3px;
+                }
+            }
+        }
+        
+    }
+}

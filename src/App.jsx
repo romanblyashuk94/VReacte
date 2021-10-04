@@ -20,7 +20,7 @@ const App = (props) => {
         <Route path="/news" component={News} />
         <Route path="/music" component={Music} />
         <Route path="/settings" component={Settings} />
-        <Route path="/users" component={Users} />
+        <Route path="/users" render={() => <Users />} />
       </div>
     </div>
   );
