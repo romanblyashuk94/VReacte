@@ -8,6 +8,7 @@ const DialogsArea = (props) => {
       status={d.status}
       avatar={d.avatar}
       key={d.id}
+      id={d.id}
     />
   ));
 
