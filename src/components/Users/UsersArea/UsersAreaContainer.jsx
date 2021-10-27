@@ -1,5 +1,8 @@
 import { connect } from "react-redux";
-import { changeFolowedStatusAC, setStateAC } from "../../../redux/usersPageReducer";
+import {
+  changeFolowedStatusAC,
+  setUsersAC,
+} from "../../../redux/usersPageReducer";
 import UsersArea from "./UsersArea";
 
 const mapStateToProps = (state) => {
@@ -14,7 +17,7 @@ const mapDispatchToPops = (dispatch) => {
       dispatch(changeFolowedStatusAC(userID));
     },
     setUsers: (users) => {
-      dispatch(setStateAC(users));
+      dispatch(setUsersAC(users));
     },
   };
 };

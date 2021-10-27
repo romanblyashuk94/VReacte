@@ -6,9 +6,9 @@ import UsersFilter from "./UsersFilter/UsersFilter";
 const Users = (props) => {
   return (
     <div className={s.users}>
-    <SearchUserFormContainer />
-    <UsersAreaContainer />
-    <UsersFilter />
+      <SearchUserFormContainer />
+      <UsersAreaContainer />
+      <UsersFilter />
     </div>
   );
 };

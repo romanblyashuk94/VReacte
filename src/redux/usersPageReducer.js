@@ -1,5 +1,5 @@
 const CHANGE_FOLOWED_STATUS = "CHANGE_FOLOWED_STATUS";
-const SET_STATE = "SET_STATE";
+const SET_USERS = "SET_USERS";
 const CHANGE_SEARCH_USER_FORM = "CHANGE_SEARCH_USER_FORM";
 
 const initialState = {
@@ -14,7 +14,7 @@ const usersPageReducer = (state = initialState, action) => {
         ...state,
         usersData: state.usersData.map((u) => {
           if (u.id === action.userID) {
-            return { ...u, folowedStatus: !u.folowedStatus };
+            return { ...u, followed: !u.followed };
           } else {
             return u;
           }
@@ -25,7 +25,7 @@ const usersPageReducer = (state = initialState, action) => {
         ...state,
         searchUserFormValue: action.value,
       };
-    case SET_STATE: {
+    case SET_USERS: {
       return { ...state, usersData: [...state.usersData, ...action.users] };
     }
     default:
@@ -37,8 +37,8 @@ export const changeFolowedStatusAC = (userID) => ({
   type: CHANGE_FOLOWED_STATUS,
   userID: userID,
 });
-export const setStateAC = (users) => ({
-  type: SET_STATE,
+export const setUsersAC = (users) => ({
+  type: SET_USERS,
   users: users,
 });
 export const changeSearchUserFormValueAC = (curentValue) => ({
