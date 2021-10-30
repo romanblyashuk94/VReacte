@@ -35,7 +35,7 @@ const UserItem = (props) => {
           <div className={s.userName}>{props.userName}</div>
           <div className={s.userLocation}>City, Country</div>
         </div>
-        <div className={s.userStatus}>{props.userStatus}</div>
+        <div className={s.userStatus}>User status</div>
       </div>
     </div>
   );

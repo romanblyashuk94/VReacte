@@ -1,10 +1,9 @@
-import { useEffect } from "react";
 import s from "./UsersArea.module.scss";
 import UserItem from "./UsersItem/UserItem";
 import * as axios from "axios";
 
 const UsersArea = (props) => {
-  useEffect(() => {
+  let getUsers = () => {
     if (props.users.length === 0) {
       axios
         .get("https://social-network.samuraijs.com/api/1.0/users")
@@ -12,8 +11,7 @@ const UsersArea = (props) => {
           props.setUsers(response.data.items);
         });
     }
-  });
-
+  };
   return (
     <div className={s.users}>
       {props.users.map((u) => (
@@ -28,6 +26,9 @@ const UsersArea = (props) => {
           location={u.location}
         />
       ))}
+      <button className={s.showUsersButton} onClick={getUsers}>
+        Get Users
+      </button>
     </div>
   );
 };

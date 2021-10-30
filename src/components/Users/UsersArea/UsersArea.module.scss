@@ -1,6 +1,19 @@
 .users {
     grid-area: users;
-
     padding: 20px;
     font-size: 36px;
+    .showUsersButton {
+        display: block;
+        width: 180px;
+        margin: 0 auto;
+        background-color: chartreuse;
+        padding: 5px 10px;
+        font-size: 20px;
+        border: 1px solid black;
+        &:hover {
+            font-weight: bold;
+            background-color: chocolate;
+        }
+    }
 }
+
