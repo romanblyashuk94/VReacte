@@ -26,7 +26,7 @@ const usersPageReducer = (state = initialState, action) => {
         searchUserFormValue: action.value,
       };
     case SET_USERS: {
-      return { ...state, usersData: [...state.usersData, ...action.users] };
+      return { ...state, usersData: [...action.users] };
     }
     default:
       return state;

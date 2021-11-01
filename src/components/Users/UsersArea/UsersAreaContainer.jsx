@@ -3,7 +3,7 @@ import {
   changeFolowedStatusAC,
   setUsersAC,
 } from "../../../redux/usersPageReducer";
-import UsersArea from "./UsersArea";
+import UsersArea from "./UsersAreaC";
 
 const mapStateToProps = (state) => {
   return {
