@@ -4,17 +4,12 @@ import * as axios from "axios";
 import React from "react";
 
 class UsersArea extends React.Component {
-
-  constructor(props) {
-    super(props);
-    
-    if (this.props.users.length === 0) {
-      axios
-        .get("https://social-network.samuraijs.com/api/1.0/users")
-        .then((response) => {
-          this.props.setUsers(response.data.items);
-        });
-    }
+  componentDidMount() {
+    axios
+      .get("https://social-network.samuraijs.com/api/1.0/users")
+      .then((response) => {
+        this.props.setUsers(response.data.items);
+      });
   }
 
   render() {
@@ -32,9 +27,7 @@ class UsersArea extends React.Component {
             location={u.location}
           />
         ))}
-        <button className={s.showUsersButton}>
-          Show More
-        </button>
+        <button className={s.showUsersButton}>Show More</button>
       </div>
     );
   }
