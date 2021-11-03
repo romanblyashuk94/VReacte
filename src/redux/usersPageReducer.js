@@ -1,9 +1,13 @@
 const CHANGE_FOLOWED_STATUS = "CHANGE_FOLOWED_STATUS";
 const SET_USERS = "SET_USERS";
 const CHANGE_SEARCH_USER_FORM = "CHANGE_SEARCH_USER_FORM";
+const SET_CURRENT_PAGE = "SET_CURRENT_PAGE";
 
 const initialState = {
   usersData: [],
+  pageSize: 5,
+  totalUsersCount: 0,
+  currentPage: 1,
   searchUserFormValue: "",
 };
 
@@ -23,11 +27,16 @@ const usersPageReducer = (state = initialState, action) => {
     case CHANGE_SEARCH_USER_FORM:
       return {
         ...state,
-        searchUserFormValue: action.value,
+        searchUserFormValue: action.curentValue,
       };
-    case SET_USERS: {
-      return { ...state, usersData: [...action.users] };
-    }
+    case SET_USERS:
+      return {
+        ...state,
+        usersData: action.users,
+        totalUsersCount: action.totalUsersCount,
+      };
+    case SET_CURRENT_PAGE:
+      return { ...state, currentPage: action.currentPage };
     default:
       return state;
   }
@@ -35,15 +44,21 @@ const usersPageReducer = (state = initialState, action) => {
 
 export const changeFolowedStatusAC = (userID) => ({
   type: CHANGE_FOLOWED_STATUS,
-  userID: userID,
+  userID,
 });
-export const setUsersAC = (users) => ({
+export const setUsersAC = (users, totalUsersCount) => ({
   type: SET_USERS,
-  users: users,
+  users,
+  totalUsersCount,
 });
 export const changeSearchUserFormValueAC = (curentValue) => ({
   type: CHANGE_SEARCH_USER_FORM,
-  value: curentValue,
+  curentValue,
+});
+
+export const setCurrentPageAC = (currentPage) => ({
+  type: SET_CURRENT_PAGE,
+  currentPage,
 });
 
 export default usersPageReducer;

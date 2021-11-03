@@ -15,5 +15,27 @@
             background-color: chocolate;
         }
     }
+    .pagesWraper {
+        display: flex;
+        flex-wrap: wrap;
+        font-size: 18px;
+        margin-top: 10px;
+        .selectedPage {
+            margin-right: 5px;
+            margin-bottom: 5px;
+            font-weight: bold;
+            &:hover {
+                cursor: default;
+            }
+        }
+        .notSelectedPage {
+            margin-right: 5px;
+            margin-bottom: 5px;
+            &:hover {
+                cursor: pointer;
+            }
+        }
+    }
+    
 }
 
