@@ -2,6 +2,7 @@ const CHANGE_FOLOWED_STATUS = "CHANGE_FOLOWED_STATUS";
 const SET_USERS = "SET_USERS";
 const CHANGE_SEARCH_USER_FORM = "CHANGE_SEARCH_USER_FORM";
 const SET_CURRENT_PAGE = "SET_CURRENT_PAGE";
+const TOOGLE_FETCHING_STATUS = "TOOGLE_FETCHING_STATUS";
 
 const initialState = {
   usersData: [],
@@ -9,6 +10,7 @@ const initialState = {
   totalUsersCount: 0,
   currentPage: 1,
   searchUserFormValue: "",
+  isFetching: true,
 };
 
 const usersPageReducer = (state = initialState, action) => {
@@ -37,6 +39,8 @@ const usersPageReducer = (state = initialState, action) => {
       };
     case SET_CURRENT_PAGE:
       return { ...state, currentPage: action.currentPage };
+    case TOOGLE_FETCHING_STATUS:
+      return { ...state, isFetching: action.isFetching };
     default:
       return state;
   }
@@ -59,6 +63,11 @@ export const changeSearchUserFormValueAC = (curentValue) => ({
 export const setCurrentPageAC = (currentPage) => ({
   type: SET_CURRENT_PAGE,
   currentPage,
+});
+
+export const toogleFetchingStatusAC = (isFetching) => ({
+  type: TOOGLE_FETCHING_STATUS,
+  isFetching,
 });
 
 export default usersPageReducer;
