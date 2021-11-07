@@ -2,10 +2,10 @@ import axios from "axios";
 import React from "react";
 import { connect } from "react-redux";
 import {
-  changeFolowedStatusAC,
-  setCurrentPageAC,
-  setUsersAC,
-  toogleFetchingStatusAC,
+  changeFolowedStatus,
+  setCurrentPage,
+  setUsers,
+  toogleFetchingStatus,
 } from "../../../redux/usersPageReducer";
 import Preloader from "../../common/Preloader/Preloader";
 import UsersArea from "./UsersArea";
@@ -63,24 +63,9 @@ const mapStateToProps = (state) => {
   };
 };
 
-const mapDispatchToPops = (dispatch) => {
-  return {
-    changeFolowedStatus: (userID) => {
-      dispatch(changeFolowedStatusAC(userID));
-    },
-    setUsers: (users, totalUsersCount) => {
-      dispatch(setUsersAC(users, totalUsersCount));
-    },
-    setCurrentPage: (currentPage) => {
-      dispatch(setCurrentPageAC(currentPage));
-    },
-    toogleFetchingStatus: (isFetching) => {
-      dispatch(toogleFetchingStatusAC(isFetching));
-    },
-  };
-};
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToPops
-)(UsersAreaAPIComponent);
+export default connect(mapStateToProps, {
+  changeFolowedStatus,
+  setUsers,
+  setCurrentPage,
+  toogleFetchingStatus,
+})(UsersAreaAPIComponent);

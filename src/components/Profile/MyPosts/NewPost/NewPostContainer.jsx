@@ -1,8 +1,5 @@
 import { connect } from "react-redux";
-import {
-  changePostAreaActionCreator,
-  setPostActionCreator,
-} from "../../../../redux/profilePageReducer";
+import { changePostArea, addPost } from "../../../../redux/profilePageReducer";
 import NewPost from "./NewPost";
 
 const mapStateToProps = (state) => {
@@ -11,17 +8,4 @@ const mapStateToProps = (state) => {
   };
 };
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    changePostArea: (curentValue) => {
-      dispatch(changePostAreaActionCreator(curentValue));
-    },
-    addPost: () => {
-      dispatch(setPostActionCreator());
-    },
-  };
-};
-
-const NewPostContainer = connect(mapStateToProps, mapDispatchToProps)(NewPost);
-
-export default NewPostContainer;
+export default connect(mapStateToProps, { changePostArea, addPost })(NewPost);

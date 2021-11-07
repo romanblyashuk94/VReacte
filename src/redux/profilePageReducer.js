@@ -52,8 +52,8 @@ const profilePageReducer = (state = initialState, action) => {
   }
 };
 
-export const setPostActionCreator = () => ({ type: SET_POST });
-export const changePostAreaActionCreator = (curentValue) => ({
+export const addPost = () => ({ type: SET_POST });
+export const changePostArea = (curentValue) => ({
   type: CHANGE_POST_AREA,
   curent: curentValue,
 });

@@ -46,26 +46,26 @@ const usersPageReducer = (state = initialState, action) => {
   }
 };
 
-export const changeFolowedStatusAC = (userID) => ({
+export const changeFolowedStatus = (userID) => ({
   type: CHANGE_FOLOWED_STATUS,
   userID,
 });
-export const setUsersAC = (users, totalUsersCount) => ({
+export const setUsers = (users, totalUsersCount) => ({
   type: SET_USERS,
   users,
   totalUsersCount,
 });
-export const changeSearchUserFormValueAC = (curentValue) => ({
+export const changeSearchUserFormValue = (curentValue) => ({
   type: CHANGE_SEARCH_USER_FORM,
   curentValue,
 });
 
-export const setCurrentPageAC = (currentPage) => ({
+export const setCurrentPage = (currentPage) => ({
   type: SET_CURRENT_PAGE,
   currentPage,
 });
 
-export const toogleFetchingStatusAC = (isFetching) => ({
+export const toogleFetchingStatus = (isFetching) => ({
   type: TOOGLE_FETCHING_STATUS,
   isFetching,
 });

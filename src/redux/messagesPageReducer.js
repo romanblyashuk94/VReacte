@@ -68,15 +68,14 @@ const messagesPageReducer = (state = initialState, action) => {
   }
 };
 
-export const setMessageActionCreator = () => ({ type: SET_MESSAGE });
-export const changeMessageAreaActionCreator = (curentValue) => ({
+export const setMessage = () => ({ type: SET_MESSAGE });
+export const changeMessageArea = (curentValue) => ({
   type: CHANGE_MESSAGE_AREA,
   curent: curentValue,
 });
-export const changeSearchDialogActionCreator = (curentValue) => ({
+export const changeSearchDialogArea = (curentValue) => ({
   type: CHANGE_SEARCH_FORM_AREA,
   curent: curentValue,
 });
 
-window.state = initialState;
 export default messagesPageReducer;

@@ -3,11 +3,11 @@ import React from "react";
 
 const NewMessage = (props) => {
   let sendMessage = () => {
-    props.sendMessage();
+    props.setMessage();
   };
 
   let changeNewMessage = (e) => {
-    props.changeNewMessage(e.target.value);
+    props.changeMessageArea(e.target.value);
   };
 
   return (

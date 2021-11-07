@@ -1,5 +1,5 @@
 import { connect } from "react-redux";
-import { changeSearchUserFormValueAC } from "../../../redux/usersPageReducer";
+import { changeSearchUserFormValue } from "../../../redux/usersPageReducer";
 import SearchUserForm from "./SearchUserForm";
 
 const mapStateToProps = (state) => {
@@ -8,12 +8,6 @@ const mapStateToProps = (state) => {
   };
 };
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    changeSearchUserFormValue: (curentValue) => {
-      dispatch(changeSearchUserFormValueAC(curentValue));
-    },
-  };
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(SearchUserForm);
+export default connect(mapStateToProps, { changeSearchUserFormValue })(
+  SearchUserForm
+);
