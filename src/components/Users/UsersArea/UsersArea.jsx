@@ -1,5 +1,6 @@
 import UserItem from "./UsersItem/UserItem";
 import s from "./UsersArea.module.scss";
+import {showPagesCount} from "../../../helpers/helpers";
 
 const UsersArea = (props) => {
   let pagesCount = Math.ceil(props.totalUsersCount / props.pageSize);
@@ -26,19 +27,29 @@ const UsersArea = (props) => {
       ))}
       <button className={s.showUsersButton}>Show More</button>
       <div className={s.pagesWraper}>
-        {pages.map((p) => (
-          <span
-            onClick={() => {
-              props.changePage(p);
-            }}
-            key={p}
-            className={
-              props.currentPage === p ? s.selectedPage : s.notSelectedPage
+        {showPagesCount(pagesCount, props.currentPage).map((p) => {
+            if (p === 0) {
+                return <span
+                    key={p}
+                    className={ s.notSelectedPage}
+                >
+            ...
+          </span>
             }
-          >
+            return (
+                <span
+                    onClick={() => {
+                        props.changePage(p);
+                    }}
+                    key={p}
+                    className={
+                        props.currentPage === p ? s.selectedPage : s.notSelectedPage
+                    }
+                >
             {p}
           </span>
-        ))}
+            )
+        })}
       </div>
     </div>
   );

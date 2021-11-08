@@ -17,11 +17,12 @@
     }
     .pagesWraper {
         display: flex;
+        justify-content: center;
         flex-wrap: wrap;
         font-size: 18px;
-        margin-top: 10px;
+        margin-top: 20px;
         .selectedPage {
-            margin-right: 5px;
+            margin-right: 10px;
             margin-bottom: 5px;
             font-weight: bold;
             &:hover {
@@ -29,7 +30,7 @@
             }
         }
         .notSelectedPage {
-            margin-right: 5px;
+            margin-right: 10px;
             margin-bottom: 5px;
             &:hover {
                 cursor: pointer;
