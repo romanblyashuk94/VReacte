@@ -1,15 +1,18 @@
 import s from "./UserItem.module.scss";
 import UserPhoto from "../../../../assets/images/User.png";
+import { NavLink } from "react-router-dom";
 
 const UserItem = (props) => {
   return (
     <div className={s.userItem}>
       <div className={s.subscribeArea}>
-        <img
-          className={s.userAva}
-          src={props.userPhoto ? props.userPhoto : UserPhoto}
-          alt="ava"
-        />
+        <NavLink to={"/profile/" + props.id}>
+          <img
+            className={s.userAva}
+            src={props.userPhoto ? props.userPhoto : UserPhoto}
+            alt="ava"
+          />
+        </NavLink>
         {props.folowedStatus ? (
           <button
             className={s.unfollowButton}
@@ -32,7 +35,9 @@ const UserItem = (props) => {
       </div>
       <div className={s.userInfo}>
         <div className={s.userInfoHead}>
-          <div className={s.userName}>{props.userName}</div>
+          <NavLink to={"/profile/" + props.id}>
+            <div className={s.userName}>{props.userName}</div>
+          </NavLink>
           <div className={s.userLocation}>City, Country</div>
         </div>
         <div className={s.userStatus}>User status</div>

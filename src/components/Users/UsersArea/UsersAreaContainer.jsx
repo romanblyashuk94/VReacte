@@ -10,7 +10,7 @@ import {
 import Preloader from "../../common/Preloader/Preloader";
 import UsersArea from "./UsersArea";
 
-class UsersAreaAPIComponent extends React.Component {
+class UsersAreaContainer extends React.Component {
   componentDidMount() {
     this.props.toogleFetchingStatus(true);
     axios
@@ -68,4 +68,4 @@ export default connect(mapStateToProps, {
   setUsers,
   setCurrentPage,
   toogleFetchingStatus,
-})(UsersAreaAPIComponent);
+})(UsersAreaContainer);

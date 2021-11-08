@@ -1,5 +1,6 @@
 const SET_POST = "SET-POST";
 const CHANGE_POST_AREA = "CHANGE-POST-AREA";
+const SET_USER_PROFILE = 'SET_USER_PROFILE';
 
 const initialState = {
   postsData: [
@@ -26,6 +27,7 @@ const initialState = {
     },
   ],
   postAreaValue: "",
+  userProfile: null,
 };
 
 const profilePageReducer = (state = initialState, action) => {
@@ -47,12 +49,16 @@ const profilePageReducer = (state = initialState, action) => {
     case CHANGE_POST_AREA: {
       return { ...state, postAreaValue: action.curent };
     }
+    case SET_USER_PROFILE: {
+      return { ...state, userProfile: action.userProfile };
+    }
     default:
       return state;
   }
 };
 
 export const addPost = () => ({ type: SET_POST });
+export const setUserProfile = (userProfile) => ({ type: SET_USER_PROFILE, userProfile });
 export const changePostArea = (curentValue) => ({
   type: CHANGE_POST_AREA,
   curent: curentValue,
