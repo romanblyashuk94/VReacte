@@ -1,6 +1,6 @@
 import UserItem from "./UsersItem/UserItem";
 import s from "./UsersArea.module.scss";
-import {showPagesCount} from "../../../helpers/helpers";
+import { showPagesCount } from "../../../helpers/helpers";
 
 const UsersArea = (props) => {
   let pagesCount = Math.ceil(props.totalUsersCount / props.pageSize);
@@ -10,7 +10,7 @@ const UsersArea = (props) => {
   for (let i = 1; i <= pagesCount; i++) {
     pages.push(i);
   }
-
+  debugger;
   return (
     <div className={s.users}>
       {props.users.map((u) => (
@@ -22,33 +22,31 @@ const UsersArea = (props) => {
           folowedStatus={u.followed}
           changeFolowedStatus={props.changeFolowedStatus}
           userStatus={u.status}
-          location={u.location}
         />
       ))}
       <button className={s.showUsersButton}>Show More</button>
       <div className={s.pagesWraper}>
         {showPagesCount(pagesCount, props.currentPage).map((p) => {
-            if (p === 0) {
-                return <span
-                    key={p}
-                    className={ s.notSelectedPage}
-                >
-            ...
-          </span>
-            }
+          if (p === 0) {
             return (
-                <span
-                    onClick={() => {
-                        props.changePage(p);
-                    }}
-                    key={p}
-                    className={
-                        props.currentPage === p ? s.selectedPage : s.notSelectedPage
-                    }
-                >
-            {p}
-          </span>
-            )
+              <span key={p} className={s.notSelectedPage}>
+                ...
+              </span>
+            );
+          }
+          return (
+            <span
+              onClick={() => {
+                props.changePage(p);
+              }}
+              key={p}
+              className={
+                props.currentPage === p ? s.selectedPage : s.notSelectedPage
+              }
+            >
+              {p}
+            </span>
+          );
         })}
       </div>
     </div>

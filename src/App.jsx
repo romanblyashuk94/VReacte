@@ -15,7 +15,7 @@ const App = (props) => {
       <Header />
       <Navbar />
       <div className="maincontent grid_element">
-        <Route path="/profile" render={() => <ProfileContainer />} />
+        <Route path="/profile/:userID?" render={() => <ProfileContainer />} />
         <Route path="/messages" render={() => <Messages />} />
         <Route path="/news" component={News} />
         <Route path="/music" component={Music} />

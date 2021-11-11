@@ -1,4 +1,5 @@
 import s from "./Profileinfo.module.scss";
+import noUser from "../../../assets/images/User.png";
 
 const Profileinfo = (props) => {
   return (
@@ -7,17 +8,22 @@ const Profileinfo = (props) => {
         <div>
           <img
             className={s.profileinfo__ava}
-            src={props.userProfile.photos.large}
+            src={props.userProfile.photos.large || noUser}
             alt="Avatar"
           />
         </div>
         <div className={s.profileinfo__body}>
-          <div className={s.profileinfo__name}>{props.userProfile.fullName}</div>
+          <div className={s.profileinfo__name}>
+            {props.userProfile.fullName}
+          </div>
           <div className={s.profileinfo__info}>
             <ul>
-              <li>Date of Birth: 05 Oct 1994</li>
-              <li>City: Kyiv</li>
-              <li>Education: Trainee Front-End Developer</li>
+              <li>About me: {props.userProfile.aboutMe || "No information"}</li>
+              <li>
+                Looking for a job:{" "}
+                {props.userProfile.lookingForAJob ? "Yes" : "No"}
+              </li>
+              <li>{props.userProfile.lookingForAJobDescription}</li>
             </ul>
           </div>
         </div>

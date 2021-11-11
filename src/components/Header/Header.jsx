@@ -1,4 +1,5 @@
 import s from "./Header.module.scss";
+import logo from '../../assets/images/vr-logo.png'
 
 const Header = () => {
   return (
@@ -6,7 +7,7 @@ const Header = () => {
       <a href="S#">
         <img
           className={s.logo}
-          src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b5/VR_Group_logo.svg/1280px-VR_Group_logo.svg.png"
+          src={logo}
           alt="logo"
         />
         <span>eacte</span>

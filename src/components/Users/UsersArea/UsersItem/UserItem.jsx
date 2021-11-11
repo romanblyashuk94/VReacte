@@ -40,7 +40,7 @@ const UserItem = (props) => {
           </NavLink>
           <div className={s.userLocation}>City, Country</div>
         </div>
-        <div className={s.userStatus}>User status</div>
+        <div className={s.userStatus}>{props.userStatus || "No Status :("}</div>
       </div>
     </div>
   );
