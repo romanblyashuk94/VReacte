@@ -1,0 +1,18 @@
+    .notAuthUserBlock {
+      float: right;
+      font-size: 18px;
+      line-height: 32px;
+      a {
+        display: inline-block;
+        color: #2b9cb9;
+        font-weight: bold;
+        margin-left: 25px;
+        border: 1px solid gray;
+        border-radius: 5px;
+        padding: 0px 5px;
+        &:hover {
+          color: #6bb92b;
+          background-color: #000;
+        }
+      }
+    }

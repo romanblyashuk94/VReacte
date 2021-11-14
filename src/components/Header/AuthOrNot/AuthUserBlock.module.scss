@@ -1,0 +1,27 @@
+    .AuthUserBlock {
+      float: right;
+      font-size: 18px;
+      line-height: 32px;
+      a {
+        color: black;
+        font-weight: bold;
+        &:hover {
+          color: #2b9cb9;
+        }
+      }
+      .signOutButton {
+        margin-left: 20px;
+        border: 1px solid gray;
+        border-radius: 5px;
+        padding: 3px 5px;
+        font-size: 11px;
+        &:hover {
+          color: rgb(252, 252, 252);
+          background-color: #494947;
+        }
+        &:active {
+          color: black;
+          background-color:white;
+        }
+      }
+    }
