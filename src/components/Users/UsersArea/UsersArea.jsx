@@ -10,7 +10,6 @@ const UsersArea = (props) => {
   for (let i = 1; i <= pagesCount; i++) {
     pages.push(i);
   }
-  debugger;
   return (
     <div className={s.users}>
       {props.users.map((u) => (
@@ -20,7 +19,8 @@ const UsersArea = (props) => {
           userPhoto={u.photos.small}
           userName={u.name}
           folowedStatus={u.followed}
-          changeFolowedStatus={props.changeFolowedStatus}
+          followUser={props.followUser}
+          unfollowUser={props.unfollowUser}
           userStatus={u.status}
         />
       ))}

@@ -4,7 +4,6 @@ import NotAuthUserBlock from "./AuthOrNot/NotAuthUserBlock";
 import AuthUserBlock from "./AuthOrNot/AuthUserBlock";
 
 const Header = (props) => {
-  debugger;
   return (
     <header className={`${s.header} grid_element`}>
       <a href="S#">

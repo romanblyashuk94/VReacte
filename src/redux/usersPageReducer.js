@@ -1,4 +1,5 @@
-const CHANGE_FOLOWED_STATUS = "CHANGE_FOLOWED_STATUS";
+const FOLLOW_USER = "FOLLOW_USER";
+const UNFOLLOW_USER = "UNFOLLOW_USER";
 const SET_USERS = "SET_USERS";
 const CHANGE_SEARCH_USER_FORM = "CHANGE_SEARCH_USER_FORM";
 const SET_CURRENT_PAGE = "SET_CURRENT_PAGE";
@@ -15,12 +16,23 @@ const initialState = {
 
 const usersPageReducer = (state = initialState, action) => {
   switch (action.type) {
-    case CHANGE_FOLOWED_STATUS:
+    case FOLLOW_USER:
       return {
         ...state,
         usersData: state.usersData.map((u) => {
           if (u.id === action.userID) {
-            return { ...u, followed: !u.followed };
+            return { ...u, followed: true };
+          } else {
+            return u;
+          }
+        }),
+      };
+    case UNFOLLOW_USER:
+      return {
+        ...state,
+        usersData: state.usersData.map((u) => {
+          if (u.id === action.userID) {
+            return { ...u, followed: false };
           } else {
             return u;
           }
@@ -46,8 +58,13 @@ const usersPageReducer = (state = initialState, action) => {
   }
 };
 
-export const changeFolowedStatus = (userID) => ({
-  type: CHANGE_FOLOWED_STATUS,
+export const followUser = (userID) => ({
+  type: FOLLOW_USER,
+  userID,
+});
+
+export const unfollowUser = (userID) => ({
+  type: UNFOLLOW_USER,
   userID,
 });
 export const setUsers = (users, totalUsersCount) => ({

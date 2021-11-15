@@ -2,10 +2,11 @@ import axios from "axios";
 import React from "react";
 import { connect } from "react-redux";
 import {
-  changeFolowedStatus,
+  followUser,
   setCurrentPage,
   setUsers,
   toogleFetchingStatus,
+  unfollowUser,
 } from "../../../redux/usersPageReducer";
 import Preloader from "../../common/Preloader/Preloader";
 import UsersArea from "./UsersArea";
@@ -15,7 +16,8 @@ class UsersAreaContainer extends React.Component {
     this.props.toogleFetchingStatus(true);
     axios
       .get(
-        `https://social-network.samuraijs.com/api/1.0/users?count=${this.props.pageSize}&page=${this.props.currentPage}`
+        `https://social-network.samuraijs.com/api/1.0/users?count=${this.props.pageSize}&page=${this.props.currentPage}`,
+        { withCredentials: true }
       )
       .then((response) => {
         this.props.setUsers(response.data.items, response.data.totalCount);
@@ -28,7 +30,8 @@ class UsersAreaContainer extends React.Component {
     this.props.toogleFetchingStatus(true);
     axios
       .get(
-        `https://social-network.samuraijs.com/api/1.0/users?count=${this.props.pageSize}&page=${pageNumber}`
+        `https://social-network.samuraijs.com/api/1.0/users?count=${this.props.pageSize}&page=${pageNumber}`,
+        { withCredentials: true }
       )
       .then((response) => {
         this.props.setUsers(response.data.items, response.data.totalCount);
@@ -44,7 +47,8 @@ class UsersAreaContainer extends React.Component {
           totalUsersCount={this.props.totalUsersCount}
           pageSize={this.props.pageSize}
           users={this.props.users}
-          changeFolowedStatus={this.props.changeFolowedStatus}
+          followUser={this.props.followUser}
+          unfollowUser={this.props.unfollowUser}
           changePage={this.changePage}
           currentPage={this.props.currentPage}
         />
@@ -64,7 +68,8 @@ const mapStateToProps = (state) => {
 };
 
 export default connect(mapStateToProps, {
-  changeFolowedStatus,
+  followUser,
+  unfollowUser,
   setUsers,
   setCurrentPage,
   toogleFetchingStatus,

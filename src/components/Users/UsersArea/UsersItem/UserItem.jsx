@@ -1,6 +1,7 @@
 import s from "./UserItem.module.scss";
 import UserPhoto from "../../../../assets/images/User.png";
 import { NavLink } from "react-router-dom";
+import axios from "axios";
 
 const UserItem = (props) => {
   return (
@@ -17,7 +18,21 @@ const UserItem = (props) => {
           <button
             className={s.unfollowButton}
             onClick={() => {
-              props.changeFolowedStatus(props.id);
+              axios
+                .delete(
+                  `https://social-network.samuraijs.com/api/1.0/follow/${props.id}`,
+                  {
+                    withCredentials: true,
+                    headers: {
+                      "API-KEY": "15e0ed99-25e5-4249-9204-5298127b8b98",
+                    },
+                  }
+                )
+                .then((response) => {
+                  if (response.data.resultCode === 0) {
+                    props.unfollowUser(props.id);
+                  }
+                });
             }}
           >
             Unfollow
@@ -26,7 +41,22 @@ const UserItem = (props) => {
           <button
             className={s.followButton}
             onClick={() => {
-              props.changeFolowedStatus(props.id);
+              axios
+                .post(
+                  `https://social-network.samuraijs.com/api/1.0/follow/${props.id}`,
+                  {},
+                  {
+                    withCredentials: true,
+                    headers: {
+                      "API-KEY": "15e0ed99-25e5-4249-9204-5298127b8b98",
+                    },
+                  }
+                )
+                .then((response) => {
+                  if (response.data.resultCode === 0) {
+                    props.followUser(props.id);
+                  }
+                });
             }}
           >
             Follow
