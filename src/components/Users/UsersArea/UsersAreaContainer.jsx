@@ -1,6 +1,6 @@
-import axios from "axios";
 import React from "react";
 import { connect } from "react-redux";
+import { usersAPI } from "../../../api/api";
 import {
   followUser,
   setCurrentPage,
@@ -14,29 +14,19 @@ import UsersArea from "./UsersArea";
 class UsersAreaContainer extends React.Component {
   componentDidMount() {
     this.props.toogleFetchingStatus(true);
-    axios
-      .get(
-        `https://social-network.samuraijs.com/api/1.0/users?count=${this.props.pageSize}&page=${this.props.currentPage}`,
-        { withCredentials: true }
-      )
-      .then((response) => {
-        this.props.setUsers(response.data.items, response.data.totalCount);
-        this.props.toogleFetchingStatus(false);
-      });
+    usersAPI.getUsers(this.props.pageSize, this.props.currentPage).then((data) => {
+      this.props.setUsers(data.items, data.totalCount);
+      this.props.toogleFetchingStatus(false);
+    });
   }
 
   changePage = (pageNumber) => {
     this.props.setCurrentPage(pageNumber);
     this.props.toogleFetchingStatus(true);
-    axios
-      .get(
-        `https://social-network.samuraijs.com/api/1.0/users?count=${this.props.pageSize}&page=${pageNumber}`,
-        { withCredentials: true }
-      )
-      .then((response) => {
-        this.props.setUsers(response.data.items, response.data.totalCount);
-        this.props.toogleFetchingStatus(false);
-      });
+    usersAPI.getUsers(this.props.pageSize, pageNumber).then((data) => {
+      this.props.setUsers(data.items, data.totalCount);
+      this.props.toogleFetchingStatus(false);
+    });
   };
 
   render() {

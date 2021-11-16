@@ -1,7 +1,8 @@
 import s from "./UserItem.module.scss";
 import UserPhoto from "../../../../assets/images/User.png";
 import { NavLink } from "react-router-dom";
-import axios from "axios";
+
+import { followAPI } from "../../../../api/api";
 
 const UserItem = (props) => {
   return (
@@ -18,21 +19,11 @@ const UserItem = (props) => {
           <button
             className={s.unfollowButton}
             onClick={() => {
-              axios
-                .delete(
-                  `https://social-network.samuraijs.com/api/1.0/follow/${props.id}`,
-                  {
-                    withCredentials: true,
-                    headers: {
-                      "API-KEY": "15e0ed99-25e5-4249-9204-5298127b8b98",
-                    },
-                  }
-                )
-                .then((response) => {
-                  if (response.data.resultCode === 0) {
-                    props.unfollowUser(props.id);
-                  }
-                });
+              followAPI.unfollowUser(props.id).then((response) => {
+                if (response.resultCode === 0) {
+                  props.unfollowUser(props.id);
+                }
+              });
             }}
           >
             Unfollow
@@ -41,22 +32,11 @@ const UserItem = (props) => {
           <button
             className={s.followButton}
             onClick={() => {
-              axios
-                .post(
-                  `https://social-network.samuraijs.com/api/1.0/follow/${props.id}`,
-                  {},
-                  {
-                    withCredentials: true,
-                    headers: {
-                      "API-KEY": "15e0ed99-25e5-4249-9204-5298127b8b98",
-                    },
-                  }
-                )
-                .then((response) => {
-                  if (response.data.resultCode === 0) {
-                    props.followUser(props.id);
-                  }
-                });
+              followAPI.followUser(props.id).then((response) => {
+                if (response.resultCode === 0) {
+                  props.followUser(props.id);
+                }
+              });
             }}
           >
             Follow
