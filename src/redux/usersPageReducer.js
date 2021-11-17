@@ -4,6 +4,7 @@ const SET_USERS = "SET_USERS";
 const CHANGE_SEARCH_USER_FORM = "CHANGE_SEARCH_USER_FORM";
 const SET_CURRENT_PAGE = "SET_CURRENT_PAGE";
 const TOOGLE_FETCHING_STATUS = "TOOGLE_FETCHING_STATUS";
+const TOOGLE_FOLLOWING_IS_PROGESS = "TOOGLE_FOLLOWING_IS_PROGESS";
 
 const initialState = {
   usersData: [],
@@ -12,6 +13,7 @@ const initialState = {
   currentPage: 1,
   searchUserFormValue: "",
   isFetching: true,
+  followingIsProgres: [],
 };
 
 const usersPageReducer = (state = initialState, action) => {
@@ -53,6 +55,13 @@ const usersPageReducer = (state = initialState, action) => {
       return { ...state, currentPage: action.currentPage };
     case TOOGLE_FETCHING_STATUS:
       return { ...state, isFetching: action.isFetching };
+    case TOOGLE_FOLLOWING_IS_PROGESS:
+      return {
+        ...state,
+        followingIsProgres: action.isProgres
+          ? [...state.followingIsProgres, action.userID]
+          : state.followingIsProgres.filter((id) => id !== action.userID),
+      };
     default:
       return state;
   }
@@ -85,6 +94,11 @@ export const setCurrentPage = (currentPage) => ({
 export const toogleFetchingStatus = (isFetching) => ({
   type: TOOGLE_FETCHING_STATUS,
   isFetching,
+});
+export const toogleFollowingProgress = (isProgres, userID) => ({
+  type: TOOGLE_FOLLOWING_IS_PROGESS,
+  isProgres,
+  userID,
 });
 
 export default usersPageReducer;

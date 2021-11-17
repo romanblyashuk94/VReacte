@@ -17,12 +17,15 @@ const UserItem = (props) => {
         </NavLink>
         {props.folowedStatus ? (
           <button
+            disabled={props.followingIsProgres.some((id) => id === props.id)}
             className={s.unfollowButton}
             onClick={() => {
+              props.toogleFollowingProgress(true, props.id);
               followAPI.unfollowUser(props.id).then((response) => {
                 if (response.resultCode === 0) {
                   props.unfollowUser(props.id);
                 }
+                props.toogleFollowingProgress(false, props.id);
               });
             }}
           >
@@ -30,11 +33,14 @@ const UserItem = (props) => {
           </button>
         ) : (
           <button
+            disabled={props.followingIsProgres.some((id) => id === props.id)}
             className={s.followButton}
             onClick={() => {
+              props.toogleFollowingProgress(true, props.id);
               followAPI.followUser(props.id).then((response) => {
                 if (response.resultCode === 0) {
                   props.followUser(props.id);
+                  props.toogleFollowingProgress(false, props.id);
                 }
               });
             }}
