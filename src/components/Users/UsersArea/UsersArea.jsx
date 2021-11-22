@@ -22,7 +22,6 @@ const UsersArea = (props) => {
           followUser={props.followUser}
           unfollowUser={props.unfollowUser}
           userStatus={u.status}
-          toogleFollowingProgress={props.toogleFollowingProgress}
           followingIsProgres={props.followingIsProgres}
         />
       ))}
