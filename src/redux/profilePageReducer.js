@@ -1,6 +1,8 @@
+import { profileAPI } from "../api/api";
+
 const SET_POST = "SET-POST";
 const CHANGE_POST_AREA = "CHANGE-POST-AREA";
-const SET_USER_PROFILE = 'SET_USER_PROFILE';
+const SET_USER_PROFILE = "SET_USER_PROFILE";
 
 const initialState = {
   postsData: [
@@ -58,10 +60,20 @@ const profilePageReducer = (state = initialState, action) => {
 };
 
 export const addPost = () => ({ type: SET_POST });
-export const setUserProfile = (userProfile) => ({ type: SET_USER_PROFILE, userProfile });
+export const setUserProfile = (userProfile) => ({
+  type: SET_USER_PROFILE,
+  userProfile,
+});
 export const changePostArea = (curentValue) => ({
   type: CHANGE_POST_AREA,
   curent: curentValue,
 });
 
+export const getUserProfile = (userID) => {
+  return (dispatch) => {
+    profileAPI.getProfile(userID).then((profile) => {
+      dispatch(setUserProfile(profile));
+    });
+  };
+};
 export default profilePageReducer;
