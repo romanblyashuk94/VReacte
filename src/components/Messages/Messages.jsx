@@ -6,6 +6,7 @@ import MessagesAreaContainer from "./MessagesArea/MessagesAreaContainer";
 
 
 const Messages = (props) => {
+  
   return (
     <div className={s.messages}>
       <div className={s.dialogs__wrap}>
