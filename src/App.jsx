@@ -7,8 +7,8 @@ import Settings from "./components/Settings/Settings";
 import ProfileContainer from "./components/Profile/ProfileContainer";
 import HeaderContainer from "./components/Header/HeaderContainer";
 import LoginPage from "./components/LoginPage/LoginPage";
-import MessagesContainer from "./components/Messages/MessagesContainer";
-import UsersContainer from "./components/Users/UsersContainer";
+import Users from "./components/Users/Users";
+import Messages from "./components/Messages/Messages";
 
 const App = (props) => {
   return (
@@ -17,11 +17,11 @@ const App = (props) => {
       <Navbar />
       <div className="maincontent grid_element">
         <Route path="/profile/:userID?" render={() => <ProfileContainer />} />
-        <Route path="/messages" render={() => <MessagesContainer />} />
+        <Route path="/messages" render={() => <Messages />} />
         <Route path="/news" component={News} />
         <Route path="/music" component={Music} />
         <Route path="/settings" component={Settings} />
-        <Route path="/users" render={() => <UsersContainer />} />
+        <Route path="/users" render={() => <Users />} />
         <Route path="/login" render={() => <LoginPage />} />
       </div>
     </div>
