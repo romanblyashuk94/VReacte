@@ -1,4 +1,5 @@
 import { connect } from "react-redux";
+import { compose } from "redux";
 import withAuthRedirect from "../../../hoc/withAuthRedirect";
 import DialogsArea from "./DialogsArea";
 
@@ -8,4 +9,4 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps)(withAuthRedirect(DialogsArea));
+export default compose(connect(mapStateToProps), withAuthRedirect)(DialogsArea);
