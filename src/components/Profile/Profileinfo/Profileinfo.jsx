@@ -1,5 +1,6 @@
 import s from "./Profileinfo.module.scss";
 import noUser from "../../../assets/images/User.png";
+import ProfileStatus from "./ProfileStatus";
 
 const Profileinfo = (props) => {
   return (
@@ -16,6 +17,7 @@ const Profileinfo = (props) => {
           <div className={s.profileinfo__name}>
             {props.userProfile.fullName}
           </div>
+          <ProfileStatus userStatus='Status is here!' />
           <div className={s.profileinfo__info}>
             <ul>
               <li>About me: {props.userProfile.aboutMe || "No information"}</li>
