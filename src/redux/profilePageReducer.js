@@ -3,6 +3,7 @@ import { profileAPI } from "../api/api";
 const SET_POST = "SET-POST";
 const CHANGE_POST_AREA = "CHANGE-POST-AREA";
 const SET_USER_PROFILE = "SET_USER_PROFILE";
+const SET_USER_STATUS = "SET_USER_STATUS";
 
 const initialState = {
   postsData: [
@@ -30,6 +31,7 @@ const initialState = {
   ],
   postAreaValue: "",
   userProfile: null,
+  userStatus: "",
 };
 
 const profilePageReducer = (state = initialState, action) => {
@@ -54,6 +56,9 @@ const profilePageReducer = (state = initialState, action) => {
     case SET_USER_PROFILE: {
       return { ...state, userProfile: action.userProfile };
     }
+    case SET_USER_STATUS: {
+      return { ...state, userStatus: action.userStatus };
+    }
     default:
       return state;
   }
@@ -63,6 +68,10 @@ export const addPost = () => ({ type: SET_POST });
 export const setUserProfile = (userProfile) => ({
   type: SET_USER_PROFILE,
   userProfile,
+});
+export const setUserStatus = (userStatus) => ({
+  type: SET_USER_STATUS,
+  userStatus,
 });
 export const changePostArea = (curentValue) => ({
   type: CHANGE_POST_AREA,
@@ -76,4 +85,22 @@ export const getUserProfile = (userID) => {
     });
   };
 };
+
+export const getUserStatus = (userID) => {
+  return (dispatch) => {
+    profileAPI.getStatus(userID).then((userStatus) => {
+      dispatch(setUserStatus(userStatus));
+    });
+  };
+};
+export const updateUserStatus = (userStatus) => {
+  return (dispatch) => {
+    profileAPI.updateStatus(userStatus).then((response) => {
+      if (response.resultCode === 0) {
+        dispatch(setUserStatus(userStatus));
+      }
+    });
+  };
+};
+
 export default profilePageReducer;

@@ -11,7 +11,11 @@ const Profile = (props) => {
   return (
     <div className={s.profile}>
       <Wallpapper />
-      <Profileinfo userProfile={props.userProfile} />
+      <Profileinfo
+        userProfile={props.userProfile}
+        userStatus={props.userStatus}
+        updateUserStatus={props.updateUserStatus}
+      />
       <MyPosts />
     </div>
   );
