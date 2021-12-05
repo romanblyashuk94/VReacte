@@ -8,6 +8,14 @@ class ProfileStatus extends React.Component {
     userStatus: this.props.userStatus,
   };
 
+  componentDidUpdate(prevProps) {
+    if (prevProps.userStatus !== this.props.userStatus) {
+      this.setState({
+        userStatus: this.props.userStatus,
+      });
+    }
+  }
+
   activateEditMode = () => {
     this.setState({
       editMode: true,
