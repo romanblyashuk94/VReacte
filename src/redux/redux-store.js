@@ -5,14 +5,16 @@ import friendsOnlineDataReducer from "./friendsOnlineDataReducer";
 import messagesPageReducer from "./messagesPageReducer";
 import profilePageReducer from "./profilePageReducer";
 import usersPageReducer from "./usersPageReducer";
+import { reducer as formReducer } from "redux-form";
 
 let redusers = combineReducers({
-    profilePage: profilePageReducer,
-    messagesPage: messagesPageReducer,
-    friendsOnlineData: friendsOnlineDataReducer,
-    usersPage: usersPageReducer,
-    auth: authReducer,
-})
+  profilePage: profilePageReducer,
+  messagesPage: messagesPageReducer,
+  friendsOnlineData: friendsOnlineDataReducer,
+  usersPage: usersPageReducer,
+  auth: authReducer,
+  form: formReducer,
+});
 
 let store = createStore(redusers, applyMiddleware(thunk));
 
