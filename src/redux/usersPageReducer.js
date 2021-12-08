@@ -3,7 +3,6 @@ import { followAPI, usersAPI } from "../api/api";
 const FOLLOW_USER = "FOLLOW_USER";
 const UNFOLLOW_USER = "UNFOLLOW_USER";
 const SET_USERS = "SET_USERS";
-const CHANGE_SEARCH_USER_FORM = "CHANGE_SEARCH_USER_FORM";
 const SET_CURRENT_PAGE = "SET_CURRENT_PAGE";
 const TOOGLE_FETCHING_STATUS = "TOOGLE_FETCHING_STATUS";
 const TOOGLE_FOLLOWING_IS_PROGESS = "TOOGLE_FOLLOWING_IS_PROGESS";
@@ -13,7 +12,6 @@ const initialState = {
   pageSize: 5,
   totalUsersCount: 0,
   currentPage: 1,
-  searchUserFormValue: "",
   isFetching: true,
   followingIsProgres: [],
 };
@@ -41,11 +39,6 @@ const usersPageReducer = (state = initialState, action) => {
             return u;
           }
         }),
-      };
-    case CHANGE_SEARCH_USER_FORM:
-      return {
-        ...state,
-        searchUserFormValue: action.curentValue,
       };
     case SET_USERS:
       return {
@@ -82,10 +75,6 @@ export const setUsers = (users, totalUsersCount) => ({
   type: SET_USERS,
   users,
   totalUsersCount,
-});
-export const changeSearchUserFormValue = (curentValue) => ({
-  type: CHANGE_SEARCH_USER_FORM,
-  curentValue,
 });
 
 export const setCurrentPage = (currentPage) => ({

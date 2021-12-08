@@ -1,7 +1,6 @@
 import { profileAPI } from "../api/api";
 
 const SET_POST = "SET-POST";
-const CHANGE_POST_AREA = "CHANGE-POST-AREA";
 const SET_USER_PROFILE = "SET_USER_PROFILE";
 const SET_USER_STATUS = "SET_USER_STATUS";
 
@@ -29,7 +28,6 @@ const initialState = {
       likesCount: 2,
     },
   ],
-  postAreaValue: "",
   userProfile: null,
   userStatus: "",
 };
@@ -40,18 +38,14 @@ const profilePageReducer = (state = initialState, action) => {
       let newPost = {
         id: state.postsData.length + 1,
         ava: "https://avatars.githubusercontent.com/u/83500664?v=4",
-        message: state.postAreaValue,
+        message: action.postText,
         date: "8/29/2021 8:36 PM",
         likesCount: 0,
       };
       return {
         ...state,
         postsData: [newPost, ...state.postsData],
-        postAreaValue: "",
       };
-    }
-    case CHANGE_POST_AREA: {
-      return { ...state, postAreaValue: action.curent };
     }
     case SET_USER_PROFILE: {
       return { ...state, userProfile: action.userProfile };
@@ -64,18 +58,18 @@ const profilePageReducer = (state = initialState, action) => {
   }
 };
 
-export const addPost = () => ({ type: SET_POST });
+export const addPost = (postText) => ({
+  type: SET_POST,
+  postText: postText.newPostBody,
+});
 export const setUserProfile = (userProfile) => ({
   type: SET_USER_PROFILE,
   userProfile,
 });
+
 export const setUserStatus = (userStatus) => ({
   type: SET_USER_STATUS,
   userStatus,
-});
-export const changePostArea = (curentValue) => ({
-  type: CHANGE_POST_AREA,
-  curent: curentValue,
 });
 
 export const getUserProfile = (userID) => {

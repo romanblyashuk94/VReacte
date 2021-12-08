@@ -1,8 +1,9 @@
+import { connect } from "react-redux";
 import Post from "./Post/Post";
 import s from "./Posts.module.scss";
 
 const Posts = (props) => {
-  let postElements = props.state.map((p) => (
+  let postElements = props.postsData.map((p) => (
     <Post
       key={p.id}
       ava={p.ava}
@@ -14,4 +15,9 @@ const Posts = (props) => {
   return <div className={s.posts}>{postElements}</div>;
 };
 
-export default Posts;
+const mapStateToProps = (state) => {
+  return {
+    postsData: state.profilePage.postsData,
+  };
+};
+export default connect(mapStateToProps)(Posts);

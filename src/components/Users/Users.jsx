@@ -1,4 +1,4 @@
-import SearchUserFormContainer from "./SearchUserForm/SearchUserFormContainer";
+import SearchUserForm from "./SearchUserForm/SearchUserForm";
 import s from "./Users.module.scss";
 import UsersAreaContainer from "./UsersArea/UsersAreaContainer";
 import UsersFilter from "./UsersFilter/UsersFilter";
@@ -6,7 +6,7 @@ import UsersFilter from "./UsersFilter/UsersFilter";
 const Users = (props) => {
   return (
     <div className={s.users}>
-      <SearchUserFormContainer />
+      <SearchUserForm />
       <UsersAreaContainer />
       <UsersFilter />
     </div>

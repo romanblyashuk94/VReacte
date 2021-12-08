@@ -1,6 +1,4 @@
 const SET_MESSAGE = "SET-MESSAGE";
-const CHANGE_MESSAGE_AREA = "CHANGE-MESSAGE-AREA";
-const CHANGE_SEARCH_FORM_AREA = "CHANGE-SEARCH-FORM-AREA";
 
 const initialState = {
   messagesData: [
@@ -40,42 +38,31 @@ const initialState = {
       status: "Online",
     },
   ],
-  newMessageValue: "",
-  searchDialogValue: "",
 };
 const messagesPageReducer = (state = initialState, action) => {
   switch (action.type) {
     case SET_MESSAGE: {
+      debugger;
       let newMessage = {
         id: state.messagesData.length + 1,
-        text: state.newMessageValue,
+        text: action.newMessage,
         time: "3:00 pm",
         isMyMessage: true,
       };
+
       return {
         ...state,
         messagesData: [...state.messagesData, newMessage],
-        newMessageValue: "",
       };
     }
-    case CHANGE_MESSAGE_AREA: {
-      return { ...state, newMessageValue: action.curent };
-    }
-    case CHANGE_SEARCH_FORM_AREA:
-      return { ...state, searchDialogValue: action.curent };
     default:
       return state;
   }
 };
 
-export const setMessage = () => ({ type: SET_MESSAGE });
-export const changeMessageArea = (curentValue) => ({
-  type: CHANGE_MESSAGE_AREA,
-  curent: curentValue,
-});
-export const changeSearchDialogArea = (curentValue) => ({
-  type: CHANGE_SEARCH_FORM_AREA,
-  curent: curentValue,
+export const setMessage = (newMessageText) => ({
+  type: SET_MESSAGE,
+  newMessage: newMessageText.newMessageBody,
 });
 
 export default messagesPageReducer;

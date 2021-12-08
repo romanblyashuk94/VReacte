@@ -1,24 +1,24 @@
 import s from "./Messages.module.scss";
-import SearchDialogContainer from "./SearchDialogForm/SearchDialogContainer";
-import NewMessageContainer from "./NewMessage/NewMessageContainer";
+import SearchDialogForm from "./SearchDialogForm/SearchDialogForm";
 import DialogsAreaContainer from "./DialogsArea/DialogsAreaContainer";
 import MessagesAreaContainer from "./MessagesArea/MessagesAreaContainer";
-
+import NewMessageForm from "./NewMessageForm/NewMessageForm";
+import { connect } from "react-redux";
+import { setMessage } from "../../redux/messagesPageReducer";
 
 const Messages = (props) => {
-  
   return (
     <div className={s.messages}>
       <div className={s.dialogs__wrap}>
-        <SearchDialogContainer />
+        <SearchDialogForm />
         <DialogsAreaContainer />
       </div>
       <div className={s.messages__wrap}>
         <MessagesAreaContainer />
-        <NewMessageContainer />
+        <NewMessageForm onSubmit={props.setMessage} />
       </div>
     </div>
   );
 };
 
-export default Messages;
+export default connect(null, { setMessage })(Messages);

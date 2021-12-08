@@ -1,21 +1,18 @@
+import { Field, reduxForm } from "redux-form";
 import s from "./SearchDialogForm.module.scss";
 
 const SearchDialogForm = (props) => {
-  let changeSearchDialogArea = (e) => {
-    props.changeSearchDialogArea(e.target.value);
-  };
-
   return (
-    <div className={s.searchForm}>
-      <input
-        onChange={changeSearchDialogArea}
-        value={props.searchDialogValue}
+    <form onSubmit={props.handleSubmit} className={s.searchForm}>
+      <Field
+        component={"input"}
+        name={"searchDialogBody"}
         type="text"
         placeholder="Search dialog with..."
         className={s.search}
       />
-    </div>
+    </form>
   );
 };
 
-export default SearchDialogForm;
+export default reduxForm({ form: "searchDialog" })(SearchDialogForm);

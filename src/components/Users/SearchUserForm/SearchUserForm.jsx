@@ -1,21 +1,19 @@
+import { Field, reduxForm } from "redux-form";
 import s from "./SearchUserForm.module.scss";
 
 const SearchUserForm = (props) => {
-  let changeSearchUserFormValue = (e) => {
-    props.changeSearchUserFormValue(e.target.value);
-  };
-
   return (
-    <div className={s.searchForm}>
-      <input
-        onChange={changeSearchUserFormValue}
+    <form onSubmit={props.handleSubmit} className={s.searchForm}>
+      <Field
+        component={"input"}
+        name={"searchUserFormBody"}
         value={props.searchUserFormValue}
         type="text"
         placeholder="Search user"
         className={s.search}
       />
-    </div>
+    </form>
   );
 };
 
-export default SearchUserForm;
+export default reduxForm({ form: "searchUserForm" })(SearchUserForm);
