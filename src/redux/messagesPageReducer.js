@@ -42,7 +42,6 @@ const initialState = {
 const messagesPageReducer = (state = initialState, action) => {
   switch (action.type) {
     case SET_MESSAGE: {
-      debugger;
       let newMessage = {
         id: state.messagesData.length + 1,
         text: action.newMessage,

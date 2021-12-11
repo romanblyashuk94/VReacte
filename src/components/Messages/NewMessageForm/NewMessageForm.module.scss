@@ -1,19 +1,21 @@
 .newMessage {
+    display: flex;
+    align-items: center;
     padding: 10px 5px;
     background: rgb(102, 102, 102);
     
     .messageArea {
-        width: 83%;
-        height: 40px;
+        width: 95%;
+        height: 100%;
         background: rgb(214, 214, 214);
         padding: 5px 10px;
         resize: none;    
     }
     .sendButton {
         width: 100px;
-        margin:  10px 0 0 0;
         float: right;
         font-size: 16px;
+        line-height: 2em;
         background-color: chartreuse;
         border: 1px solid black;
         border-radius: 5px;

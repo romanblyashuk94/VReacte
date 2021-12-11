@@ -1,0 +1,20 @@
+.formControl{
+    flex: 1 1 auto;
+    .errorText {
+        display: none;
+    }
+       
+}
+
+.formControl.error  {
+    textarea, input{
+        box-shadow: 0px 0px 25px red;
+    }
+    .errorText {
+        display: inline-block;
+        font-size: 18px;
+        color: red;
+        padding: 5px 0 0 10px;
+    }
+       
+}

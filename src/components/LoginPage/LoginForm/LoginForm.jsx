@@ -1,5 +1,10 @@
 import { Field, reduxForm } from "redux-form";
+import { maxLength, required } from "../../../helpers/validators/validators";
+import { FormElement } from "../../common/Preloader/FormControls/FormControls";
 import s from "../LoginPage.module.scss";
+
+const maxLength20 = maxLength(20);
+const Input = FormElement("input");
 
 const LoginForm = (props) => {
   return (
@@ -8,7 +13,8 @@ const LoginForm = (props) => {
         <Field
           type="text"
           placeholder="login"
-          component={"input"}
+          component={Input}
+          validate={[required, maxLength20]}
           name={"login"}
         />
       </div>
@@ -16,7 +22,8 @@ const LoginForm = (props) => {
         <Field
           type="password"
           placeholder="password"
-          component={"input"}
+          component={Input}
+          validate={[required, maxLength20]}
           name={"password"}
         />
       </div>
