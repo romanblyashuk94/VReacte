@@ -12,7 +12,7 @@ const Header = (props) => {
       </a>
       <div className={s.loginBlock}>
         {props.isAuth ? (
-          <AuthUserBlock id={props.id} login={props.login} />
+          <AuthUserBlock id={props.id} login={props.login} logout={props.logoutUser} />
         ) : (
           <NotAuthUserBlock />
         )}

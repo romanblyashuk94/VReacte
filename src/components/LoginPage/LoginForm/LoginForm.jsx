@@ -3,7 +3,7 @@ import { maxLength, required } from "../../../helpers/validators/validators";
 import { FormElement } from "../../common/Preloader/FormControls/FormControls";
 import s from "../LoginPage.module.scss";
 
-const maxLength20 = maxLength(20);
+const maxLength200 = maxLength(200);
 const Input = FormElement("input");
 
 const LoginForm = (props) => {
@@ -14,8 +14,8 @@ const LoginForm = (props) => {
           type="text"
           placeholder="login"
           component={Input}
-          validate={[required, maxLength20]}
-          name={"login"}
+          validate={[required, maxLength200]}
+          name={"email"}
         />
       </div>
       <div className={s.inputWraper}>
@@ -23,7 +23,7 @@ const LoginForm = (props) => {
           type="password"
           placeholder="password"
           component={Input}
-          validate={[required, maxLength20]}
+          validate={[required, maxLength200]}
           name={"password"}
         />
       </div>
