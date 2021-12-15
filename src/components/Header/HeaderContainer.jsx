@@ -20,4 +20,6 @@ let mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps, { getUsersAuthData, logoutUser})(HeaderContainer);
+export default connect(mapStateToProps, { getUsersAuthData, logoutUser })(
+  HeaderContainer
+);

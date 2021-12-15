@@ -40,12 +40,14 @@ class ProfileStatus extends React.Component {
         {!this.state.editMode ? (
           <div>
             <span className={s.userStatusText}>{this.props.userStatus}</span>
-            <img
-              onClick={this.activateEditMode}
-              className={s.editButton}
-              src={editButton}
-              alt="editButton"
-            />
+            {this.props.authUserID === +this.props.selectedUserID ? (
+              <img
+                onClick={this.activateEditMode}
+                className={s.editButton}
+                src={editButton}
+                alt="editButton"
+              />
+            ) : null}
           </div>
         ) : (
           <div className={s.userStatusEditor}>

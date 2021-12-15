@@ -1,11 +1,12 @@
 import s from "./Menu.module.scss";
 import { NavLink } from "react-router-dom";
+import { connect } from "react-redux";
 
-const Menu = () => {
+const Menu = (props) => {
   return (
     <ul className={s.menu}>
       <li>
-        <NavLink to="/profile" activeClassName={s.active}>
+        <NavLink to={"/profile/" + props.authUserID} activeClassName={s.active}>
           Profile
         </NavLink>
       </li>
@@ -38,4 +39,9 @@ const Menu = () => {
   );
 };
 
-export default Menu;
+const mapStateToProps = (state) => {
+  return {
+    authUserID: state.auth.id,
+  };
+};
+export default connect(mapStateToProps, {})(Menu);

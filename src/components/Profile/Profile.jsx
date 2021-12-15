@@ -8,6 +8,7 @@ const Profile = (props) => {
   if (!props.userProfile) {
     return <Preloader />;
   }
+  debugger;
   return (
     <div className={s.profile}>
       <Wallpapper />
@@ -15,6 +16,8 @@ const Profile = (props) => {
         userProfile={props.userProfile}
         userStatus={props.userStatus}
         updateUserStatus={props.updateUserStatus}
+        authUserID={props.authUserID}
+        selectedUserID={props.match.params.userID}
       />
       <MyPosts />
     </div>

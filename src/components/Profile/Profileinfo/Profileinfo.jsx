@@ -17,7 +17,12 @@ const Profileinfo = (props) => {
           <div className={s.profileinfo__name}>
             {props.userProfile.fullName}
           </div>
-          <ProfileStatus userStatus={props.userStatus} updateUserStatus={props.updateUserStatus} />
+          <ProfileStatus
+            selectedUserID={props.selectedUserID}
+            authUserID={props.authUserID}
+            userStatus={props.userStatus}
+            updateUserStatus={props.updateUserStatus}
+          />
           <div className={s.profileinfo__info}>
             <ul>
               <li>About me: {props.userProfile.aboutMe || "No information"}</li>
