@@ -1,10 +1,11 @@
 import { Field, reduxForm } from "redux-form";
 import { maxLength, required } from "../../../helpers/validators/validators";
-import { FormElement } from "../../common/Preloader/FormControls/FormControls";
+import { requiredFormElement } from "../../common/FormControls/FormControls";
 import s from "../LoginPage.module.scss";
+import errorStyle from "../../common/FormControls/FormControls.module.scss";
 
 const maxLength200 = maxLength(200);
-const Input = FormElement("input");
+const Input = requiredFormElement("input");
 
 const LoginForm = (props) => {
   return (
@@ -12,7 +13,7 @@ const LoginForm = (props) => {
       <div className={s.inputWraper}>
         <Field
           type="text"
-          placeholder="login"
+          placeholder="Email"
           component={Input}
           validate={[required, maxLength200]}
           name={"email"}
@@ -21,7 +22,7 @@ const LoginForm = (props) => {
       <div className={s.inputWraper}>
         <Field
           type="password"
-          placeholder="password"
+          placeholder="Password"
           component={Input}
           validate={[required, maxLength200]}
           name={"password"}
@@ -38,6 +39,9 @@ const LoginForm = (props) => {
           remember me
         </label>
       </div>
+      {props.error && (
+        <div className={errorStyle.formSummuryError}>{props.error}</div>
+      )}
       <div className={s.inputWraper}>
         <button>Login</button>
       </div>

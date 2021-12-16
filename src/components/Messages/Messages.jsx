@@ -4,9 +4,12 @@ import DialogsAreaContainer from "./DialogsArea/DialogsAreaContainer";
 import MessagesAreaContainer from "./MessagesArea/MessagesAreaContainer";
 import NewMessageForm from "./NewMessageForm/NewMessageForm";
 import { connect } from "react-redux";
-import { setMessage } from "../../redux/messagesPageReducer";
+import { checkSendingMessage } from "../../redux/messagesPageReducer";
 
 const Messages = (props) => {
+  const onSubmit = (formData) => {
+    props.checkSendingMessage(formData.newMessageBody)
+  }
   return (
     <div className={s.messages}>
       <div className={s.dialogs__wrap}>
@@ -15,10 +18,10 @@ const Messages = (props) => {
       </div>
       <div className={s.messages__wrap}>
         <MessagesAreaContainer />
-        <NewMessageForm onSubmit={props.setMessage} />
+        <NewMessageForm onSubmit={onSubmit} />
       </div>
     </div>
   );
 };
 
-export default connect(null, { setMessage })(Messages);
+export default connect(null, { checkSendingMessage })(Messages);

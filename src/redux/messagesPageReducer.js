@@ -1,3 +1,5 @@
+import { stopSubmit } from "redux-form";
+
 const SET_MESSAGE = "SET-MESSAGE";
 
 const initialState = {
@@ -61,7 +63,17 @@ const messagesPageReducer = (state = initialState, action) => {
 
 export const setMessage = (newMessageText) => ({
   type: SET_MESSAGE,
-  newMessage: newMessageText.newMessageBody,
+  newMessage: newMessageText,
 });
+
+export const checkSendingMessage = (newMessageText) => (dispatch) => {
+  if (newMessageText) {
+    dispatch(setMessage(newMessageText));
+  } else {
+    dispatch(
+      stopSubmit("newMessageForm", { newMessageBody: "Message is empty!" })
+    );
+  }
+};
 
 export default messagesPageReducer;

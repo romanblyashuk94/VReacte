@@ -1,4 +1,4 @@
-.formControl{
+.formElement{
     flex: 1 1 auto;
     .errorText {
         display: none;
@@ -6,7 +6,7 @@
        
 }
 
-.formControl.error  {
+.formElement.error  {
     textarea, input{
         box-shadow: 0px 0px 25px red;
     }
@@ -17,4 +17,11 @@
         padding: 5px 0 0 10px;
     }
        
+}
+
+.formSummuryError {
+    display: inline-block;
+    padding: 5px;
+    border: 2px solid red;
+    color: red;
 }

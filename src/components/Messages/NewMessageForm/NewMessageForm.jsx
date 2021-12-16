@@ -1,8 +1,8 @@
 import s from "./NewMessageForm.module.scss";
 import React from "react";
 import { Field, reduxForm } from "redux-form";
-import { maxLength, required } from "../../../helpers/validators/validators";
-import { FormElement } from "../../common/Preloader/FormControls/FormControls";
+import { maxLength } from "../../../helpers/validators/validators";
+import { FormElement } from "../../common/FormControls/FormControls";
 
 const maxLength300 = maxLength(300);
 const TextArea = FormElement("textarea");
@@ -13,7 +13,7 @@ const NewMessageForm = (props) => {
       <Field
         component={TextArea}
         name={"newMessageBody"}
-        validate={[required, maxLength300]}
+        validate={[maxLength300]}
         placeholder="Write message"
         className={s.messageArea}
       />

@@ -1,3 +1,4 @@
+import { stopSubmit } from "redux-form";
 import { profileAPI } from "../api/api";
 
 const SET_POST = "SET-POST";
@@ -60,8 +61,9 @@ const profilePageReducer = (state = initialState, action) => {
 
 export const addPost = (postText) => ({
   type: SET_POST,
-  postText: postText.newPostBody,
+  postText: postText,
 });
+
 export const setUserProfile = (userProfile) => ({
   type: SET_USER_PROFILE,
   userProfile,
@@ -72,6 +74,13 @@ export const setUserStatus = (userStatus) => ({
   userStatus,
 });
 
+export const checkAddingPost = (postText) => (dispatch) => {
+  if (postText) {
+    dispatch(addPost(postText));
+  } else {
+    dispatch(stopSubmit("newPostForm", { newPostBody: "Post is Empty!" }));
+  }
+};
 export const getUserProfile = (userID) => {
   return (dispatch) => {
     profileAPI.getProfile(userID).then((profile) => {
