@@ -9,6 +9,7 @@ import {
 import { withRouter } from "react-router";
 import withAuthRedirect from "../../hoc/withAuthRedirect";
 import { compose } from "redux";
+import Preloader from "../common/Preloader/Preloader";
 
 class ProfileContainer extends React.Component {
   componentDidMount() {
@@ -22,7 +23,7 @@ class ProfileContainer extends React.Component {
   }
 
   render() {
-    return <Profile {...this.props} />;
+    return this.props.isFetching ? <Preloader /> : <Profile {...this.props} />;
   }
 }
 
@@ -30,6 +31,7 @@ const mapStateToProps = (state) => ({
   userProfile: state.profilePage.userProfile,
   userStatus: state.profilePage.userStatus,
   authUserID: state.auth.id,
+  isFetching: state.profilePage.isFetching,
 });
 
 export default compose(

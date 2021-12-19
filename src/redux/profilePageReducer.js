@@ -4,6 +4,7 @@ import { profileAPI } from "../api/api";
 const SET_POST = "SET-POST";
 const SET_USER_PROFILE = "SET_USER_PROFILE";
 const SET_USER_STATUS = "SET_USER_STATUS";
+const TOOGLE_FETCHING_STATUS = "TOOGLE_FETCHING_STATUS";
 
 const initialState = {
   postsData: [
@@ -31,6 +32,7 @@ const initialState = {
   ],
   userProfile: null,
   userStatus: "",
+  
 };
 
 const profilePageReducer = (state = initialState, action) => {
@@ -48,6 +50,8 @@ const profilePageReducer = (state = initialState, action) => {
         postsData: [newPost, ...state.postsData],
       };
     }
+    case TOOGLE_FETCHING_STATUS:
+      return { ...state, isFetching: action.isFetching };
     case SET_USER_PROFILE: {
       return { ...state, userProfile: action.userProfile };
     }
@@ -58,6 +62,11 @@ const profilePageReducer = (state = initialState, action) => {
       return state;
   }
 };
+
+export const toogleFetchingStatus = (isFetching) => ({
+  type: TOOGLE_FETCHING_STATUS,
+  isFetching,
+});
 
 export const addPost = (postText) => ({
   type: SET_POST,
@@ -83,8 +92,10 @@ export const checkAddingPost = (postText) => (dispatch) => {
 };
 export const getUserProfile = (userID) => {
   return (dispatch) => {
+    dispatch(toogleFetchingStatus(true));
     profileAPI.getProfile(userID).then((profile) => {
       dispatch(setUserProfile(profile));
+      dispatch(toogleFetchingStatus(false));
     });
   };
 };

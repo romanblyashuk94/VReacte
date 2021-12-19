@@ -6,6 +6,7 @@ import messagesPageReducer from "./messagesPageReducer";
 import profilePageReducer from "./profilePageReducer";
 import usersPageReducer from "./usersPageReducer";
 import { reducer as formReducer } from "redux-form";
+import appReducer from "./appReducer";
 
 let redusers = combineReducers({
   profilePage: profilePageReducer,
@@ -13,6 +14,7 @@ let redusers = combineReducers({
   friendsOnlineData: friendsOnlineDataReducer,
   usersPage: usersPageReducer,
   auth: authReducer,
+  app: appReducer,
   form: formReducer,
 });
 

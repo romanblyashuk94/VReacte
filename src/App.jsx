@@ -9,23 +9,40 @@ import HeaderContainer from "./components/Header/HeaderContainer";
 import LoginPage from "./components/LoginPage/LoginPage";
 import Users from "./components/Users/Users";
 import Messages from "./components/Messages/Messages";
+import React from "react";
+import { connect } from "react-redux";
+import { initializeApp } from "./redux/appReducer";
+import Preloader from "./components/common/Preloader/Preloader";
 
-const App = (props) => {
-  return (
-    <div className="app__wrapper">
-      <HeaderContainer />
-      <Navbar />
-      <div className="maincontent grid_element">
-        <Route path="/profile/:userID?" render={() => <ProfileContainer />} />
-        <Route path="/messages" render={() => <Messages />} />
-        <Route path="/news" component={News} />
-        <Route path="/music" component={Music} />
-        <Route path="/settings" component={Settings} />
-        <Route path="/users" render={() => <Users />} />
-        <Route path="/login" render={() => <LoginPage />} />
+class App extends React.Component {
+  componentDidMount() {
+    this.props.initializeApp();
+  }
+
+  render() {
+    return this.props.initialaized ? (
+      <div className="app__wrapper">
+        <HeaderContainer />
+        <Navbar />
+        <div className="maincontent grid_element">
+          <Route path="/profile/:userID?" render={() => <ProfileContainer />} />
+          <Route path="/messages" render={() => <Messages />} />
+          <Route path="/news" component={News} />
+          <Route path="/music" component={Music} />
+          <Route path="/settings" component={Settings} />
+          <Route path="/users" render={() => <Users />} />
+          <Route path="/login" render={() => <LoginPage />} />
+        </div>
       </div>
-    </div>
-  );
-};
+    ) : (
+      <Preloader />
+    );
+  }
+}
 
-export default App;
+const mapStateToProps = (state) => {
+  return {
+    initialaized: state.app.initialaized,
+  };
+};
+export default connect(mapStateToProps, { initializeApp })(App);
