@@ -2,6 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import { compose } from "redux";
 import withAuthRedirect from "../../../hoc/withAuthRedirect";
+import { selectCurrentPage, selectFollowingIsProgres, selectIsFetching, selectPageSize, selectTotalUsersCount, selectUsers } from "../../../redux/selectors/UsersSelectors";
 import {
   followUser,
   getUsers,
@@ -42,12 +43,12 @@ class UsersAreaContainer extends React.Component {
 
 const mapStateToProps = (state) => {
   return {
-    users: state.usersPage.usersData,
-    totalUsersCount: state.usersPage.totalUsersCount,
-    pageSize: state.usersPage.pageSize,
-    currentPage: state.usersPage.currentPage,
-    isFetching: state.usersPage.isFetching,
-    followingIsProgres: state.usersPage.followingIsProgres,
+    users: selectUsers(state),
+    totalUsersCount: selectTotalUsersCount(state),
+    pageSize: selectPageSize(state),
+    currentPage: selectCurrentPage(state),
+    isFetching: selectIsFetching(state),
+    followingIsProgres: selectFollowingIsProgres(state),
   };
 };
 
