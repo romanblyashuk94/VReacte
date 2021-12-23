@@ -2,7 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import { compose } from "redux";
 import withAuthRedirect from "../../../hoc/withAuthRedirect";
-import { selectCurrentPage, selectFollowingIsProgres, selectIsFetching, selectPageSize, selectTotalUsersCount, selectUsers } from "../../../redux/selectors/UsersSelectors";
+import { selectCurrentPage, selectFollowingIsProgres, selectIsFetching, selectPageSize, selectTotalUsersCount, getUsersSelector } from "../../../redux/selectors/UsersSelectors";
 import {
   followUser,
   getUsers,
@@ -23,6 +23,7 @@ class UsersAreaContainer extends React.Component {
   };
 
   render() {
+    console.log('Rerender Users')
     return (
       <div>
         {this.props.isFetching ? <Preloader /> : null}
@@ -42,8 +43,9 @@ class UsersAreaContainer extends React.Component {
 }
 
 const mapStateToProps = (state) => {
+  console.log('mSTP Users')
   return {
-    users: selectUsers(state),
+    users: getUsersSelector(state),
     totalUsersCount: selectTotalUsersCount(state),
     pageSize: selectPageSize(state),
     currentPage: selectCurrentPage(state),
