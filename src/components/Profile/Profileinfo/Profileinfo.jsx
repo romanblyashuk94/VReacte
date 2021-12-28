@@ -1,6 +1,6 @@
 import s from "./Profileinfo.module.scss";
 import noUser from "../../../assets/images/User.png";
-import ProfileStatus from "./ProfileStatus";
+import ProfileStatusWithHook from "./ProfileStatusWithHook";
 
 const Profileinfo = (props) => {
   return (
@@ -17,7 +17,7 @@ const Profileinfo = (props) => {
           <div className={s.profileinfo__name}>
             {props.userProfile.fullName}
           </div>
-          <ProfileStatus
+          <ProfileStatusWithHook
             selectedUserID={props.selectedUserID}
             authUserID={props.authUserID}
             userStatus={props.userStatus}

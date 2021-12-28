@@ -23,7 +23,6 @@ class UsersAreaContainer extends React.Component {
   };
 
   render() {
-    console.log('Rerender Users')
     return (
       <div>
         {this.props.isFetching ? <Preloader /> : null}
@@ -43,7 +42,6 @@ class UsersAreaContainer extends React.Component {
 }
 
 const mapStateToProps = (state) => {
-  console.log('mSTP Users')
   return {
     users: getUsersSelector(state),
     totalUsersCount: selectTotalUsersCount(state),
