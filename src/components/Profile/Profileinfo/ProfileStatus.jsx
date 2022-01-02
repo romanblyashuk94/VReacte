@@ -8,9 +8,9 @@ const ProfileStatus = (props) => {
   const [editMode, setEditMode] = useState(false);
   const [userStatus, setUserStatus] = useState(props.userStatus);
 
-  useEffect( () => {
+  useEffect(() => {
     setUserStatus(props.userStatus);
-  }, [props.userStatus])
+  }, [props.userStatus]);
 
   const activateEditMode = () => {
     setEditMode(true);

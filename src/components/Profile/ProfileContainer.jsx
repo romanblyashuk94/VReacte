@@ -10,22 +10,20 @@ import { withRouter } from "react-router";
 import withAuthRedirect from "../../hoc/withAuthRedirect";
 import { compose } from "redux";
 import Preloader from "../common/Preloader/Preloader";
+import { useEffect } from "react";
 
-class ProfileContainer extends React.Component {
-  componentDidMount() {
-    let userID = this.props.match.params.userID;
+const ProfileContainer = (props) => {
+  useEffect(() => {
+    let userID = props.match.params.userID;
     if (!userID) {
-      userID = this.props.authUserID;
+      userID = props.authUserID;
     }
+    props.getUserProfile(userID);
+    props.getUserStatus(userID);
+  }, [props.match.params.userID]);
 
-    this.props.getUserProfile(userID);
-    this.props.getUserStatus(userID);
-  }
-
-  render() {
-    return this.props.isFetching ? <Preloader /> : <Profile {...this.props} />;
-  }
-}
+  return props.isFetching ? <Preloader /> : <Profile {...props} />;
+};
 
 const mapStateToProps = (state) => ({
   userProfile: state.profilePage.userProfile,
