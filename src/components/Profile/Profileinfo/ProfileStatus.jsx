@@ -1,69 +1,52 @@
 import React from "react";
 import s from "./Profileinfo.module.scss";
 import editButton from "../../../assets/images/editButton.png";
+import { useState } from "react";
+import { useEffect } from "react";
 
-class ProfileStatus extends React.Component {
-  state = {
-    editMode: false,
-    userStatus: this.props.userStatus,
+const ProfileStatus = (props) => {
+  const [editMode, setEditMode] = useState(false);
+  const [userStatus, setUserStatus] = useState(props.userStatus);
+
+  useEffect( () => {
+    setUserStatus(props.userStatus);
+  }, [props.userStatus])
+
+  const activateEditMode = () => {
+    setEditMode(true);
+  };
+  const deactivateEditMode = () => {
+    setEditMode(false);
+    props.updateUserStatus(userStatus);
+  };
+  const onStatusChange = (e) => {
+    setUserStatus(e.currentTarget.value);
   };
 
-  componentDidUpdate(prevProps) {
-    if (prevProps.userStatus !== this.props.userStatus) {
-      this.setState({
-        userStatus: this.props.userStatus,
-      });
-    }
-  }
-
-  activateEditMode = () => {
-    this.setState({
-      editMode: true,
-    });
-  };
-
-  deactivateEditMode = () => {
-    this.setState({
-      editMode: false,
-    });
-    this.props.updateUserStatus(this.state.userStatus);
-  };
-
-  onStatusChange = (e) => {
-    this.setState({
-      userStatus: e.currentTarget.value,
-    });
-  };
-  render() {
-    return (
-      <div className={s.userStatusBlock}>
-        {!this.state.editMode ? (
-          <div>
-            <span className={s.userStatusText}>{this.props.userStatus}</span>
-            {this.props.authUserID === +this.props.selectedUserID ? (
-              <img
-                onClick={this.activateEditMode}
-                className={s.editButton}
-                src={editButton}
-                alt="editButton"
-              />
-            ) : null}
-          </div>
-        ) : (
-          <div className={s.userStatusEditor}>
-            <input
-              onChange={this.onStatusChange}
-              autoFocus={true}
-              value={this.state.userStatus}
+  return (
+    <div className={s.userStatusBlock}>
+      {editMode ? (
+        <div className={s.userStatusEditor}>
+          <input value={userStatus} onChange={onStatusChange} />
+          <button className={s.okButton} onClick={deactivateEditMode}>
+            OK
+          </button>
+        </div>
+      ) : (
+        <div>
+          <span className={s.userStatusText}>{userStatus}</span>
+          {props.authUserID === +props.selectedUserID ? (
+            <img
+              className={s.editButton}
+              onClick={activateEditMode}
+              src={editButton}
+              alt="editButton"
             />
-            <button className={s.okButton} onClick={this.deactivateEditMode}>
-              OK
-            </button>
-          </div>
-        )}
-      </div>
-    );
-  }
-}
+          ) : null}
+        </div>
+      )}
+    </div>
+  );
+};
 
 export default ProfileStatus;
