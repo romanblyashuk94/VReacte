@@ -1,8 +1,16 @@
 import React from "react";
+import { useEffect } from "react";
 import { connect } from "react-redux";
 import { compose } from "redux";
 import withAuthRedirect from "../../../hoc/withAuthRedirect";
-import { selectCurrentPage, selectFollowingIsProgres, selectIsFetching, selectPageSize, selectTotalUsersCount, getUsersSelector } from "../../../redux/selectors/UsersSelectors";
+import {
+  selectCurrentPage,
+  selectFollowingIsProgres,
+  selectIsFetching,
+  selectPageSize,
+  selectTotalUsersCount,
+  getUsersSelector,
+} from "../../../redux/selectors/UsersSelectors";
 import {
   followUser,
   getUsers,
@@ -12,34 +20,32 @@ import {
 import Preloader from "../../common/Preloader/Preloader";
 import UsersArea from "./UsersArea";
 
-class UsersAreaContainer extends React.Component {
-  componentDidMount() {
-    this.props.getUsers(this.props.pageSize, this.props.currentPage);
-  }
+const UsersAreaContainer = React.memo((props) => {
+  useEffect(() => {
+    props.getUsers(props.pageSize, props.currentPage);
+  }, []);
 
-  changePage = (pageNumber) => {
-    this.props.setCurrentPage(pageNumber);
-    this.props.getUsers(this.props.pageSize, pageNumber);
+  const changePage = (pageNumber) => {
+    props.setCurrentPage(pageNumber);
+    props.getUsers(props.pageSize, pageNumber);
   };
-
-  render() {
-    return (
-      <div>
-        {this.props.isFetching ? <Preloader /> : null}
-        <UsersArea
-          users={this.props.users}
-          totalUsersCount={this.props.totalUsersCount}
-          pageSize={this.props.pageSize}
-          currentPage={this.props.currentPage}
-          followingIsProgres={this.props.followingIsProgres}
-          followUser={this.props.followUser}
-          unfollowUser={this.props.unfollowUser}
-          changePage={this.changePage}
-        />
-      </div>
-    );
-  }
-}
+  console.log('users render')
+  return (
+    <div>
+      {props.isFetching ? <Preloader /> : null}
+      <UsersArea
+        users={props.users}
+        totalUsersCount={props.totalUsersCount}
+        pageSize={props.pageSize}
+        currentPage={props.currentPage}
+        followingIsProgres={props.followingIsProgres}
+        followUser={props.followUser}
+        unfollowUser={props.unfollowUser}
+        changePage={changePage}
+      />
+    </div>
+  );
+});
 
 const mapStateToProps = (state) => {
   return {

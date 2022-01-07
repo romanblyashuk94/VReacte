@@ -8,6 +8,7 @@ const Profile = (props) => {
   if (!props.userProfile) {
     return <Preloader />;
   }
+  console.log('Profile')
   return (
     <div className={s.profile}>
       <Wallpapper />
