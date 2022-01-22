@@ -1,5 +1,5 @@
 import s from "./Post.module.scss";
-import recycle from "../../../../../assets/images/recycle-bin.png";
+import deletePostIcon from "../../../../../assets/images/recycle-bin.png";
 import { connect } from "react-redux";
 import { deletePost } from "../../../../../redux/profilePageReducer";
 
@@ -25,9 +25,9 @@ const Post = (props) => {
                 onClick={() => {
                   props.deletePost(props.id);
                 }}
-                className={s.recycleIcon}
-                src={recycle}
-                alt="recycle"
+                className={s.deletePostIcon}
+                src={deletePostIcon}
+                alt="deletePostIcon"
               />
             )}
           </div>
