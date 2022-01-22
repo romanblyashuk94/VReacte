@@ -4,7 +4,6 @@ import { connect } from "react-redux";
 import { deletePost } from "../../../../../redux/profilePageReducer";
 
 const Post = (props) => {
-  debugger;
   return (
     <div className={s.post}>
       <div className={s.post__wrap}>
