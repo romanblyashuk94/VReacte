@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React from "react";
 import { useEffect } from "react";
 import { connect } from "react-redux";
@@ -23,13 +24,13 @@ import UsersArea from "./UsersArea";
 const UsersAreaContainer = React.memo((props) => {
   useEffect(() => {
     props.getUsers(props.pageSize, props.currentPage);
-  }, []);
+  }, [  ]);
 
   const changePage = (pageNumber) => {
     props.setCurrentPage(pageNumber);
     props.getUsers(props.pageSize, pageNumber);
   };
-  console.log('users render')
+  
   return (
     <div>
       {props.isFetching ? <Preloader /> : null}

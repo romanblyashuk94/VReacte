@@ -2,6 +2,7 @@ import { stopSubmit } from "redux-form";
 import { profileAPI } from "../api/api";
 
 const SET_POST = "SET-POST";
+const DELETE_POST = "DELETE_POST";
 const SET_USER_PROFILE = "SET_USER_PROFILE";
 const SET_USER_STATUS = "SET_USER_STATUS";
 const TOOGLE_FETCHING_STATUS = "TOOGLE_FETCHING_STATUS";
@@ -32,7 +33,6 @@ const initialState = {
   ],
   userProfile: null,
   userStatus: "",
-  
 };
 
 const profilePageReducer = (state = initialState, action) => {
@@ -58,6 +58,13 @@ const profilePageReducer = (state = initialState, action) => {
     case SET_USER_STATUS: {
       return { ...state, userStatus: action.userStatus };
     }
+    case DELETE_POST: {
+      debugger
+      return {
+        ...state,
+        postsData: state.postsData.filter((p) => p.id !== action.postID),
+      };
+    }
     default:
       return state;
   }
@@ -70,7 +77,12 @@ export const toogleFetchingStatus = (isFetching) => ({
 
 export const addPost = (postText) => ({
   type: SET_POST,
-  postText: postText,
+  postText,
+});
+
+export const deletePost = (postID) => ({
+  type: DELETE_POST,
+  postID,
 });
 
 export const setUserProfile = (userProfile) => ({

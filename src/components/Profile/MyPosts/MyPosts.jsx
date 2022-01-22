@@ -6,7 +6,7 @@ const MyPosts = (props) => {
   return (
     <div className={s.my_posts}>
       <NewPost />
-      <Posts />
+      <Posts selectedUserID={props.selectedUserID} />
     </div>
   );
 };

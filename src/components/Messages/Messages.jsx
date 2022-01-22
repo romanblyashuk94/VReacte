@@ -1,10 +1,10 @@
 import s from "./Messages.module.scss";
 import SearchDialogForm from "./SearchDialogForm/SearchDialogForm";
-import DialogsAreaContainer from "./DialogsArea/DialogsAreaContainer";
-import MessagesAreaContainer from "./MessagesArea/MessagesAreaContainer";
 import NewMessageForm from "./NewMessageForm/NewMessageForm";
 import { connect } from "react-redux";
 import { checkSendingMessage } from "../../redux/messagesPageReducer";
+import MessagesArea from "./MessagesArea/MessagesArea";
+import DialogsArea from "./DialogsArea/DialogsArea";
 
 const Messages = (props) => {
   const onSubmit = (formData) => {
@@ -14,10 +14,10 @@ const Messages = (props) => {
     <div className={s.messages}>
       <div className={s.dialogs__wrap}>
         <SearchDialogForm />
-        <DialogsAreaContainer />
+        <DialogsArea />
       </div>
       <div className={s.messages__wrap}>
-        <MessagesAreaContainer />
+        <MessagesArea />
         <NewMessageForm onSubmit={onSubmit} />
       </div>
     </div>

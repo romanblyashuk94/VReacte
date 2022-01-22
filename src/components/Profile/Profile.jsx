@@ -5,10 +5,10 @@ import Wallpapper from "./Wallpapper/Wallpapper";
 import Preloader from "../common/Preloader/Preloader";
 
 const Profile = (props) => {
+  console.log('Profile rerender')
   if (!props.userProfile) {
     return <Preloader />;
   }
-  console.log('Profile')
   return (
     <div className={s.profile}>
       <Wallpapper />
@@ -19,7 +19,7 @@ const Profile = (props) => {
         authUserID={props.authUserID}
         selectedUserID={props.match.params.userID}
       />
-      <MyPosts />
+      <MyPosts selectedUserID={props.match.params.userID} />
     </div>
   );
 };

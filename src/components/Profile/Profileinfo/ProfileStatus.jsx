@@ -34,7 +34,7 @@ const ProfileStatus = (props) => {
         </div>
       ) : (
         <div>
-          <span className={s.userStatusText}>{userStatus}</span>
+          <span className={s.userStatusText}>{props.userStatus}</span>
           {props.authUserID === +props.selectedUserID ? (
             <img
               className={s.editButton}

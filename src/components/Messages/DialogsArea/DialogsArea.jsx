@@ -1,18 +1,26 @@
+import { connect } from "react-redux";
 import s from "./DialogsArea.module.scss";
 import DialogsItem from "./DialogsItem/DialogsItem";
 
 const DialogsArea = (props) => {
-  let DialogsItemElements = props.state.map((d) => (
-    <DialogsItem
-      userName={d.userName}
-      status={d.status}
-      avatar={d.avatar}
-      key={d.id}
-      id={d.id}
-    />
-  ));
-
-  return <div className={s.dialogsArea}>{DialogsItemElements}</div>;
+  return (
+    <div className={s.dialogsArea}>
+      {props.state.map((d) => (
+        <DialogsItem
+          userName={d.userName}
+          status={d.status}
+          avatar={d.avatar}
+          key={d.id}
+          id={d.id}
+        />
+      ))}
+    </div>
+  );
 };
 
-export default DialogsArea;
+const mapStateToProps = (state) => {
+  return {
+    state: state.messagesPage.dialogsData,
+  };
+};
+export default connect(mapStateToProps)(DialogsArea);

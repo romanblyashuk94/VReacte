@@ -1,12 +1,25 @@
 import s from "./MessagesArea.module.scss";
 import MessageItem from "./MessageItem/MessageItem";
+import { connect } from "react-redux";
 
 const MessagesArea = (props) => {
-  let messagesItemElements = props.state.map((m) => (
-    <MessageItem key={m.id} text={m.text} time={m.time} isMyMessage={m.isMyMessage} />
-  ));
-
-  return <div className={s.messagesArea}>{messagesItemElements}</div>;
+  return (
+    <div className={s.messagesArea}>
+      {props.messagesData.map((m) => (
+        <MessageItem
+          key={m.id}
+          text={m.text}
+          time={m.time}
+          isMyMessage={m.isMyMessage}
+        />
+      ))}
+    </div>
+  );
 };
 
-export default MessagesArea;
+const mapStatetoProps = (state) => {
+  return {
+    messagesData: state.messagesPage.messagesData,
+  };
+};
+export default connect(mapStatetoProps)(MessagesArea);
