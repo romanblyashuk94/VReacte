@@ -21,3 +21,13 @@ export const showPagesCount = (pageCount, currentPage) => {
     }
     return array;
 };
+
+export const updateObjectInArray = (array, chekingObjId, searchingObjIdValue, newObjProps) => {
+     return array.map((obj) => {
+        if (obj[chekingObjId] === searchingObjIdValue) {
+          return { ...obj, ...newObjProps };
+        } else {
+          return obj;
+        }
+      })
+}

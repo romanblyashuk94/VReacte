@@ -4,19 +4,17 @@ import Profileinfo from "./Profileinfo/Profileinfo";
 import Wallpapper from "./Wallpapper/Wallpapper";
 import Preloader from "../common/Preloader/Preloader";
 
-const Profile = (props) => {
-  if (!props.userProfile) {
+const Profile = ({ userProfile, ...props }) => {
+  if (!userProfile) {
     return <Preloader />;
   }
   return (
     <div className={s.profile}>
       <Wallpapper />
       <Profileinfo
-        userProfile={props.userProfile}
-        userStatus={props.userStatus}
-        updateUserStatus={props.updateUserStatus}
-        authUserID={props.authUserID}
+        userProfile={userProfile}
         selectedUserID={props.match.params.userID}
+        {...props}
       />
       <MyPosts selectedUserID={props.match.params.userID} />
     </div>

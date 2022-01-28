@@ -3,14 +3,23 @@ import deletePostIcon from "../../../../../assets/images/recycle-bin.png";
 import { connect } from "react-redux";
 import { deletePost } from "../../../../../redux/profilePageReducer";
 
-const Post = (props) => {
+const Post = ({
+  selectedUserID,
+  authUserID,
+  postID,
+  ava,
+  date,
+  message,
+  likesCount,
+  deletePost,
+}) => {
   return (
     <div className={s.post}>
       <div className={s.post__wrap}>
-        <img src={props.ava} alt="Ava" className={s.poster_ava} />
+        <img src={ava} alt="Ava" className={s.poster_ava} />
         <div className={s.post__body}>
-          <p className={s.post__date}>{props.date}</p>
-          <p className={s.post__text}> {props.message} </p>
+          <p className={s.post__date}>{date}</p>
+          <p className={s.post__text}> {message} </p>
           <div className={s.likes}>
             <a href="S#">
               <img
@@ -19,11 +28,11 @@ const Post = (props) => {
                 alt="Like"
               />
             </a>
-            <span className={s.likes_count}>{props.likesCount} Likes</span>
-            {+props.selectedUserID === props.authUserID && (
+            <span className={s.likes_count}>{likesCount} Likes</span>
+            {+selectedUserID === authUserID && (
               <img
                 onClick={() => {
-                  props.deletePost(props.id);
+                  deletePost(postID);
                 }}
                 className={s.deletePostIcon}
                 src={deletePostIcon}

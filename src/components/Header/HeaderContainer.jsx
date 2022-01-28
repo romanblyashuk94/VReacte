@@ -4,9 +4,7 @@ import { connect } from "react-redux";
 import { logoutUser } from "../../redux/authReducer";
 
 const HeaderContainer = (props) => {
-  return (
-  <Header {...props} />
-  ) 
+  return <Header {...props} />;
 };
 
 let mapStateToProps = (state) => {

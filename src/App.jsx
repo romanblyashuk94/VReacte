@@ -16,12 +16,12 @@ import { initializeApp } from "./redux/appReducer";
 import Preloader from "./components/common/Preloader/Preloader";
 import { useEffect } from "react";
 
-const App = (props) => {
+const App = ({ initialaized, initializeApp }) => {
   useEffect(() => {
-    props.initializeApp();
+    initializeApp();
   }, []);
 
-  return props.initialaized ? (
+  return initialaized ? (
     <div className="app__wrapper">
       <HeaderContainer />
       <Navbar />

@@ -21,16 +21,16 @@ import {
 import Preloader from "../../common/Preloader/Preloader";
 import UsersArea from "./UsersArea";
 
-const UsersAreaContainer = React.memo((props) => {
+const UsersAreaContainer = (props) => {
   useEffect(() => {
     props.getUsers(props.pageSize, props.currentPage);
-  }, [  ]);
+  }, []);
 
   const changePage = (pageNumber) => {
     props.setCurrentPage(pageNumber);
     props.getUsers(props.pageSize, pageNumber);
   };
-  
+
   return (
     <div>
       {props.isFetching ? <Preloader /> : null}
@@ -46,7 +46,7 @@ const UsersAreaContainer = React.memo((props) => {
       />
     </div>
   );
-});
+};
 
 const mapStateToProps = (state) => {
   return {

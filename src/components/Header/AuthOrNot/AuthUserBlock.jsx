@@ -1,13 +1,14 @@
 import { NavLink } from "react-router-dom";
 import s from "./AuthUserBlock.module.scss";
 
-const AuthUserBlock = (props) => {
+const AuthUserBlock = ({ authUserID, authUserLogin, logoutUser }) => {
   return (
     <div className={s.AuthUserBlock}>
-      <NavLink to={"/profile/" + props.id}>{props.login}</NavLink>
-      <button onClick={props.logout} className={s.signOutButton}>Sign Out</button>
+      <NavLink to={"/profile/" + authUserID}>{authUserLogin}</NavLink>
+      <button onClick={logoutUser} className={s.signOutButton}>
+        Sign Out
+      </button>
     </div>
   );
 };
-
 export default AuthUserBlock;

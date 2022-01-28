@@ -1,11 +1,12 @@
 import { followAPI, usersAPI } from "../api/api";
+import { updateObjectInArray } from "../helpers/helpers";
 
-const FOLLOW_USER = "FOLLOW_USER";
-const UNFOLLOW_USER = "UNFOLLOW_USER";
-const SET_USERS = "SET_USERS";
-const SET_CURRENT_PAGE = "SET_CURRENT_PAGE";
-const TOOGLE_FETCHING_STATUS = "TOOGLE_FETCHING_STATUS";
-const TOOGLE_FOLLOWING_IS_PROGESS = "TOOGLE_FOLLOWING_IS_PROGESS";
+const FOLLOW_USER = "usersPage/FOLLOW_USER";
+const UNFOLLOW_USER = "usersPage/UNFOLLOW_USER";
+const SET_USERS = "usersPage/SET_USERS";
+const SET_CURRENT_PAGE = "usersPage/SET_CURRENT_PAGE";
+const TOOGLE_FETCHING_STATUS = "usersPage/TOOGLE_FETCHING_STATUS";
+const TOOGLE_FOLLOWING_IS_PROGESS = "usersPage/TOOGLE_FOLLOWING_IS_PROGESS";
 
 const initialState = {
   usersData: [],
@@ -21,23 +22,15 @@ const usersPageReducer = (state = initialState, action) => {
     case FOLLOW_USER:
       return {
         ...state,
-        usersData: state.usersData.map((u) => {
-          if (u.id === action.userID) {
-            return { ...u, followed: true };
-          } else {
-            return u;
-          }
+        usersData: updateObjectInArray(state.usersData, "id", action.userID, {
+          followed: true,
         }),
       };
     case UNFOLLOW_USER:
       return {
         ...state,
-        usersData: state.usersData.map((u) => {
-          if (u.id === action.userID) {
-            return { ...u, followed: false };
-          } else {
-            return u;
-          }
+        usersData: updateObjectInArray(state.usersData, "id", action.userID, {
+          followed: false,
         }),
       };
     case SET_USERS:
@@ -61,6 +54,8 @@ const usersPageReducer = (state = initialState, action) => {
       return state;
   }
 };
+
+// ActionCreators:
 
 export const followSuccess = (userID) => ({
   type: FOLLOW_USER,
@@ -92,38 +87,51 @@ export const toogleFollowingProgress = (isProgres, userID) => ({
   userID,
 });
 
-export const getUsers = (pageSize, currentPage) => {
-  return (dispatch) => {
-    dispatch(toogleFetchingStatus(true));
-    usersAPI.getUsers(pageSize, currentPage).then((data) => {
-      dispatch(setUsers(data.items, data.totalCount));
-      dispatch(toogleFetchingStatus(false));
-    });
-  };
+// thunks:
+
+export const getUsers = (pageSize, currentPage) => async (dispatch) => {
+  dispatch(toogleFetchingStatus(true));
+  const response = await usersAPI.getUsers(pageSize, currentPage);
+  dispatch(setUsers(response.items, response.totalCount));
+  dispatch(toogleFetchingStatus(false));
 };
 
-export const followUser = (userID) => {
-  return (dispatch) => {
+export const followUser = (userID) => async (dispatch) => {
+  followUnfollowFlow(
+    dispatch,
+    userID,
+    followAPI.followUser.bind(followAPI),
+    followSuccess
+  );
+};
+
+export const unfollowUser = (userID) => async (dispatch) => {
+  followUnfollowFlow(
+    dispatch,
+    userID,
+    followAPI.unfollowUser.bind(followAPI),
+    unfollowSuccess
+  );
+};
+
+// helper func:
+
+const followUnfollowFlow = async (
+  dispatch,
+  userID,
+  apiMethod,
+  ActionCreator
+) => {
+  try {
     dispatch(toogleFollowingProgress(true, userID));
-    followAPI.followUser(userID).then((response) => {
-      if (response.resultCode === 0) {
-        dispatch(followSuccess(userID));
-        dispatch(toogleFollowingProgress(false, userID));
-      }
-    });
-  };
+    const response = await apiMethod(userID);
+    if (response.resultCode === 0) {
+      dispatch(ActionCreator(userID));
+      dispatch(toogleFollowingProgress(false, userID));
+    }
+  } catch (error) {
+    console.log(error);
+    dispatch(toogleFollowingProgress(false, userID));
+  }
 };
-
-export const unfollowUser = (userID) => {
-  return (dispatch) => {
-    dispatch(toogleFollowingProgress(true, userID));
-    followAPI.unfollowUser(userID).then((response) => {
-      if (response.resultCode === 0) {
-        dispatch(unfollowSuccess(userID));
-        dispatch(toogleFollowingProgress(false, userID));
-      }
-    });
-  };
-};
-
 export default usersPageReducer;

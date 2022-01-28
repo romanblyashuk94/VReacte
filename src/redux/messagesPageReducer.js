@@ -1,6 +1,6 @@
 import { stopSubmit } from "redux-form";
 
-const SET_MESSAGE = "SET-MESSAGE";
+const SET_MESSAGE = "messagesPage/SET-MESSAGE";
 
 const initialState = {
   messagesData: [
@@ -61,10 +61,14 @@ const messagesPageReducer = (state = initialState, action) => {
   }
 };
 
+//ActionCreators:
+
 export const setMessage = (newMessageText) => ({
   type: SET_MESSAGE,
   newMessage: newMessageText,
 });
+
+//thunks:
 
 export const checkSendingMessage = (newMessageText) => (dispatch) => {
   if (newMessageText) {

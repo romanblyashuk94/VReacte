@@ -13,17 +13,27 @@ import { compose } from "redux";
 import Preloader from "../common/Preloader/Preloader";
 import { useEffect } from "react";
 
-const ProfileContainer = (props) => {
+const ProfileContainer = ({
+  authUserID,
+  isFetching,
+  getUserProfile,
+  getUserStatus,
+  ...props
+}) => {
   useEffect(() => {
     let userID = props.match.params.userID;
     if (!userID) {
-      userID = props.authUserID;
+      userID = authUserID;
     }
-    props.getUserProfile(userID);
-    props.getUserStatus(userID);
+    getUserProfile(userID);
+    getUserStatus(userID);
   }, [props.match.params.userID]);
 
-  return props.isFetching ? <Preloader /> : <Profile {...props} />;
+  return isFetching ? (
+    <Preloader />
+  ) : (
+    <Profile authUserID={authUserID} {...props} />
+  );
 };
 
 const mapStateToProps = (state) => ({

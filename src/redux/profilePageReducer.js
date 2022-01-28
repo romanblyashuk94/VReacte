@@ -1,11 +1,11 @@
 import { stopSubmit } from "redux-form";
 import { profileAPI } from "../api/api";
 
-const SET_POST = "SET-POST";
-const DELETE_POST = "DELETE_POST";
-const SET_USER_PROFILE = "SET_USER_PROFILE";
-const SET_USER_STATUS = "SET_USER_STATUS";
-const TOOGLE_FETCHING_STATUS = "TOOGLE_FETCHING_STATUS";
+const SET_POST = "profilePage/SET-POST";
+const DELETE_POST = "profilePage/DELETE_POST";
+const SET_USER_PROFILE = "profilePage/SET_USER_PROFILE";
+const SET_USER_STATUS = "profilePage/SET_USER_STATUS";
+const TOOGLE_FETCHING_STATUS = "profilePage/TOOGLE_FETCHING_STATUS";
 
 const initialState = {
   postsData: [
@@ -59,7 +59,6 @@ const profilePageReducer = (state = initialState, action) => {
       return { ...state, userStatus: action.userStatus };
     }
     case DELETE_POST: {
-      debugger
       return {
         ...state,
         postsData: state.postsData.filter((p) => p.id !== action.postID),
@@ -69,6 +68,8 @@ const profilePageReducer = (state = initialState, action) => {
       return state;
   }
 };
+
+//ActionCreators:
 
 export const toogleFetchingStatus = (isFetching) => ({
   type: TOOGLE_FETCHING_STATUS,
@@ -95,6 +96,8 @@ export const setUserStatus = (userStatus) => ({
   userStatus,
 });
 
+//thunks:
+
 export const checkAddingPost = (postText) => (dispatch) => {
   if (postText) {
     dispatch(addPost(postText));
@@ -102,31 +105,24 @@ export const checkAddingPost = (postText) => (dispatch) => {
     dispatch(stopSubmit("newPostForm", { newPostBody: "Post is Empty!" }));
   }
 };
-export const getUserProfile = (userID) => {
-  return (dispatch) => {
-    dispatch(toogleFetchingStatus(true));
-    profileAPI.getProfile(userID).then((profile) => {
-      dispatch(setUserProfile(profile));
-      dispatch(toogleFetchingStatus(false));
-    });
-  };
+
+export const getUserProfile = (userID) => async (dispatch) => {
+  dispatch(toogleFetchingStatus(true));
+  const profile = await profileAPI.getProfile(userID);
+  dispatch(setUserProfile(profile));
+  dispatch(toogleFetchingStatus(false));
 };
 
-export const getUserStatus = (userID) => {
-  return (dispatch) => {
-    profileAPI.getStatus(userID).then((userStatus) => {
-      dispatch(setUserStatus(userStatus));
-    });
-  };
+export const getUserStatus = (userID) => async (dispatch) => {
+  const userStatus = await profileAPI.getStatus(userID);
+  dispatch(setUserStatus(userStatus));
 };
-export const updateUserStatus = (userStatus) => {
-  return (dispatch) => {
-    profileAPI.updateStatus(userStatus).then((response) => {
-      if (response.resultCode === 0) {
-        dispatch(setUserStatus(userStatus));
-      }
-    });
-  };
+
+export const updateUserStatus = (userStatus) => async (dispatch) => {
+  const response = await profileAPI.updateStatus(userStatus);
+  if (response.resultCode === 0) {
+    dispatch(setUserStatus(userStatus));
+  }
 };
 
 export default profilePageReducer;

@@ -1,17 +1,28 @@
 import s from "./FriendsOnline.module.scss";
 import FriendItem from "./FriendItem/FriendItem";
+import { connect } from "react-redux";
 
-const FriendsOnline = (props) => {
+const FriendsOnline = ({ onlineFriendsData }) => {
   return (
     <div className={s.friendsOnline}>
       <div className={s.title}>Friends Online:</div>
       <ul className={s.friendsList}>
-        {props.state.map((f) => (
-          <FriendItem key={f.id} avatar={f.avatar} name={f.name} />
+        {onlineFriendsData.map((f) => (
+          <FriendItem
+            key={f.id}
+            friendID={f.id}
+            friendAvatar={f.avatar}
+            frientName={f.name}
+          />
         ))}
       </ul>
     </div>
   );
 };
 
-export default FriendsOnline;
+const mapStateToProps = (state) => {
+  return {
+    onlineFriendsData: state.friendsOnlineData,
+  };
+};
+export default connect(mapStateToProps)(FriendsOnline);

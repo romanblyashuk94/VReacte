@@ -4,38 +4,43 @@ import editButton from "../../../assets/images/editButton.png";
 import { useState } from "react";
 import { useEffect } from "react";
 
-const ProfileStatus = (props) => {
+const ProfileStatus = ({
+  userStatus,
+  authUserID,
+  selectedUserID,
+  updateUserStatus,
+}) => {
   const [editMode, setEditMode] = useState(false);
-  const [userStatus, setUserStatus] = useState(props.userStatus);
+  const [currentInputStatus, setcurrentInputStatus] = useState(userStatus);
 
   useEffect(() => {
-    setUserStatus(props.userStatus);
-  }, [props.userStatus]);
+    setcurrentInputStatus(userStatus);
+  }, [userStatus]);
 
   const activateEditMode = () => {
     setEditMode(true);
   };
   const deactivateEditMode = () => {
     setEditMode(false);
-    props.updateUserStatus(userStatus);
+    updateUserStatus(currentInputStatus);
   };
   const onStatusChange = (e) => {
-    setUserStatus(e.currentTarget.value);
+    setcurrentInputStatus(e.currentTarget.value);
   };
 
   return (
     <div className={s.userStatusBlock}>
       {editMode ? (
         <div className={s.userStatusEditor}>
-          <input value={userStatus} onChange={onStatusChange} />
+          <input value={currentInputStatus} onChange={onStatusChange} />
           <button className={s.okButton} onClick={deactivateEditMode}>
             OK
           </button>
         </div>
       ) : (
         <div>
-          <span className={s.userStatusText}>{props.userStatus}</span>
-          {props.authUserID === +props.selectedUserID ? (
+          <span className={s.userStatusText}>{userStatus}</span>
+          {authUserID === +selectedUserID ? (
             <img
               className={s.editButton}
               onClick={activateEditMode}

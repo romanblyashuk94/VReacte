@@ -3,7 +3,7 @@ import logo from "../../assets/images/vr-logo.png";
 import NotAuthUserBlock from "./AuthOrNot/NotAuthUserBlock";
 import AuthUserBlock from "./AuthOrNot/AuthUserBlock";
 
-const Header = (props) => {
+const Header = ({ isAuth, id, login, logoutUser }) => {
   return (
     <header className={`${s.header} grid_element`}>
       <a href="S#">
@@ -11,8 +11,12 @@ const Header = (props) => {
         <span>eacte</span>
       </a>
       <div className={s.loginBlock}>
-        {props.isAuth ? (
-          <AuthUserBlock id={props.id} login={props.login} logout={props.logoutUser} />
+        {isAuth ? (
+          <AuthUserBlock
+            authUserID={id}
+            authUserLogin={login}
+            logoutUser={logoutUser}
+          />
         ) : (
           <NotAuthUserBlock />
         )}

@@ -1,12 +1,12 @@
-import FriendsOnlineContainer from "./FriendsOnline/FriendsOnlineContainer";
+import FriendsOnline from "./FriendsOnline/FriendsOnline";
 import Menu from "./Menu/Menu";
 import s from "./Navbar.module.scss";
 
-const Navbar = (props) => {
+const Navbar = () => {
   return (
     <nav className={`${s.navbar} grid_element`}>
       <Menu />
-      <FriendsOnlineContainer />
+      <FriendsOnline />
     </nav>
   );
 };

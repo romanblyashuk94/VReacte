@@ -2,11 +2,11 @@ import s from "./MyPosts.module.scss";
 import NewPost from "./NewPost/NewPost";
 import Posts from "./Posts/Posts";
 
-const MyPosts = (props) => {
+const MyPosts = ({selectedUserID}) => {
   return (
     <div className={s.my_posts}>
       <NewPost />
-      <Posts selectedUserID={props.selectedUserID} />
+      <Posts selectedUserID={selectedUserID} />
     </div>
   );
 };
