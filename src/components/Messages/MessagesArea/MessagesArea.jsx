@@ -2,14 +2,14 @@ import s from "./MessagesArea.module.scss";
 import MessageItem from "./MessageItem/MessageItem";
 import { connect } from "react-redux";
 
-const MessagesArea = (props) => {
+const MessagesArea = ({messagesData}) => {
   return (
     <div className={s.messagesArea}>
-      {props.messagesData.map((m) => (
+      {messagesData.map((m) => (
         <MessageItem
           key={m.id}
-          text={m.text}
-          time={m.time}
+          messageText={m.text}
+          sendTime={m.time}
           isMyMessage={m.isMyMessage}
         />
       ))}

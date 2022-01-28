@@ -1,55 +1,35 @@
 import UserItem from "./UsersItem/UserItem";
 import s from "./UsersArea.module.scss";
-import { showPagesCount } from "../../../helpers/helpers";
+import Paginator from "../../common/Paginator/Paginator";
 
-const UsersArea = (props) => {
-  let pagesCount = Math.ceil(props.totalUsersCount / props.pageSize);
-
-  let pages = [];
-
-  for (let i = 1; i <= pagesCount; i++) {
-    pages.push(i);
-  }
+const UsersArea = ({
+  totalUsersCount,
+  pageSize,
+  users,
+  currentPage,
+  changePage,
+  ...props
+}) => {
   return (
     <div className={s.users}>
-      {props.users.map((u) => (
+      {users.map((u) => (
         <UserItem
           key={u.id}
-          id={u.id}
+          userID={u.id}
           userPhoto={u.photos.small}
           userName={u.name}
           folowedStatus={u.followed}
-          followUser={props.followUser}
-          unfollowUser={props.unfollowUser}
           userStatus={u.status}
-          followingIsProgres={props.followingIsProgres}
+          {...props}
         />
       ))}
       <button className={s.showUsersButton}>Show More</button>
-      <div className={s.pagesWraper}>
-        {showPagesCount(pagesCount, props.currentPage).map((p) => {
-          if (p === 0) {
-            return (
-              <span key={p} className={s.notSelectedPage}>
-                ...
-              </span>
-            );
-          }
-          return (
-            <span
-              onClick={() => {
-                props.changePage(p);
-              }}
-              key={p}
-              className={
-                props.currentPage === p ? s.selectedPage : s.notSelectedPage
-              }
-            >
-              {p}
-            </span>
-          );
-        })}
-      </div>
+      <Paginator
+        totalUsersCount={totalUsersCount}
+        pageSize={pageSize}
+        currentPage={currentPage}
+        changePage={changePage}
+      />
     </div>
   );
 };

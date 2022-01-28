@@ -1,0 +1,22 @@
+.pagesWraper {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    font-size: 18px;
+    margin-top: 20px;
+    .selectedPage {
+        margin-right: 10px;
+        margin-bottom: 5px;
+        font-weight: bold;
+        &:hover {
+            cursor: default;
+        }
+    }
+    .notSelectedPage {
+        margin-right: 10px;
+        margin-bottom: 5px;
+        &:hover {
+            cursor: pointer;
+        }
+    }
+}

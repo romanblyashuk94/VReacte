@@ -7,9 +7,9 @@ import errorStyle from "../../common/FormControls/FormControls.module.scss";
 const maxLength200 = maxLength(200);
 const Input = requiredFormElement("input");
 
-const LoginForm = (props) => {
+const LoginForm = ({ handleSubmit, error }) => {
   return (
-    <form onSubmit={props.handleSubmit}>
+    <form onSubmit={handleSubmit}>
       <div className={s.inputWraper}>
         <Field
           type="text"
@@ -39,9 +39,7 @@ const LoginForm = (props) => {
           remember me
         </label>
       </div>
-      {props.error && (
-        <div className={errorStyle.formSummuryError}>{props.error}</div>
-      )}
+      {error && <div className={errorStyle.formSummuryError}>{error}</div>}
       <div className={s.inputWraper}>
         <button>Login</button>
       </div>

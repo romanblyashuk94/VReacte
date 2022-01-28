@@ -1,14 +1,14 @@
 import s from "./MessageItem.module.scss";
 
-const MessageItem = (props) => {
+const MessageItem = ({messageText, sendTime, isMyMessage}) => {
   return (
     <div
-      className={`${s.MessageItem} ${(props.isMyMessage || "") && s.myMessage}`}
+      className={`${s.MessageItem} ${(isMyMessage || "") && s.myMessage}`}
     >
       <div className={s.space}></div>
       <div className={s.message}>
-        <div className={s.messageText}>{props.text}</div>
-        <div className={s.messageTime}>{props.time}</div>
+        <div className={s.messageText}>{messageText}</div>
+        <div className={s.messageTime}>{sendTime}</div>
       </div>
     </div>
   );

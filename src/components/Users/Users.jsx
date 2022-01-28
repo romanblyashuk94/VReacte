@@ -3,7 +3,7 @@ import s from "./Users.module.scss";
 import UsersAreaContainer from "./UsersArea/UsersAreaContainer";
 import UsersFilter from "./UsersFilter/UsersFilter";
 
-const Users = (props) => {
+const Users = () => {
   return (
     <div className={s.users}>
       <SearchUserForm />

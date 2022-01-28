@@ -1,9 +1,9 @@
 import { Field, reduxForm } from "redux-form";
 import s from "./SearchDialogForm.module.scss";
 
-const SearchDialogForm = (props) => {
+const SearchDialogForm = ({handleSubmit}) => {
   return (
-    <form onSubmit={props.handleSubmit} className={s.searchForm}>
+    <form onSubmit={handleSubmit} className={s.searchForm}>
       <Field
         component={"input"}
         name={"searchDialogBody"}

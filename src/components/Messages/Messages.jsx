@@ -6,10 +6,12 @@ import { checkSendingMessage } from "../../redux/messagesPageReducer";
 import MessagesArea from "./MessagesArea/MessagesArea";
 import DialogsArea from "./DialogsArea/DialogsArea";
 
-const Messages = (props) => {
+const Messages = ({checkSendingMessage}) => {
+
   const onSubmit = (formData) => {
-    props.checkSendingMessage(formData.newMessageBody)
+    checkSendingMessage(formData.newMessageBody)
   }
+  
   return (
     <div className={s.messages}>
       <div className={s.dialogs__wrap}>

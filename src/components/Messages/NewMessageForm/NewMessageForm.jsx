@@ -7,9 +7,9 @@ import { FormElement } from "../../common/FormControls/FormControls";
 const maxLength300 = maxLength(300);
 const TextArea = FormElement("textarea");
 
-const NewMessageForm = (props) => {
+const NewMessageForm = ({ handleSubmit }) => {
   return (
-    <form className={s.newMessage} onSubmit={props.handleSubmit}>
+    <form className={s.newMessage} onSubmit={handleSubmit}>
       <Field
         component={TextArea}
         name={"newMessageBody"}

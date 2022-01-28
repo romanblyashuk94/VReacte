@@ -1,13 +1,12 @@
 import { Field, reduxForm } from "redux-form";
 import s from "./SearchUserForm.module.scss";
 
-const SearchUserForm = (props) => {
+const SearchUserForm = ({handleSubmit, ...props}) => {
   return (
-    <form onSubmit={props.handleSubmit} className={s.searchForm}>
+    <form onSubmit={handleSubmit} className={s.searchForm}>
       <Field
         component={"input"}
         name={"searchUserFormBody"}
-        value={props.searchUserFormValue}
         type="text"
         placeholder="Search user"
         className={s.search}

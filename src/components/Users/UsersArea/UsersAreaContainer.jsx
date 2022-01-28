@@ -21,28 +21,31 @@ import {
 import Preloader from "../../common/Preloader/Preloader";
 import UsersArea from "./UsersArea";
 
-const UsersAreaContainer = (props) => {
+const UsersAreaContainer = ({
+  pageSize,
+  currentPage,
+  isFetching,
+  getUsers,
+  setCurrentPage,
+  ...props
+}) => {
   useEffect(() => {
-    props.getUsers(props.pageSize, props.currentPage);
+    getUsers(pageSize, currentPage);
   }, []);
 
   const changePage = (pageNumber) => {
-    props.setCurrentPage(pageNumber);
-    props.getUsers(props.pageSize, pageNumber);
+    setCurrentPage(pageNumber);
+    getUsers(pageSize, pageNumber);
   };
 
   return (
     <div>
-      {props.isFetching ? <Preloader /> : null}
+      {isFetching ? <Preloader /> : null}
       <UsersArea
-        users={props.users}
-        totalUsersCount={props.totalUsersCount}
-        pageSize={props.pageSize}
-        currentPage={props.currentPage}
-        followingIsProgres={props.followingIsProgres}
-        followUser={props.followUser}
-        unfollowUser={props.unfollowUser}
+        pageSize={pageSize}
+        currentPage={currentPage}
         changePage={changePage}
+        {...props}
       />
     </div>
   );
