@@ -10,12 +10,10 @@ import {
 import { withRouter } from "react-router";
 import withAuthRedirect from "../../hoc/withAuthRedirect";
 import { compose } from "redux";
-import Preloader from "../common/Preloader/Preloader";
 import { useEffect } from "react";
 
 const ProfileContainer = ({
   authUserID,
-  isFetching,
   getUserProfile,
   getUserStatus,
   ...props
@@ -29,9 +27,7 @@ const ProfileContainer = ({
     getUserStatus(userID);
   }, [props.match.params.userID]);
 
-  return isFetching ? (
-    <Preloader />
-  ) : (
+  return  (
     <Profile authUserID={authUserID} {...props} />
   );
 };
@@ -40,7 +36,6 @@ const mapStateToProps = (state) => ({
   userProfile: state.profilePage.userProfile,
   userStatus: state.profilePage.userStatus,
   authUserID: state.auth.id,
-  isFetching: state.profilePage.isFetching,
 });
 
 export default compose(

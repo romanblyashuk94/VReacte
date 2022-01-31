@@ -25,7 +25,7 @@ const UsersArea = ({
       ))}
       <button className={s.showUsersButton}>Show More</button>
       <Paginator
-        totalUsersCount={totalUsersCount}
+        totalItemsCount={totalUsersCount}
         pageSize={pageSize}
         currentPage={currentPage}
         changePage={changePage}

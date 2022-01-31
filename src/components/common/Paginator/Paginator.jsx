@@ -1,8 +1,8 @@
 import s from "./Paginator.module.scss";
 import { showPagesCount } from "../../../helpers/helpers";
 
-const Paginator = ({ totalUsersCount, pageSize, currentPage, changePage }) => {
-  let pagesCount = Math.ceil(totalUsersCount / pageSize);
+const Paginator = ({ totalItemsCount, pageSize, currentPage, changePage }) => {
+  let pagesCount = Math.ceil(totalItemsCount / pageSize);
 
   let pages = [];
 

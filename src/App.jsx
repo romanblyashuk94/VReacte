@@ -8,13 +8,13 @@ import Settings from "./components/Settings/Settings";
 import ProfileContainer from "./components/Profile/ProfileContainer";
 import HeaderContainer from "./components/Header/HeaderContainer";
 import LoginPage from "./components/LoginPage/LoginPage";
-import Users from "./components/Users/Users";
-import Messages from "./components/Messages/Messages";
 import React from "react";
 import { connect } from "react-redux";
 import { initializeApp } from "./redux/appReducer";
 import Preloader from "./components/common/Preloader/Preloader";
-import { useEffect } from "react";
+import { useEffect, Suspense } from "react";
+const Messages = React.lazy(() => import("./components/Messages/Messages"));
+const Users = React.lazy(() => import("./components/Users/Users"));
 
 const App = ({ initialaized, initializeApp }) => {
   useEffect(() => {
@@ -26,13 +26,15 @@ const App = ({ initialaized, initializeApp }) => {
       <HeaderContainer />
       <Navbar />
       <div className="maincontent grid_element">
-        <Route path="/profile/:userID?" render={() => <ProfileContainer />} />
-        <Route path="/messages" render={() => <Messages />} />
-        <Route path="/news" component={News} />
-        <Route path="/music" component={Music} />
-        <Route path="/settings" component={Settings} />
-        <Route path="/users" render={() => <Users />} />
-        <Route path="/login" render={() => <LoginPage />} />
+        <Suspense fallback={<Preloader />}>
+          <Route path="/profile/:userID?" render={() => <ProfileContainer />} />
+          <Route path="/messages" render={() => <Messages />} />
+          <Route path="/news" component={News} />
+          <Route path="/music" component={Music} />
+          <Route path="/settings" component={Settings} />
+          <Route path="/users" render={() => <Users />} />
+          <Route path="/login" render={() => <LoginPage />} />
+        </Suspense>
       </div>
     </div>
   ) : (
