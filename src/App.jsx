@@ -14,6 +14,7 @@ import { initializeApp } from "./redux/appReducer";
 import Preloader from "./components/common/Preloader/Preloader";
 import { useEffect, Suspense } from "react";
 import { Redirect } from "react-router-dom/cjs/react-router-dom.min";
+import { Switch } from "react-router-dom";
 const Messages = React.lazy(() => import("./components/Messages/Messages"));
 const Users = React.lazy(() => import("./components/Users/Users"));
 
@@ -28,14 +29,19 @@ const App = ({ initialaized, initializeApp }) => {
       <Navbar />
       <div className="maincontent grid_element">
         <Suspense fallback={<Preloader />}>
-          <Route path="/profile/:userID?" render={() => <ProfileContainer />} />
-          <Route path="/messages" render={() => <Messages />} />
-          <Route path="/news" component={News} />
-          <Route path="/music" component={Music} />
-          <Route path="/settings" component={Settings} />
-          <Route path="/users" render={() => <Users />} />
-          <Route path="/login" render={() => <LoginPage />} />
-          <Route path="/" render={() => <Redirect to='/login' />} />
+          <Switch>
+            <Route
+              path="/profile/:userID?"
+              render={() => <ProfileContainer />}
+            />
+            <Route path="/messages" render={() => <Messages />} />
+            <Route path="/news" component={News} />
+            <Route path="/music" component={Music} />
+            <Route path="/settings" component={Settings} />
+            <Route path="/users" render={() => <Users />} />
+            <Route path="/login" render={() => <LoginPage />} />
+            <Route path="/" render={() => <Redirect to="/Profile" />} />
+          </Switch>
         </Suspense>
       </div>
     </div>
