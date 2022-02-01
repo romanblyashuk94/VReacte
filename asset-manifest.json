@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/VReacte/static/css/main.c9c88307.chunk.css",
-    "main.js": "/VReacte/static/js/main.986c9ad9.chunk.js",
-    "main.js.map": "/VReacte/static/js/main.986c9ad9.chunk.js.map",
+    "main.js": "/VReacte/static/js/main.86577d51.chunk.js",
+    "main.js.map": "/VReacte/static/js/main.86577d51.chunk.js.map",
     "runtime-main.js": "/VReacte/static/js/runtime-main.4770b747.js",
     "runtime-main.js.map": "/VReacte/static/js/runtime-main.4770b747.js.map",
     "static/js/2.e3f2955f.chunk.js": "/VReacte/static/js/2.e3f2955f.chunk.js",
@@ -29,6 +29,6 @@
     "static/js/runtime-main.4770b747.js",
     "static/js/2.e3f2955f.chunk.js",
     "static/css/main.c9c88307.chunk.css",
-    "static/js/main.986c9ad9.chunk.js"
+    "static/js/main.86577d51.chunk.js"
   ]
 }
