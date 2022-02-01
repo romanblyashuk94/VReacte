@@ -13,6 +13,7 @@ import { connect } from "react-redux";
 import { initializeApp } from "./redux/appReducer";
 import Preloader from "./components/common/Preloader/Preloader";
 import { useEffect, Suspense } from "react";
+import { Redirect } from "react-router-dom/cjs/react-router-dom.min";
 const Messages = React.lazy(() => import("./components/Messages/Messages"));
 const Users = React.lazy(() => import("./components/Users/Users"));
 
@@ -34,6 +35,7 @@ const App = ({ initialaized, initializeApp }) => {
           <Route path="/settings" component={Settings} />
           <Route path="/users" render={() => <Users />} />
           <Route path="/login" render={() => <LoginPage />} />
+          <Route path="/" render={() => <Redirect to='/login' />} />
         </Suspense>
       </div>
     </div>
