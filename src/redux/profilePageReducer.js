@@ -1,4 +1,4 @@
-import { stopSubmit } from "redux-form";
+import { reset, stopSubmit } from "redux-form";
 import { profileAPI } from "../api/api";
 
 const SET_POST = "profilePage/SET-POST";
@@ -6,6 +6,7 @@ const DELETE_POST = "profilePage/DELETE_POST";
 const SET_USER_PROFILE = "profilePage/SET_USER_PROFILE";
 const SET_USER_STATUS = "profilePage/SET_USER_STATUS";
 const TOOGLE_FETCHING_STATUS = "profilePage/TOOGLE_FETCHING_STATUS";
+const SAVE_PHOTO_SUCCESS = "profilePage/SAVE_PHOTO_SUCCESS"
 
 const initialState = {
   postsData: [
@@ -55,6 +56,9 @@ const profilePageReducer = (state = initialState, action) => {
     case SET_USER_PROFILE: {
       return { ...state, userProfile: action.userProfile };
     }
+    case SAVE_PHOTO_SUCCESS: {
+      return { ...state, userProfile: {...state.userProfile, photos: action.profilePhoto }};
+    }
     case SET_USER_STATUS: {
       return { ...state, userStatus: action.userStatus };
     }
@@ -95,12 +99,17 @@ export const setUserStatus = (userStatus) => ({
   type: SET_USER_STATUS,
   userStatus,
 });
+export const savePhotoSuccess = (profilePhoto) => ({
+  type: SAVE_PHOTO_SUCCESS,
+  profilePhoto,
+});
 
 //thunks:
 
 export const checkAddingPost = (postText) => (dispatch) => {
   if (postText) {
     dispatch(addPost(postText));
+    dispatch(reset('newPostForm'))
   } else {
     dispatch(stopSubmit("newPostForm", { newPostBody: "Post is Empty!" }));
   }
@@ -111,6 +120,12 @@ export const getUserProfile = (userID) => async (dispatch) => {
   const profile = await profileAPI.getProfile(userID);
   dispatch(setUserProfile(profile));
   dispatch(toogleFetchingStatus(false));
+};
+
+export const savePhoto = (selectedPhoto) => async (dispatch) => {
+  const profilePhoto = await profileAPI.savePhoto(selectedPhoto);
+  dispatch(savePhotoSuccess(profilePhoto.data.photos))
+  debugger
 };
 
 export const getUserStatus = (userID) => async (dispatch) => {

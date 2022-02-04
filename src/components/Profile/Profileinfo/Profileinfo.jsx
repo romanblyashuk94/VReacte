@@ -1,21 +1,30 @@
 import s from "./Profileinfo.module.scss";
-import noUser from "../../../assets/images/User.png";
 import ProfileStatus from "./ProfileStatus";
+import ProfilePhoto from "./ProfilePhoto";
 
-const Profileinfo = ({ userProfile, ...props }) => {
+const Profileinfo = ({
+  userProfile,
+  authUserID,
+  selectedUserID,
+  savePhoto,
+  ...props
+}) => {
   return (
     <div className={s.profileinfo}>
       <div className={s.profileinfo__wrap}>
-        <div>
-          <img
-            className={s.profileinfo__ava}
-            src={userProfile.photos.large || noUser}
-            alt="Avatar"
-          />
-        </div>
+        <ProfilePhoto
+          selectedUserID={selectedUserID}
+          authUserID={authUserID}
+          userPhoto={userProfile.photos.large}
+          savePhoto={savePhoto}
+        />
         <div className={s.profileinfo__body}>
           <div className={s.profileinfo__name}>{userProfile.fullName}</div>
-          <ProfileStatus {...props} />
+          <ProfileStatus
+            selectedUserID={selectedUserID}
+            authUserID={authUserID}
+            {...props}
+          />
           <div className={s.profileinfo__info}>
             <ul>
               <li>About me: {userProfile.aboutMe || "No information"}</li>

@@ -2,11 +2,38 @@
     padding: 20px 40px;
     .profileinfo__wrap {
         display: flex;
-        .profileinfo__ava {
-            max-width: 170px;
+        .profilePhotoWrapper {
+            position: relative;
             margin: 0 30px 0 0;
-            border: 2px solid black;
-        }
+            max-width: 170px;
+            border-radius: 5px;
+            .profileinfo__ava {
+                border-radius: 5px;
+                max-width: 100%;
+                border: 2px solid black;
+            }
+            .changePhotoLabel {
+                position: absolute;
+                bottom: 2px;
+                left: 2px;
+                right: 2px;
+                max-width: 100%;
+                text-align: center;
+                background-color: #f1e86783;
+                overflow: hidden;
+                font-size: 18px;
+                border-radius: 3px;
+                padding: 1px 0;
+                
+            }
+            .changePhotoLabel:hover {
+                cursor: pointer;
+                background-color: #f1e867;
+            }
+            .changePhotoButton {
+                display: none;
+            }
+        }        
         .userStatusBlock {
             font-size: 18px;
             margin: 0 0 10px 0;
