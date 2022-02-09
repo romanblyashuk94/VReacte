@@ -1,0 +1,76 @@
+.profileDataForm {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    top: 0;
+    left: 0;
+    .popUpBody {
+        min-height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 30px 5px;
+        .formContent {
+            border: 2px solid black;
+            border-radius: 5px;
+            box-shadow: 1px 1px 5px;
+            background-color: white;
+            color: black;
+            width: 620px;
+            padding: 40px 30px;
+            position: relative;
+            .closeForm {
+                position: absolute;
+                right: 20px;
+                top: 20px;
+                max-width: 20px;
+            }
+            .inputWraper {
+                display: flex;
+                align-items: center;
+                padding: 10px 0;
+                font-size: 18px;
+                .fieldDiscription {
+                    font-weight: bold;
+                    margin-right: 10px;
+                    min-width: 148px;
+                }
+                input {
+                    width: 68%;
+                    border: 1px solid black;
+                    padding: 5px;
+                }
+                .checkboxInput {
+                    width: auto;
+                }
+            }
+            .contactsTitle {
+                text-align: center;
+                font-size: 24px;
+                margin-bottom: 5px;
+            }
+            .submitButton {
+                display: block;
+                margin: 15px auto 0;
+                text-align: center;
+                max-width: 150px;
+                border: 1px black solid;
+                font-weight: bold;
+                background-color: rgb(226, 226, 226);
+                border-radius: 5px;
+                font-size: 18px;
+                padding: 5px 20px;
+            }
+            .submitButton:hover {
+                background-color: rgb(248, 204, 72);
+            }
+            .submitError {
+                color: red;
+                padding: 5px;
+                margin-top: 5px;
+                border: 2px solid red;
+            }
+        }
+    }
+}

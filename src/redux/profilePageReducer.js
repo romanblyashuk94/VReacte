@@ -6,7 +6,7 @@ const DELETE_POST = "profilePage/DELETE_POST";
 const SET_USER_PROFILE = "profilePage/SET_USER_PROFILE";
 const SET_USER_STATUS = "profilePage/SET_USER_STATUS";
 const TOOGLE_FETCHING_STATUS = "profilePage/TOOGLE_FETCHING_STATUS";
-const SAVE_PHOTO_SUCCESS = "profilePage/SAVE_PHOTO_SUCCESS"
+const SAVE_PHOTO_SUCCESS = "profilePage/SAVE_PHOTO_SUCCESS";
 
 const initialState = {
   postsData: [
@@ -57,7 +57,10 @@ const profilePageReducer = (state = initialState, action) => {
       return { ...state, userProfile: action.userProfile };
     }
     case SAVE_PHOTO_SUCCESS: {
-      return { ...state, userProfile: {...state.userProfile, photos: action.profilePhoto }};
+      return {
+        ...state,
+        userProfile: { ...state.userProfile, photos: action.profilePhoto },
+      };
     }
     case SET_USER_STATUS: {
       return { ...state, userStatus: action.userStatus };
@@ -109,7 +112,7 @@ export const savePhotoSuccess = (profilePhoto) => ({
 export const checkAddingPost = (postText) => (dispatch) => {
   if (postText) {
     dispatch(addPost(postText));
-    dispatch(reset('newPostForm'))
+    dispatch(reset("newPostForm"));
   } else {
     dispatch(stopSubmit("newPostForm", { newPostBody: "Post is Empty!" }));
   }
@@ -124,8 +127,7 @@ export const getUserProfile = (userID) => async (dispatch) => {
 
 export const savePhoto = (selectedPhoto) => async (dispatch) => {
   const profilePhoto = await profileAPI.savePhoto(selectedPhoto);
-  dispatch(savePhotoSuccess(profilePhoto.data.photos))
-  debugger
+  dispatch(savePhotoSuccess(profilePhoto.data.photos));
 };
 
 export const getUserStatus = (userID) => async (dispatch) => {
@@ -137,6 +139,16 @@ export const updateUserStatus = (userStatus) => async (dispatch) => {
   const response = await profileAPI.updateStatus(userStatus);
   if (response.resultCode === 0) {
     dispatch(setUserStatus(userStatus));
+  }
+};
+
+export const saveProfileData = (profileData, userID) => async (dispatch) => {
+  const response = await profileAPI.updateProfileData(profileData);
+  if (response.resultCode === 0) {
+    dispatch(getUserProfile(userID));
+  } else {
+    dispatch(stopSubmit("profileDataForm", { _error: response.messages }));
+    return Promise.reject();
   }
 };
 

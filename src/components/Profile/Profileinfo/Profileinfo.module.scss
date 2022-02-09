@@ -6,6 +6,7 @@
             position: relative;
             margin: 0 30px 0 0;
             max-width: 170px;
+            max-height: 170px;
             border-radius: 5px;
             .profileinfo__ava {
                 border-radius: 5px;
@@ -33,45 +34,55 @@
             .changePhotoButton {
                 display: none;
             }
-        }        
-        .userStatusBlock {
-            font-size: 18px;
-            margin: 0 0 10px 0;
-            .userStatusText {
-                display: inline-block;
-                margin: 0 0 5px 0;
-            }
-            .editButton {
-                width: 15px;
-                padding-top: 2px;
-                margin: 0 0 0 5px;
-            }
-            .userStatusEditor {
-                input {
-                    background-color: rgb(204, 204, 204);
-                    border: 1px solid black;
-                }
-                .okButton {
-                    display: inline-block;
-                    width: 30px;
-                    margin-left: 10px;
-                    background-color: rgb(57, 138, 141);
-                    border-radius: 2px;
-                    border: 1px solid black;
-                }
-            }
         }
         .profileinfo__body {
+            flex: 1 1 auto;
+            .userStatusBlock {
+                font-size: 18px;
+                margin: 0 0 10px 0;
+                .userStatusText {
+                    display: inline-block;
+                    margin: 0 0 5px 0;
+                }
+                .editButton {
+                    width: 15px;
+                    padding-top: 2px;
+                    margin: 0 0 0 5px;
+                }
+                .userStatusEditor {
+                    input {
+                        background-color: rgb(204, 204, 204);
+                        border: 1px solid black;
+                    }
+                    .okButton {
+                        display: inline-block;
+                        width: 30px;
+                        margin-left: 10px;
+                        background-color: rgb(57, 138, 141);
+                        border-radius: 2px;
+                        border: 1px solid black;
+                    }
+                }
+            }
             .profileinfo__name{
                 font-size: 36px;
                 margin: 0 0 5px 0;
             }
-            .profileinfo__info {
-                font-size: 20px;
-                li {
-                    margin: 0 0 10px 0;
-                }
+        }
+        .profileEditor {
+            .editProfileButton {
+                max-width: 150px;
+                border: 1px black solid;
+                font-weight: bold;
+                background-color: rgb(226, 226, 226);
+                border-radius: 5px;
+                font-size: 18px;
+                padding: 5px;
+            }
+            .editProfileButton:hover {
+                background-color: rgb(248, 204, 72);
             }
         }
+        
     }
 }

@@ -44,6 +44,11 @@ export const profileAPI = {
       .put("profile/status/", { status })
       .then((response) => response.data);
   },
+  updateProfileData(profileData) {
+    return instance
+      .put("profile/", profileData)
+      .then((response) => response.data);
+  },
   savePhoto(selectedPhoto) {
     const formData = new FormData()
     formData.append('image', selectedPhoto)

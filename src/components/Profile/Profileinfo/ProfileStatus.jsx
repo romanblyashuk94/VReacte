@@ -4,12 +4,7 @@ import editButton from "../../../assets/images/editButton.png";
 import { useState } from "react";
 import { useEffect } from "react";
 
-const ProfileStatus = ({
-  userStatus,
-  authUserID,
-  selectedUserID,
-  updateUserStatus,
-}) => {
+const ProfileStatus = ({ userStatus, isOwner, updateUserStatus }) => {
   const [editMode, setEditMode] = useState(false);
   const [currentInputStatus, setcurrentInputStatus] = useState(userStatus);
 
@@ -40,14 +35,14 @@ const ProfileStatus = ({
       ) : (
         <div>
           <span className={s.userStatusText}>{userStatus}</span>
-          {authUserID === +selectedUserID ? (
+          {isOwner && (
             <img
               className={s.editButton}
               onClick={activateEditMode}
               src={editButton}
               alt="editButton"
             />
-          ) : null}
+          )}
         </div>
       )}
     </div>

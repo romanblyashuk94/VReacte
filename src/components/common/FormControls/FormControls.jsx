@@ -15,6 +15,21 @@ export const FormElement =
     );
   };
 
+export const ProfileDataFormElement =
+  (Element) =>
+  ({ input, meta, ...props }) => {
+    return (
+      <div
+        className={`${s.formElement} ${
+          !meta.active && meta.error ? s.error : null
+        }`}
+      >
+        <Element className={s.field} {...input} {...props} />
+        <span className={s.errorText}>{meta.error}</span>
+      </div>
+    );
+  };
+
 export const requiredFormElement =
   (Element) =>
   ({ input, meta, ...props }) => {

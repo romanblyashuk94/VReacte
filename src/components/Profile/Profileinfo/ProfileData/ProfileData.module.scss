@@ -1,0 +1,30 @@
+.profileinfo__info {
+    margin-top: 25px;
+    font-size: 20px;
+    li {
+        margin: 0 0 10px 0;
+        .noInformationSpan {
+            font-weight: bold;
+            color: red;
+        }
+        .yesSpan {
+            font-weight: bold;
+            color: green;
+        }
+        .noSpan {
+            font-weight: bold;
+            color: red;
+        }
+    }
+    .profileContacts {
+        .contactItem {
+            margin-left: 10px;
+            width: 40px;
+        }
+        .noContactsSpan {
+            font-weight: bold;
+            margin-left: 15px;
+            color: red;
+        }
+     }
+}

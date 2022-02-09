@@ -1,7 +1,7 @@
 import s from "./Profileinfo.module.scss";
 import noUser from "../../../assets/images/User.png";
 
-const ProfilePhoto = ({ authUserID, selectedUserID, userPhoto, savePhoto }) => {
+const ProfilePhoto = ({ isOwner, userPhoto, savePhoto }) => {
   const onProfilePhotoSelected = (e) => {
     const selectedPhoto = e.target.files[0];
     savePhoto(selectedPhoto);
@@ -13,7 +13,7 @@ const ProfilePhoto = ({ authUserID, selectedUserID, userPhoto, savePhoto }) => {
         src={userPhoto || noUser}
         alt="Avatar"
       />
-      {authUserID === +selectedUserID && (
+      {isOwner && (
         <div>
           <label htmlFor="file-upload" className={s.changePhotoLabel}>
             Change Photo
