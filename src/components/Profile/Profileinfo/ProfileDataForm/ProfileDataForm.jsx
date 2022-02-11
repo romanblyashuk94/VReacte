@@ -9,7 +9,6 @@ const maxLength500 = maxLength(500);
 const Input = ProfileDataFormElement("input");
 
 const ProfileDataForm = ({ handleSubmit, setEditMode, error }) => {
-  debugger
   return (
     <form onSubmit={handleSubmit}>
       <div className={s.profileDataForm}>

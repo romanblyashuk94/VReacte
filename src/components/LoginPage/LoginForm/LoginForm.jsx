@@ -7,7 +7,7 @@ import errorStyle from "../../common/FormControls/FormControls.module.scss";
 const maxLength200 = maxLength(200);
 const Input = requiredFormElement("input");
 
-const LoginForm = ({ handleSubmit, error }) => {
+const LoginForm = ({ handleSubmit, captchaURL, error }) => {
   return (
     <form onSubmit={handleSubmit}>
       <div className={s.inputWraper}>
@@ -39,6 +39,18 @@ const LoginForm = ({ handleSubmit, error }) => {
           remember me
         </label>
       </div>
+      {captchaURL && (
+        <div className={s.inputWraper}>
+          <img className={s.captcha} src={captchaURL} alt="captcha" />
+          <Field
+            type="text"
+            placeholder="Enter captcha"
+            component={Input}
+            validate={[required]}
+            name={"captcha"}
+          />
+        </div>
+      )}
       {error && <div className={errorStyle.formSummuryError}>{error}</div>}
       <div className={s.inputWraper}>
         <button>Login</button>
