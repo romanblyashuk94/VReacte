@@ -19,8 +19,17 @@ const Messages = React.lazy(() => import("./components/Messages/Messages"));
 const Users = React.lazy(() => import("./components/Users/Users"));
 
 const App = ({ initialaized, initializeApp }) => {
+  const catchAllUnhandledErrors = (promiseRejectionEvent) => {
+    alert("Catch unhandled error!");
+    console.log(promiseRejectionEvent);
+  };
+
   useEffect(() => {
+    window.addEventListener("unhandledrejection", catchAllUnhandledErrors);
     initializeApp();
+    return () => {
+      window.removeEventListener("unhandledrejection", catchAllUnhandledErrors);
+    };
   }, []);
 
   return initialaized ? (
@@ -40,7 +49,8 @@ const App = ({ initialaized, initializeApp }) => {
             <Route path="/settings" component={Settings} />
             <Route path="/users" render={() => <Users />} />
             <Route path="/login" render={() => <LoginPage />} />
-            <Route path="/" render={() => <Redirect to="/Profile" />} />
+            <Route exact path="/" render={() => <Redirect to="/Profile" />} />
+            <Route exact path="*" render={() => <div>404 Not Found</div>} />
           </Switch>
         </Suspense>
       </div>
