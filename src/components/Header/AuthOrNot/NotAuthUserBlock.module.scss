@@ -1,12 +1,13 @@
     .notAuthUserBlock {
-      float: right;
       font-size: 18px;
       line-height: 32px;
+      display: flex;
+      align-items: center;
+      gap: 25px;
       a {
         display: inline-block;
         color: #2b9cb9;
         font-weight: bold;
-        margin-left: 25px;
         border: 1px solid gray;
         border-radius: 5px;
         padding: 0px 5px;

@@ -7,8 +7,8 @@ import { NavLink } from "react-router-dom";
 const Header = ({ isAuth, id, login, logoutUser }) => {
   return (
     <header className={`${s.header} grid_element`}>
-      <NavLink to="/profile">
-        <img className={s.logo} src={logo} alt="logo" />
+      <NavLink className={s.headerLogo} to="/profile">
+        <img className={s.logoImg} src={logo} alt="logo" />
         <span>eacte</span>
       </NavLink>
       <div className={s.loginBlock}>

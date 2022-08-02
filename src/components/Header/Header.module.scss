@@ -1,12 +1,19 @@
 .header {
     grid-area: header;
     padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     background: #f1e767;
     background: -webkit-gradient(linear, left top, left bottom, from(#f1e767), to(#feb645));
     background: linear-gradient(to bottom, #f1e767 0%, #feb645 100%);
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr="#f1e767", endColorstr="#feb645",GradientType=0 );
-    .logo {
-      height: 30px;
+    .headerLogo {
+      display: inline-flex;
+      align-items: center;
+      max-width: 200px;
+      .logoImg {
+        width: 70px
+      }
     }
     span {
       color: #000000;
@@ -18,7 +25,6 @@
       font-style: italic;
     }
     .loginBlock {
-      float: right;
       font-size: 18px;
       }
     }
